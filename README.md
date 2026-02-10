@@ -2,4 +2,5 @@
 
 Portfolio website pribadi yang dibangun dengan React, TypeScript, dan Tailwind CSS.
 
-by Elsa Elisa Yohana Sianturi 
+Elsa Elisa Yohana Sianturi
+2026
