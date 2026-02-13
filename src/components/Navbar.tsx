@@ -44,11 +44,11 @@ const Navbar = () => {
       <nav className="mx-auto flex min-h-16 max-w-6xl items-center px-6 py-3 font-marvel">
         <a
           href="#home"
-          className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-900"
+          className="text-xl font-bold uppercase tracking-[0.3em] text-slate-900"
         >
           Portfolio
         </a>
-        <div className="flex flex-1 items-center justify-center gap-4 text-xs font-medium text-slate-500 sm:gap-6 sm:text-sm">
+        <div className="flex flex-1 items-center justify-center gap-4 text-lg font-medium text-slate-500 sm:gap-6 sm:text-xl">
           {centerItems.map((item) => {
             const isActive = activeId === item.id
 
@@ -73,7 +73,7 @@ const Navbar = () => {
           })}
         </div>
         {contactItem ? (
-          <div className="flex shrink-0 items-center text-xs font-medium sm:text-sm">
+          <div className="flex shrink-0 items-center text-lg font-bold sm:text-xl">
             <a
               href={`#${contactItem.id}`}
               aria-current={activeId === contactItem.id ? 'page' : undefined}
