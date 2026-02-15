@@ -6,7 +6,7 @@ const Home = () => {
     <SectionWrapper
       id="home"
       title=" "
-      containerClassName="max-w-6xl pt-12 md:pt-0"
+      containerClassName="max-w-6xl pt-12 md:pt-0 pb-8 md:pb-12"
       contentClassName="max-w-none"
     >
       <div className="relative w-full">
@@ -83,7 +83,6 @@ const Home = () => {
               <span className="font-chathura uppercase tracking-[0.25em] text-slate-900 text-[28px] sm:text-[32px] lg:text-[40px] ">
                 Currently
               </span>
-
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
