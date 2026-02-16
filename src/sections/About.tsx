@@ -5,27 +5,45 @@ const About = () => {
   return (
     <SectionWrapper
       id="about"
-      title="About Me"
+      title={
+        <div className="flex items-center gap-2">
+          <span>About Me</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.2"
+            stroke="currentColor"
+            className="w-6 h-6 sm:w-8 sm:h-8 text-white mt-3"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25"
+            />
+          </svg>
+        </div>
+      }
       containerClassName="py-32 md:py-48"
       sectionClassName="bg-black"
-      titleClassName="text-white text-6xl md:text-7xl lg:text-8xl font-alexandria font-bold tracking-tight mb-16"
+      titleClassName="text-white text-[20px] sm:text-[22px] lg:text-[80px] font-chathura uppercase tracking-[0.2em] mb-16"
       contentClassName="max-w-none"
     >
       <div className="flex flex-col gap-32 md:gap-40 w-full max-w-7xl mx-auto">
         {/* Photo and Description Section */}
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 w-full items-start">
           {/* Photo */}
-          <div className="flex-shrink-0 lg:w-[380px]">
+          <div className="flex-shrink-0 lg:w-[25%]">
             <img
               src={profil2}
               alt="Profile"
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover lg:aspect-[9/16] rounded-lg"
             />
           </div>
 
           {/* Description */}
           <div className="flex-1 flex flex-col gap-12">
-            <p className="font-poppins font-light text-[20px] md:text-[22px] lg:text-[24px] text-white leading-relaxed">
+            <p className="font-jetbrains font-light lg:tracking-[0.05em] text-[20px] md:text-[22px] lg:text-[18px] text-white leading-relaxed lg:leading-snug text-justify">
               I am a final-year Informatics Engineering student at Institut
               Teknologi Sumatera (ITERA) with a strong interest in Computer
               Vision, Artificial Intelligence, and design (UI/UX). I enjoy
@@ -39,26 +57,26 @@ const About = () => {
 
             {/* Expertise */}
             <div className="pt-8 border-t border-gray-700">
-              <h4 className="font-poppins font-semibold text-[16px] md:text-[18px] text-gray-400 mb-6 tracking-wider">
+              <h4 className="font-poppins font-semibold text-[12px] md:text-[18px] text-gray-400 mb-6 tracking-wider lg:mt-0 lg:mb-2">
                 EXPERTISE
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="font-poppins text-[18px] md:text-[20px] text-white">
+                <div className="font-poppins text-[16px] md:text-[18px] lg:text-[16px] text-white">
                   Computer Vision
                 </div>
-                <div className="font-poppins text-[18px] md:text-[20px] text-white">
+                <div className="font-poppins text-[16px] md:text-[18px] lg:text-[16px] text-white">
                   UI/UX Design
                 </div>
-                <div className="font-poppins text-[18px] md:text-[20px] text-white">
+                <div className="font-poppins text-[16px] md:text-[18px] lg:text-[16px] text-white">
                   AI Engineering
                 </div>
-                <div className="font-poppins text-[18px] md:text-[20px] text-white">
+                <div className="font-poppins text-[16px] md:text-[18px] lg:text-[16px] text-white">
                   NLP & RAG Systems
                 </div>
-                <div className="font-poppins text-[18px] md:text-[20px] text-white">
+                <div className="font-poppins text-[16px] md:text-[18px] lg:text-[16px] text-white">
                   Multimodal ML
                 </div>
-                <div className="font-poppins text-[18px] md:text-[20px] text-white">
+                <div className="font-poppins text-[16px] md:text-[18px] lg:text-[14px] text-white">
                   Human-Centered Design
                 </div>
               </div>
