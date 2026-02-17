@@ -67,7 +67,7 @@ const Projects = () => {
       title={
         <span className="flex w-full items-center justify-start gap-12 xl:mb-12">
           <span className="font-light">My</span>
-          <span className="font-light tracking-[0.35em] ">Projects</span>
+          <span className="font-light tracking-[0.3em] ">Projects</span>
         </span>
       }
       titleClassName="font-chathura font-light uppercase text-slate-900 text-[20px] sm:text-[22px] lg:text-[90px]"

@@ -56,7 +56,7 @@ const Home = () => {
           </div>
 
           <div
-            className={`mt-8 lg:mt-0 lg:absolute lg:left-[35%] lg:top-[247px] lg:-translate-x-1/2 font-poppins font-semibold text-[14px] sm:text-[15px] lg:text-[16px] text-black transition-all duration-700 ${
+            className={`mt-8 lg:mt-4 lg:absolute lg:left-[36%] lg:top-[247px] lg:-translate-x-1/2 font-poppins font-semibold text-[14px] sm:text-[15px] lg:text-[14px] text-black transition-all duration-700 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
