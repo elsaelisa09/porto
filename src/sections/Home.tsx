@@ -1,7 +1,10 @@
 import SectionWrapper from "../components/SectionWrapper";
 import profil from "../assets/profil.png";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const Home = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <SectionWrapper
       id="home"
@@ -9,13 +12,24 @@ const Home = () => {
       containerClassName="max-w-6xl pt-12 md:pt-0 pb-8 md:pb-12"
       contentClassName="max-w-none"
     >
-      <div className="relative w-full">
-        <h1 className="font-alexandria font-bold text-[40px] sm:text-[48px] lg:text-[59px] leading-tight text-slate-900">
+      <div ref={ref} className="relative w-full">
+        <h1
+          className={`font-alexandria font-bold text-[40px] sm:text-[48px] lg:text-[59px] leading-tight text-slate-900 transition-all duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
           CREATIVE DESIGNER &amp; AI ENGINEER
         </h1>
 
         <div className="relative mt-0 lg:mt-0 min-h-[420px]">
-          <div className="lg:absolute lg:left-[52%] lg:top-0px lg:-translate-x-1/2">
+          <div
+            className={`lg:absolute lg:left-[52%] lg:top-0px lg:-translate-x-1/2 transition-all duration-700 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            style={{ transitionDelay: "100ms" }}
+          >
             <img
               src={profil}
               alt="Profil"
@@ -23,7 +37,14 @@ const Home = () => {
             />
           </div>
 
-          <div className="mt-6 lg:mt-0 lg:absolute lg:left-[68%] lg:top-0 font-chathura uppercase tracking-[0.35em] text-slate-700">
+          <div
+            className={`mt-6 lg:mt-0 lg:absolute lg:left-[68%] lg:top-0 font-chathura uppercase tracking-[0.35em] text-slate-700 transition-all duration-700 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
             <div className="flex items-center gap-8 text-[22px] sm:text-[26px] lg:text-[28px]">
               <span>Based</span>
               <span>in</span>
@@ -34,7 +55,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="mt-8 lg:mt-0 lg:absolute lg:left-[35%] lg:top-[247px] lg:-translate-x-1/2 font-poppins font-semibold text-[14px] sm:text-[15px] lg:text-[16px] text-black">
+          <div
+            className={`mt-8 lg:mt-0 lg:absolute lg:left-[35%] lg:top-[247px] lg:-translate-x-1/2 font-poppins font-semibold text-[14px] sm:text-[15px] lg:text-[16px] text-black transition-all duration-700 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            style={{ transitionDelay: "300ms" }}
+          >
             <p>/COMPUTER VISION</p>
             <p>/UI-UX DESIGN</p>
             <p>/AI ENGINEERING</p>
@@ -43,7 +71,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="mt-10 lg:mt-0 lg:pt-2 font-chathura uppercase tracking-[0.15em] text-slate-900 max-w-3xl mx-auto text-center">
+        <div
+          className={`mt-10 lg:mt-0 lg:pt-2 font-chathura uppercase tracking-[0.15em] text-slate-900 max-w-3xl mx-auto text-center transition-all duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+          style={{ transitionDelay: "400ms" }}
+        >
           <p className="text-[22px] sm:text-[24px] lg:text-[26px] leading-[1.15]">
             I'm an experienced UI/UX designer crafting memorable digital
             experiences through human-centered design and AI technologies such
@@ -51,7 +84,12 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="mt-12 lg:mt-16 flex flex-col items-center lg:items-start gap-4">
+        <div
+          className={`mt-12 lg:mt-16 flex flex-col items-center lg:items-start gap-4 transition-all duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+          style={{ transitionDelay: "500ms" }}
+        >
           <div className="flex items-center gap-3 font-chathura uppercase tracking-[0.1em] text-slate-900 text-[20px] sm:text-[22px] lg:text-[40px]">
             <span>Available for Collaboration</span>
             <svg
@@ -77,10 +115,15 @@ const Home = () => {
           </a>
         </div>
 
-        <div className="mt-16 lg:mt-15 flex flex-col items-end text-right">
+        <div
+          className={`mt-16 lg:mt-15 flex flex-col items-end text-right transition-all duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+          style={{ transitionDelay: "600ms" }}
+        >
           <div className="flex items-center gap-4 -mb-1">
             <div className="relative">
-              <span className="font-chathura uppercase tracking-[0.25em] text-slate-900 text-[28px] sm:text-[32px] lg:text-[40px] ">
+              <span className="font-chathura  uppercase tracking-[0.4em] text-slate-900 text-[28px] sm:text-[32px] lg:text-[40px] ">
                 Currently
               </span>
             </div>
