@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import SectionWrapper from "../components/SectionWrapper";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
@@ -56,16 +57,122 @@ const projectsData = [
       "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=500&h=300&fit=crop",
     url: "https://github.com/username/project6",
   },
+  {
+    id: 7,
+    title: "Expense Tracker",
+    description:
+      "Personal finance dashboard for tracking spending, budgeting goals, and monthly trends.",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop",
+    url: "https://github.com/username/project7",
+  },
+  {
+    id: 8,
+    title: "Learning Platform",
+    description:
+      "Online learning platform with course progress, quizzes, and interactive lesson modules.",
+    image:
+      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=300&fit=crop",
+    url: "https://github.com/username/project8",
+  },
+  {
+    id: 9,
+    title: "Event Booking System",
+    description:
+      "Event booking system with seat selection, QR ticketing, and attendee management tools.",
+    image:
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&h=300&fit=crop",
+    url: "https://github.com/username/project9",
+  },
 ];
 
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const [showAllDesktop, setShowAllDesktop] = useState(false);
+  const desktopVisibleLimit = 6;
+  const hasExtraDesktopProjects = projectsData.length > desktopVisibleLimit;
+  const primaryProjects = projectsData.slice(0, desktopVisibleLimit);
+  const extraProjects = projectsData.slice(desktopVisibleLimit);
+  const extraDesktopContentRef = useRef<HTMLDivElement | null>(null);
+  const [extraDesktopHeight, setExtraDesktopHeight] = useState(0);
+
+  useEffect(() => {
+    const content = extraDesktopContentRef.current;
+    if (!content) return;
+
+    const updateHeight = () => {
+      setExtraDesktopHeight(content.scrollHeight);
+    };
+
+    updateHeight();
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", updateHeight);
+      return () => window.removeEventListener("resize", updateHeight);
+    }
+
+    const resizeObserver = new ResizeObserver(() => updateHeight());
+    resizeObserver.observe(content);
+
+    return () => resizeObserver.disconnect();
+  }, [extraProjects.length]);
+
+  const renderProjectCard = (
+    project: (typeof projectsData)[number],
+    animationIndex: number,
+  ) => (
+    <a
+      key={project.id}
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group overflow-hidden rounded-3xl border border-slate-90 bg-white transition-all hover:border-slate-500 hover:shadow-lg ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      }`}
+      style={{
+        transitionDelay: isVisible ? `${animationIndex * 120}ms` : "0ms",
+        transitionDuration: "900ms",
+      }}
+    >
+      <div className="aspect-video w-full overflow-hidden bg-slate-100">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="mb-0 text-lg font-semibold text-slate-900 font-chathura xl:text-4xl xl:tracking-[0.1em]">
+          {project.title}
+        </h3>
+        <p className="text-sm text-slate-600 line-clamp-2">
+          {project.description}
+        </p>
+        <div className="mt-4 flex items-center text-sm font-light text-slate-900 font-poppins xl:text-sm">
+          View Project
+          <svg
+            className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1 "
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </div>
+    </a>
+  );
 
   return (
     <SectionWrapper
       id="projects"
       title={
-        <span className="flex w-full items-center justify-start gap-12 xl:mb-12">
+        <span className="flex w-full items-center justify-start gap-12 xl:mb-16">
           <span className="font-light">My</span>
           <span className="font-light tracking-[0.3em] ">Projects</span>
         </span>
@@ -76,56 +183,60 @@ const Projects = () => {
         ref={ref}
         className="grid grid-cols-1 gap-9 md:grid-cols-2 lg:grid-cols-3"
       >
-        {projectsData.map((project, index) => (
-          <a
-            key={project.id}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`group overflow-hidden rounded-3xl border border-slate-90 bg-white transition-all hover:border-slate-500 hover:shadow-lg ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
+        {primaryProjects.map((project, index) => renderProjectCard(project, index))}
+      </div>
+      {hasExtraDesktopProjects && (
+        <>
+          <div className="mt-9 grid grid-cols-1 gap-9 md:grid-cols-2 lg:hidden">
+            {extraProjects.map((project, index) =>
+              renderProjectCard(project, index + desktopVisibleLimit),
+            )}
+          </div>
+          <div
+            className={`hidden overflow-hidden transition-[max-height,opacity,margin-top] duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:block ${
+              showAllDesktop
+                ? "lg:mt-9 lg:opacity-100"
+                : "lg:pointer-events-none lg:mt-0 lg:opacity-0"
             }`}
             style={{
-              transitionDelay: isVisible ? `${index * 10}ms` : "0ms",
-              transitionDuration: "5ms",
+              maxHeight: showAllDesktop ? `${extraDesktopHeight}px` : "0px",
             }}
           >
-            <div className="aspect-video w-full overflow-hidden bg-slate-100">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            <div ref={extraDesktopContentRef} className="grid gap-9 lg:grid-cols-3">
+              {extraProjects.map((project, index) =>
+                renderProjectCard(project, index + desktopVisibleLimit),
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {hasExtraDesktopProjects && (
+        <div className="mt-8 hidden justify-center lg:flex">
+          <button
+            type="button"
+            onClick={() => setShowAllDesktop((prev) => !prev)}
+            className="group inline-flex items-center gap-4 font-chathura uppercase tracking-[0.35em] text-slate-900 text-[28px] transition-colors duration-300"
+          >
+            <span className="relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-full after:origin-left after:scale-x-100 after:bg-current after:content-[''] after:transition-transform after:duration-700 after:ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:after:scale-x-[0.45]">
+              {showAllDesktop ? "Hide" : "View All"}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.2"
+              stroke="currentColor"
+              className="h-7 w-7 text-slate-900 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-45"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25"
               />
-            </div>
-            <div className="p-4">
-              <h3 className="mb-2 text-lg font-semibold text-slate-900">
-                {project.title}
-              </h3>
-              <p className="text-sm text-slate-600 line-clamp-2">
-                {project.description}
-              </p>
-              <div className="mt-4 flex items-center text-sm font-medium text-slate-900">
-                View Project
-                <svg
-                  className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
+            </svg>
+          </button>
+        </div>
+      )}
     </SectionWrapper>
   );
 };
