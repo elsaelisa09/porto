@@ -126,12 +126,14 @@ const Projects = () => {
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group overflow-hidden rounded-3xl border border-slate-90 bg-white transition-all hover:border-slate-500 hover:shadow-lg ${
+      className={`group overflow-hidden rounded-3xl border border-slate-90 bg-white transition-[transform,opacity,border-color,box-shadow] hover:border-slate-500 hover:shadow-lg ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       }`}
       style={{
-        transitionDelay: isVisible ? `${animationIndex * 120}ms` : "0ms",
-        transitionDuration: "900ms",
+        transitionDelay: isVisible
+          ? `${animationIndex * 120}ms, ${animationIndex * 120}ms, 0ms, 0ms`
+          : "0ms, 0ms, 0ms, 0ms",
+        transitionDuration: "900ms, 900ms, 180ms, 180ms",
       }}
     >
       <div className="aspect-video w-full overflow-hidden bg-slate-100">
@@ -211,13 +213,13 @@ const Projects = () => {
         </>
       )}
       {hasExtraDesktopProjects && (
-        <div className="mt-8 hidden justify-center lg:flex">
+        <div className="mt-12 hidden justify-center lg:flex">
           <button
             type="button"
             onClick={() => setShowAllDesktop((prev) => !prev)}
-            className="group inline-flex items-center gap-4 font-chathura uppercase tracking-[0.35em] text-slate-900 text-[28px] transition-colors duration-300"
+            className="group inline-flex items-center gap-4 font-chathura uppercase tracking-[0.3em] text-slate-500 text-[28px] transition-colors duration-300 hover:text-black"
           >
-            <span className="relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-full after:origin-left after:scale-x-100 after:bg-current after:content-[''] after:transition-transform after:duration-700 after:ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:after:scale-x-[0.45]">
+            <span className="relative inline-block after:absolute after:left-0 after:-bottom-[0px] after:h-[1.1px] after:w-full after:origin-left after:scale-x-100 after:bg-current after:content-[''] after:transition-transform after:duration-700 after:ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:after:scale-x-[0.45]">
               {showAllDesktop ? "Hide" : "View All"}
             </span>
             <svg
@@ -226,7 +228,7 @@ const Projects = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.2"
               stroke="currentColor"
-              className="h-7 w-7 text-slate-900 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-45"
+              className="h-4 w-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-45"
             >
               <path
                 strokeLinecap="round"

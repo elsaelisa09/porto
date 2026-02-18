@@ -98,7 +98,7 @@ const Home = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.2"
               stroke="currentColor"
-              className="w-6 h-6 sm:w-8 sm:h-8 text-slate-900"
+              className="xl:w-6 xl:h-6 sm:w-5 sm:h-5 text-slate-900"
             >
               <path
                 strokeLinecap="round"
@@ -109,7 +109,7 @@ const Home = () => {
           </div>
           <a
             href="mailto:elsaelisayohana05@gmail.com"
-            className="font-poppins text-[16px] sm:text-[18px] text-slate-700 hover:text-slate-900 transition-colors underline lg:ml-40 lg:-mt-7 lg:font-light"
+            className="inline-block  tracking-[0.1em] decoration-1 origin-left font-poppins text-[12px] sm:text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
           >
             elsaelisayohana05@gmail.com
           </a>
@@ -133,7 +133,7 @@ const Home = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.2"
               stroke="currentColor"
-              className="w-7 h-7 sm:w-8 sm:h-8 text-slate-900"
+              className="xl:w-6 xl:h-6 sm:w-5 sm:h-5 text-slate-900"
             >
               <path
                 strokeLinecap="round"
