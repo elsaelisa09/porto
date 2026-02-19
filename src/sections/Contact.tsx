@@ -1,4 +1,6 @@
 import SectionWrapper from "../components/SectionWrapper";
+import OrbitImages from "../components/OrbitImages";
+import { useMemo } from "react";
 
 const contactLinks = [
   {
@@ -28,6 +30,15 @@ const contactLinks = [
 ];
 
 const Contact = () => {
+  const orbitImages = useMemo(
+    () =>
+      Array.from({ length: 8 }, (_, index) => {
+        const seed = Math.floor(Math.random() * 10000) + index + 1;
+        return `https://picsum.photos/300/300?grayscale&random=${seed}`;
+      }),
+    []
+  );
+
   return (
     <SectionWrapper
       id="contact"
@@ -41,7 +52,7 @@ const Contact = () => {
       contentClassName="max-w-none"
       titleClassName="font-chathura font-light uppercase text-slate-900 text-[20px] sm:text-[22px] lg:text-[90px]"
     >
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
         <div className="max-w-3xl">
           <p className="font-poppins text-sm uppercase tracking-[0.18em] text-slate-500">
             Available for collaboration, internship, and freelance projects.
@@ -88,25 +99,46 @@ const Contact = () => {
           </div>
         </div>
 
-        <aside className="rounded-3xl border border-slate-200 bg-slate-50/60 p-6 sm:p-7">
-          <p className="font-poppins text-[11px] uppercase tracking-[0.2em] text-slate-500">
-            Base
-          </p>
-          <p className="mt-2 font-chathura text-[36px] leading-none text-slate-900 sm:text-[42px]">
-            Lampung, Indonesia
-          </p>
-
-          <div className="mt-6 border-t border-slate-200 pt-6">
+        <div className="space-y-0">
+          <aside className="rounded-3xl border border-slate-200 bg-slate-50/60 p-6 sm:p-7">
             <p className="font-poppins text-[11px] uppercase tracking-[0.2em] text-slate-500">
-              Preferred Topics
+              Base
             </p>
-            <ul className="mt-3 space-y-2 font-poppins text-sm text-slate-700">
-              <li>/ UI-UX Design</li>
-              <li>/ AI Engineering</li>
-              <li>/ NLP and RAG</li>
-            </ul>
-          </div>
-        </aside>
+            <p className="mt-2 font-chathura text-[36px] leading-none text-slate-900 sm:text-[42px]">
+              Lampung, Indonesia
+            </p>
+
+            <div className="mt-6 border-t border-slate-200 pt-6">
+              <p className="font-poppins text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                Preferred Topics
+              </p>
+              <ul className="mt-3 space-y-2 font-poppins text-sm text-slate-700">
+                <li>/ UI-UX Design</li>
+                <li>/ AI Engineering</li>
+                <li>/ NLP and RAG</li>
+              </ul>
+            </div>
+          </aside>
+
+          <OrbitImages
+            images={orbitImages}
+            shape="ellipse"
+            baseWidth={1600}
+            radiusX={700}
+            radiusY={155}
+            rotation={-8}
+            duration={30}
+            itemSize={165}
+            responsive
+            radius={300}
+            direction="normal"
+            fill
+            showPath
+            paused={false}
+            pathColor="rgba(100, 116, 139, 0.28)"
+            className="w-[560px] sm:w-[700px] lg:w-[820px] max-w-none -mt-28 sm:-mt-36 lg:-mt-[22rem] lg:translate-x-44 xl:translate-x-56"
+          />
+        </div>
       </div>
     </SectionWrapper>
   );
