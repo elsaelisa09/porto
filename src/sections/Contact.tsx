@@ -14,6 +14,12 @@ const contactLinks = [
     href: "https://www.linkedin.com",
   },
   {
+    id: "instagram",
+    label: "Instagram",
+    value: "instagram.com/elsaaelisaaa",
+    href: "https://www.instagram.com/elsaaelisaaa/",
+  },
+  {
     id: "github",
     label: "GitHub",
     value: "github.com/elsae",

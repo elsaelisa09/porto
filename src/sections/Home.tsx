@@ -1,6 +1,52 @@
 import SectionWrapper from "../components/SectionWrapper";
+import LogoLoop from "../components/LogoLoop";
 import profil from "../assets/profil.png";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
+const skillLogos = [
+  {
+    src: "https://cdn.simpleicons.org/vercel/000000",
+    alt: "Vercel",
+    title: "Vercel",
+    href: "https://vercel.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/github/000000",
+    alt: "GitHub",
+    title: "GitHub",
+    href: "https://github.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/docker/000000",
+    alt: "Docker",
+    title: "Docker",
+    href: "https://www.docker.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/prisma/000000",
+    alt: "Prisma",
+    title: "Prisma",
+    href: "https://www.prisma.io",
+  },
+  {
+    src: "https://cdn.simpleicons.org/vite/000000",
+    alt: "Vite",
+    title: "Vite",
+    href: "https://vite.dev",
+  },
+  {
+    src: "https://cdn.simpleicons.org/supabase/000000",
+    alt: "Supabase",
+    title: "Supabase",
+    href: "https://supabase.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/react/000000",
+    alt: "React",
+    title: "React",
+    href: "https://react.dev",
+  },
+];
 
 const Home = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -109,7 +155,7 @@ const Home = () => {
           </div>
           <a
             href="mailto:elsaelisayohana05@gmail.com"
-            className="inline-block  tracking-[0.1em] decoration-1 origin-left font-poppins text-[12px] sm:text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
+            className="inline-block  tracking-[0.1em] decoration-1 origin-left font-poppins text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
           >
             elsaelisayohana05@gmail.com
           </a>
@@ -128,7 +174,7 @@ const Home = () => {
               </span>
             </div>
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/sExt. Yeah. Yes. All.vg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.2"
@@ -151,9 +197,65 @@ const Home = () => {
             ITERA
           </h3>
         </div>
+
+        <div
+          className={`mt-14 transition-all duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+          style={{ transitionDelay: "700ms" }}
+        >
+          <p className="mb-0 lg:mb-4 font-chathura text-[34px] uppercase tracking-[0.22em] text-slate-500">
+            Skills
+          </p>
+          <div className="relative h-[96px] overflow-hidden px-2 sm:px-4">
+            <LogoLoop
+              logos={skillLogos}
+              speed={96}
+              direction="left"
+              logoHeight={44}
+              gap={64}
+              hoverSpeed={0}
+              fadeOut
+              scaleOnHover
+              fadeOutColor="#ffffff"
+              ariaLabel="Skills logo loop"
+              renderItem={(item, key) => {
+                if (!("src" in item)) {
+                  return item.node;
+                }
+
+                return (
+                  <a
+                    key={key}
+                    href={item.href}
+                    aria-label={item.alt ?? item.title ?? "logo link"}
+                    title={item.title}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center rounded opacity-55 transition-opacity duration-300 hover:opacity-100 focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2"
+                  >
+                    <img
+                      src={item.src}
+                      srcSet={item.srcSet}
+                      sizes={item.sizes}
+                      width={item.width}
+                      height={item.height}
+                      alt={item.alt ?? ""}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-[var(--logoloop-logoHeight)] w-auto object-contain transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-110"
+                    />
+                  </a>
+                );
+              }}
+            />
+          </div>
+        </div>
       </div>
     </SectionWrapper>
   );
 };
 
 export default Home;
+
+

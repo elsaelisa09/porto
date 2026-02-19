@@ -2,8 +2,8 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-white">
-      <div className="mx-auto w-full max-w-6xl rounded-[30px] border border-white/15 bg-black px-6 py-10 sm:py-12">
+    <footer className="bg-white px-4 pb-6 sm:px-6 sm:pb-8">
+      <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-[24px] border border-white/10 bg-black px-7 py-9 sm:rounded-[28px] sm:px-8 sm:py-10 lg:rounded-[34px] lg:py-11">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <a
