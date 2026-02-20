@@ -48,8 +48,9 @@ const Contact = () => {
           <span className="font-light tracking-[0.3em]">Connect</span>
         </span>
       }
-      containerClassName="max-w-6xl"
+      containerClassName="max-w-6xl !pb-0 md:!pb-2"
       contentClassName="max-w-none"
+      sectionClassName="min-h-0"
       titleClassName="font-chathura font-light uppercase text-slate-900 text-[20px] sm:text-[22px] lg:text-[90px]"
     >
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
@@ -130,13 +131,14 @@ const Contact = () => {
             duration={30}
             itemSize={165}
             responsive
+            responsiveAspectRatio="3 / 2"
             radius={300}
             direction="normal"
             fill
             showPath
             paused={false}
             pathColor="rgba(100, 116, 139, 0.28)"
-            className="w-[560px] sm:w-[700px] lg:w-[820px] max-w-none -mt-28 sm:-mt-36 lg:-mt-[22rem] lg:translate-x-44 xl:translate-x-56"
+            className="w-[560px] sm:w-[700px] lg:w-[820px] max-w-none -mt-32 sm:-mt-40 lg:-mt-[22rem] lg:translate-x-20 xl:translate-x-28"
           />
         </div>
       </div>
@@ -145,3 +147,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

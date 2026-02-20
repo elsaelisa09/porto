@@ -9,13 +9,17 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <main className="pt-24">
-        <Home />
-        <Projects />
-        <Highlights />
-        <Contact />
-      </main>
-      <Footer />
+      <div id="smooth-scroll-wrapper">
+        <div id="smooth-scroll-content">
+          <main className="pt-24">
+            <Home />
+            <Projects />
+            <Highlights />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };

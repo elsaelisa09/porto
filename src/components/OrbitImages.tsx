@@ -46,6 +46,7 @@ interface OrbitImagesProps {
   paused?: boolean;
   centerContent?: ReactNode;
   responsive?: boolean;
+  responsiveAspectRatio?: string;
 }
 
 interface OrbitItemProps {
@@ -219,6 +220,7 @@ export default function OrbitImages({
   paused = false,
   centerContent,
   responsive = false,
+  responsiveAspectRatio = "1 / 1",
 }: OrbitImagesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
@@ -334,7 +336,7 @@ export default function OrbitImages({
       style={{
         width: containerWidth,
         height: containerHeight,
-        aspectRatio: responsive ? "1 / 1" : undefined,
+        aspectRatio: responsive ? responsiveAspectRatio : undefined,
       }}
       aria-hidden="true"
     >

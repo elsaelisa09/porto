@@ -1,7 +1,10 @@
-import MainLayout from './layouts/MainLayout'
+import MainLayout from "./layouts/MainLayout";
+import useSmoothScroll from "./hooks/useSmoothScroll";
 
 const App = () => {
-  return <MainLayout />
-}
+  useSmoothScroll();
 
-export default App
+  return <MainLayout />;
+};
+
+export default App;
