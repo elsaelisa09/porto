@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import SectionWrapper from "../components/SectionWrapper";
 
 const highlightsData = [
@@ -79,6 +80,90 @@ const highlightsData = [
 const Highlights = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isListHovered, setIsListHovered] = useState(false);
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const mediaColumnRef = useRef<HTMLDivElement | null>(null);
+  const [listHeight, setListHeight] = useState(0);
+  const [mediaMode, setMediaMode] = useState<"inline" | "fixed" | "bottom">(
+    "inline",
+  );
+  const [fixedLayout, setFixedLayout] = useState({ left: 0, width: 360 });
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    setPortalTarget(
+      document.getElementById("smooth-scroll-wrapper") ?? document.body,
+    );
+
+    const topOffset = 112;
+    let rafId = 0;
+
+    const updateLayout = () => {
+      const listEl = listRef.current;
+      const mediaEl = mediaColumnRef.current;
+      if (!listEl || !mediaEl) return;
+
+      const nextListHeight = Math.ceil(listEl.getBoundingClientRect().height);
+      setListHeight((prev) => (prev === nextListHeight ? prev : nextListHeight));
+
+      if (window.innerWidth < 1024) {
+        setMediaMode((prev) => (prev === "inline" ? prev : "inline"));
+        return;
+      }
+
+      const listRect = listEl.getBoundingClientRect();
+      const mediaRect = mediaEl.getBoundingClientRect();
+      const cardHeight = mediaRect.width * 1.25; // aspect-[4/5]
+
+      const isBeforeStart = listRect.top > topOffset;
+      const isAfterEnd = listRect.bottom <= topOffset + cardHeight;
+      const nextMode = isBeforeStart
+        ? "inline"
+        : isAfterEnd
+          ? "bottom"
+          : "fixed";
+
+      setMediaMode((prev) => (prev === nextMode ? prev : nextMode));
+
+      const nextLeft = Math.round(mediaRect.left);
+      const nextWidth = Math.round(mediaRect.width);
+      setFixedLayout((prev) =>
+        prev.left === nextLeft && prev.width === nextWidth
+          ? prev
+          : { left: nextLeft, width: nextWidth },
+      );
+    };
+
+    const loop = () => {
+      updateLayout();
+      rafId = window.requestAnimationFrame(loop);
+    };
+
+    loop();
+    window.addEventListener("resize", updateLayout);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", updateLayout);
+    };
+  }, []);
+
+  const previewPanel = (
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[30px] border border-slate-200 bg-slate-100 lg:max-w-[360px]">
+      {highlightsData.map((item, index) => (
+        <img
+          key={item.id}
+          src={item.image}
+          alt={item.title}
+          className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            index === activeIndex ? "scale-100 opacity-100" : "scale-105 opacity-0"
+          }`}
+        />
+      ))}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-white/10" />
+    </div>
+  );
 
   return (
     <SectionWrapper
@@ -95,6 +180,7 @@ const Highlights = () => {
     >
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8">
         <div
+          ref={listRef}
           onMouseEnter={() => setIsListHovered(true)}
           onMouseLeave={() => setIsListHovered(false)}
           className="divide-y divide-slate-200"
@@ -149,24 +235,38 @@ const Highlights = () => {
           })}
         </div>
 
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[30px] border border-slate-200 bg-slate-100 lg:max-w-[360px]">
-            {highlightsData.map((item, index) => (
-              <img
-                key={item.id}
-                src={item.image}
-                alt={item.title}
-                className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  index === activeIndex
-                    ? "scale-100 opacity-100"
-                    : "scale-105 opacity-0"
-                }`}
-              />
-            ))}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-white/10" />
-          </div>
+        <div className="lg:hidden">{previewPanel}</div>
+
+        <div
+          ref={mediaColumnRef}
+          className="relative hidden lg:block"
+          style={listHeight > 0 ? { height: `${listHeight}px` } : undefined}
+        >
+          {mediaMode === "inline" && (
+            <div className="absolute left-0 top-0 w-full">{previewPanel}</div>
+          )}
+          {mediaMode === "bottom" && (
+            <div className="absolute bottom-0 left-0 w-full">{previewPanel}</div>
+          )}
+          <div aria-hidden className="aspect-[4/5] w-full" />
         </div>
       </div>
+
+      {mediaMode === "fixed" &&
+        portalTarget &&
+        createPortal(
+          <div
+            className="fixed z-20"
+            style={{
+              top: 112,
+              left: fixedLayout.left,
+              width: fixedLayout.width,
+            }}
+          >
+            {previewPanel}
+          </div>,
+          portalTarget,
+        )}
     </SectionWrapper>
   );
 };

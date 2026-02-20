@@ -1,61 +1,61 @@
 import { useEffect, useRef, useState } from "react";
 import SectionWrapper from "../components/SectionWrapper";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import fitGuideMockup from "../assets/mockup-FitGuideITERA.png";
+import wisataQUMockup from "../assets/mockup-wisataQU.png";
+import kiddieSafeMockup from "../assets/mockup-kiddiesafe.png";
+import eduBotMockup from "../assets/edu_bot.png";
+import faceRecAttendanceMockup from "../assets/FaceRec-Attendance.png";
+import indonesianNerMockup from "../assets/NER.png";
 
 const projectsData = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "FitGuide ITERA",
     description:
-      "Full-stack e-commerce application with payment integration and real-time inventory management.",
-    image:
-      "https://images.unsplash.com/photo-1557821552-17105176677c?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project1",
+      "A UI/UX design concept that helps ITERA students use gym equipment safely and confidently.",
+    image: fitGuideMockup,
+    url: "https://www.figma.com/proto/moC2WqjtvkrL7vVfe5AwPR/IMK-FitGuide-ITERA?node-id=477-1748&p=f&t=TQu0ttxtPo9gvBzb-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A3&starting-point-node-id=597%3A4522",
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "WisataQU",
     description:
-      "Collaborative task management tool with drag-and-drop interface and team features.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project2",
+      "UI/UX design for a smart travel app to explore nearby attractions in real time and connect with local services.",
+    image: wisataQUMockup,
+    url: "https://www.figma.com/proto/4oeHhXm8dDxrtJEV6ffZUj/YuaiYuex?node-id=334-3389&t=EzoXVVdwryWKJc2v-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=472%3A6937",
   },
   {
     id: 3,
-    title: "Weather Dashboard",
+    title: "Kiddie Safe",
     description:
-      "Real-time weather monitoring dashboard with interactive maps and forecasting analytics.",
-    image:
-      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project3",
+      "UI/UX design for a child-safe internet app that helps protect kids from harmful content and cyberbullying.",
+    image: kiddieSafeMockup,
+    url: "https://www.figma.com/proto/VkM0yzZ0gVXpZWHqauSNxR/Intuify---KiddieSafe?node-id=43-9&p=f&t=oK1nwL01OrmiWcVN-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A5&starting-point-node-id=36%3A420&show-proto-sidebar=1",
   },
   {
     id: 4,
-    title: "Social Media Analytics",
+    title: "EduBot",
     description:
-      "Analytics platform for tracking social media metrics across multiple platforms.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project4",
+      "An AI learning robot with LLM-based Q&A and an attendance system using voice and ultrasonic sensors.",
+    image: eduBotMockup,
+    url: "https://drive.google.com/file/d/1uYyfmKm-9h7kJUYr_UdWTs067368O78l/view?usp=sharing",
   },
   {
     id: 5,
-    title: "Portfolio Website",
+    title: "FaceRec Attendance",
     description:
-      "Modern portfolio template with animated transitions and responsive design.",
-    image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project5",
+      "Built an AI-based face recognition model and deployed a web app to automate student attendance securely and efficiently.",
+    image: faceRecAttendanceMockup,
+    url: "https://github.com/elsaelisa09/TugasBesarIIDeepLearning",
   },
   {
     id: 6,
-    title: "Fitness Tracker",
+    title: "Indonesian NER",
     description:
-      "Mobile-first fitness tracking app with workout plans and progress visualization.",
-    image:
-      "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project6",
+      "Experimented with IndoELECTRA for Indonesian NER using the SINGGALANG dataset and evaluated with F1-score.",
+    image: indonesianNerMockup,
+    url: "https://github.com/rayhanfatihg/Named-Entity-Recognition-nlp",
   },
   {
     id: 7,
@@ -147,7 +147,7 @@ const Projects = () => {
         <h3 className="mb-0 text-lg font-semibold text-slate-900 font-chathura xl:text-4xl xl:tracking-[0.1em]">
           {project.title}
         </h3>
-        <p className="text-sm text-slate-600 line-clamp-2">
+        <p className="text-xs sm:text-sm font-normal text-slate-600 line-clamp-2">
           {project.description}
         </p>
         <div className="mt-4 flex items-center text-sm font-light text-slate-900 font-poppins xl:text-sm">
@@ -185,7 +185,9 @@ const Projects = () => {
         ref={ref}
         className="grid grid-cols-1 gap-9 md:grid-cols-2 lg:grid-cols-3"
       >
-        {primaryProjects.map((project, index) => renderProjectCard(project, index))}
+        {primaryProjects.map((project, index) =>
+          renderProjectCard(project, index),
+        )}
       </div>
       {hasExtraDesktopProjects && (
         <>
@@ -204,7 +206,10 @@ const Projects = () => {
               maxHeight: showAllDesktop ? `${extraDesktopHeight}px` : "0px",
             }}
           >
-            <div ref={extraDesktopContentRef} className="grid gap-9 lg:grid-cols-3">
+            <div
+              ref={extraDesktopContentRef}
+              className="grid gap-9 lg:grid-cols-3"
+            >
               {extraProjects.map((project, index) =>
                 renderProjectCard(project, index + desktopVisibleLimit),
               )}

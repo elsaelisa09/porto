@@ -36,7 +36,7 @@ const Contact = () => {
         const seed = Math.floor(Math.random() * 10000) + index + 1;
         return `https://picsum.photos/300/300?grayscale&random=${seed}`;
       }),
-    []
+    [],
   );
 
   return (
@@ -58,12 +58,6 @@ const Contact = () => {
           <p className="font-poppins text-sm uppercase tracking-[0.18em] text-slate-500">
             Available for collaboration, internship, and freelance projects.
           </p>
-          <p className="mt-5 font-poppins text-[16px] leading-relaxed text-slate-600 sm:text-[17px]">
-            If you have an idea, project, or role that fits my focus in UI/UX
-            and AI engineering, send me a message. I usually reply within 24
-            hours.
-          </p>
-
           <div className="mt-10 border-t border-slate-200">
             {contactLinks.map((item) => (
               <a
@@ -87,7 +81,7 @@ const Contact = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.2"
                   stroke="currentColor"
-                  className="h-5 w-5 shrink-0 text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black"
+                  className="h-5 w-5 shrink-0 text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:-rotate-45 group-hover:text-black"
                 >
                   <path
                     strokeLinecap="round"
@@ -138,7 +132,7 @@ const Contact = () => {
             showPath
             paused={false}
             pathColor="rgba(100, 116, 139, 0.28)"
-            className="w-[560px] sm:w-[700px] lg:w-[820px] max-w-none -mt-32 sm:-mt-40 lg:-mt-[22rem] lg:translate-x-20 xl:translate-x-28"
+            className="w-[560px] sm:w-[700px] lg:w-[820px] max-w-none -mt-32 sm:-mt-40 lg:-mt-[22rem] lg:translate-x-[4px] xl:translate-x-[36px]"
           />
         </div>
       </div>
@@ -147,4 +141,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
