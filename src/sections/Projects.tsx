@@ -7,34 +7,13 @@ import kiddieSafeMockup from "../assets/mockup-kiddiesafe.png";
 import eduBotMockup from "../assets/edu_bot.png";
 import faceRecAttendanceMockup from "../assets/FaceRec-Attendance.png";
 import indonesianNerMockup from "../assets/NER.png";
+import chatbotMockup from "../assets/chatbot.png";
+import rentUrStyleMockup from "../assets/renturstyle.png";
+import indFoodsClassificationMockup from "../assets/food-classification.png";
 
 const projectsData = [
   {
     id: 1,
-    title: "FitGuide ITERA",
-    description:
-      "A UI/UX design concept that helps ITERA students use gym equipment safely and confidently.",
-    image: fitGuideMockup,
-    url: "https://www.figma.com/proto/moC2WqjtvkrL7vVfe5AwPR/IMK-FitGuide-ITERA?node-id=477-1748&p=f&t=TQu0ttxtPo9gvBzb-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A3&starting-point-node-id=597%3A4522",
-  },
-  {
-    id: 2,
-    title: "WisataQU",
-    description:
-      "UI/UX design for a smart travel app to explore nearby attractions in real time and connect with local services.",
-    image: wisataQUMockup,
-    url: "https://www.figma.com/proto/4oeHhXm8dDxrtJEV6ffZUj/YuaiYuex?node-id=334-3389&t=EzoXVVdwryWKJc2v-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=472%3A6937",
-  },
-  {
-    id: 3,
-    title: "Kiddie Safe",
-    description:
-      "UI/UX design for a child-safe internet app that helps protect kids from harmful content and cyberbullying.",
-    image: kiddieSafeMockup,
-    url: "https://www.figma.com/proto/VkM0yzZ0gVXpZWHqauSNxR/Intuify---KiddieSafe?node-id=43-9&p=f&t=oK1nwL01OrmiWcVN-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A5&starting-point-node-id=36%3A420&show-proto-sidebar=1",
-  },
-  {
-    id: 4,
     title: "EduBot",
     description:
       "An AI learning robot with LLM-based Q&A and an attendance system using voice and ultrasonic sensors.",
@@ -42,7 +21,7 @@ const projectsData = [
     url: "https://drive.google.com/file/d/1uYyfmKm-9h7kJUYr_UdWTs067368O78l/view?usp=sharing",
   },
   {
-    id: 5,
+    id: 2,
     title: "FaceRec Attendance",
     description:
       "Built an AI-based face recognition model and deployed a web app to automate student attendance securely and efficiently.",
@@ -50,7 +29,23 @@ const projectsData = [
     url: "https://github.com/elsaelisa09/TugasBesarIIDeepLearning",
   },
   {
-    id: 6,
+    id: 3,
+    title: "Document AI ChatBot",
+    description:
+      "A RAG-powered chat app that lets users ask questions about documents and instantly get answers using an LLM.",
+    image: chatbotMockup,
+    url: "https://github.com/elsaelisa09/ChatBot-Dokumen",
+  },
+  {
+    id: 4,
+    title: "IND Foods Classification",
+    description:
+      "Trained an EfficientNet-B6 model to classify Indonesian food images into 5 categories.",
+    image: indFoodsClassificationMockup,
+    url: "https://github.com/elsaelisa09/Tugas-Besar-1-DeepLearning",
+  },
+  {
+    id: 5,
     title: "Indonesian NER",
     description:
       "Experimented with IndoELECTRA for Indonesian NER using the SINGGALANG dataset and evaluated with F1-score.",
@@ -58,31 +53,36 @@ const projectsData = [
     url: "https://github.com/rayhanfatihg/Named-Entity-Recognition-nlp",
   },
   {
-    id: 7,
-    title: "Expense Tracker",
+    id: 6,
+    title: "FitGuide ITERA",
     description:
-      "Personal finance dashboard for tracking spending, budgeting goals, and monthly trends.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project7",
+      "A UI/UX design concept that helps ITERA students use gym equipment safely and confidently.",
+    image: fitGuideMockup,
+    url: "https://www.figma.com/proto/moC2WqjtvkrL7vVfe5AwPR/IMK-FitGuide-ITERA?node-id=477-1748&p=f&t=TQu0ttxtPo9gvBzb-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A3&starting-point-node-id=597%3A4522",
+  },
+  {
+    id: 7,
+    title: "WisataQU",
+    description:
+      "UI/UX design for a smart travel app to explore nearby attractions in real time and connect with local services.",
+    image: wisataQUMockup,
+    url: "https://www.figma.com/proto/4oeHhXm8dDxrtJEV6ffZUj/YuaiYuex?node-id=334-3389&t=EzoXVVdwryWKJc2v-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=472%3A6937",
   },
   {
     id: 8,
-    title: "Learning Platform",
+    title: "Kiddie Safe",
     description:
-      "Online learning platform with course progress, quizzes, and interactive lesson modules.",
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project8",
+      "UI/UX design for a child-safe internet app that helps protect kids from harmful content and cyberbullying.",
+    image: kiddieSafeMockup,
+    url: "https://www.figma.com/proto/VkM0yzZ0gVXpZWHqauSNxR/Intuify---KiddieSafe?node-id=43-9&p=f&t=oK1nwL01OrmiWcVN-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A5&starting-point-node-id=36%3A420&show-proto-sidebar=1",
   },
   {
     id: 9,
-    title: "Event Booking System",
+    title: "RentUr Style",
     description:
-      "Event booking system with seat selection, QR ticketing, and attendee management tools.",
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&h=300&fit=crop",
-    url: "https://github.com/username/project9",
+      "A web app for renting premium themed outfits for special occasions stylish without overspending.",
+    image: rentUrStyleMockup,
+    url: "https://www.figma.com/proto/22NGllyMUXjOsGs7Xi9gXE/TEAM-DEV-ONE-UI-UX?node-id=420-2444&t=0b4aRFgQyjixyB41-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A6&starting-point-node-id=420%3A2233&show-proto-sidebar=1",
   },
 ];
 
