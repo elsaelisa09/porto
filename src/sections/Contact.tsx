@@ -1,13 +1,21 @@
 import SectionWrapper from "../components/SectionWrapper";
 import OrbitImages from "../components/OrbitImages";
-import { useMemo } from "react";
+import { PRIMARY_EMAIL, PRIMARY_EMAIL_MAILTO } from "../constants/contact";
+import foto1 from "../assets/foto1.png";
+import foto2 from "../assets/foto2.png";
+import foto3 from "../assets/foto3.png";
+import foto4 from "../assets/foto4.png";
+import foto5 from "../assets/foto5.png";
+import foto6 from "../assets/foto6.png";
+import foto7 from "../assets/foto7.png";
+import foto8 from "../assets/foto8.png";
 
 const contactLinks = [
   {
     id: "email",
     label: "Email",
-    value: "elsaelisayohana05@gmail.com",
-    href: "mailto:elsaelisayohana05@gmail.com",
+    value: PRIMARY_EMAIL,
+    href: PRIMARY_EMAIL_MAILTO,
   },
   {
     id: "linkedin",
@@ -29,16 +37,9 @@ const contactLinks = [
   },
 ];
 
-const Contact = () => {
-  const orbitImages = useMemo(
-    () =>
-      Array.from({ length: 8 }, (_, index) => {
-        const seed = Math.floor(Math.random() * 10000) + index + 1;
-        return `https://picsum.photos/300/300?grayscale&random=${seed}`;
-      }),
-    [],
-  );
+const orbitImages = [foto1, foto2, foto3, foto4, foto5, foto6, foto7, foto8];
 
+const Contact = () => {
   return (
     <SectionWrapper
       id="contact"

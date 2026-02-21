@@ -8,6 +8,8 @@ import internshipPhrImage from "../assets/internship-PHR.png";
 import sobatBumiRecipientsImage from "../assets/sobatbumi-recipients.png";
 import secondPlaceUiUxCompetitionImage from "../assets/2nd-place-UIUX-competition.png";
 import speakersIfgtpbImage from "../assets/speakers-ifgtpb.png";
+import kmIteraImage from "../assets/km-itera.png";
+import asistenPksImage from "../assets/asisten-PKS.png";
 
 const highlightsData = [
   {
@@ -64,16 +66,14 @@ const highlightsData = [
     title: "Secretary | Information Technology Division",
     organization: "KM ITERA",
     period: "2024",
-    image:
-      "https://images.unsplash.com/photo-1485217988980-11786ced9454?w=1200&h=1600&fit=crop",
+    image: kmIteraImage,
   },
   {
     id: 9,
     title: "Teaching Assistant | Introduction to Computers and Software",
     organization: "ITERA",
     period: "2023",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=1600&fit=crop",
+    image: asistenPksImage,
   },
 ];
 
@@ -285,3 +285,7 @@ const Highlights = () => {
 };
 
 export default Highlights;
+
+
+
+

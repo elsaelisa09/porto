@@ -2,6 +2,7 @@ import SectionWrapper from "../components/SectionWrapper";
 import LogoLoop from "../components/LogoLoop";
 import profil from "../assets/profil.png";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { PRIMARY_EMAIL, PRIMARY_EMAIL_MAILTO } from "../constants/contact";
 
 const skillLogos = [
   {
@@ -154,10 +155,10 @@ const Home = () => {
             </svg>
           </div>
           <a
-            href="mailto:elsaelisayohana05@gmail.com"
+            href={PRIMARY_EMAIL_MAILTO}
             className="inline-block  tracking-[0.1em] decoration-1 origin-left font-poppins text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
           >
-            elsaelisayohana05@gmail.com
+            {PRIMARY_EMAIL}
           </a>
         </div>
 
