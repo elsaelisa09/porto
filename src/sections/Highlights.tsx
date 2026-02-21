@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import SectionWrapper from "../components/SectionWrapper";
+import posterDebImage from "../assets/Poster-DEB.png";
+import highlightsInteractionDesignImage from "../assets/highlights-Interaction-design.png";
+import headOfScholarshipsDivisionsImage from "../assets/head-of-scholarships-divisions.png";
+import internshipPhrImage from "../assets/internship-PHR.png";
+import sobatBumiRecipientsImage from "../assets/sobatbumi-recipients.png";
+import secondPlaceUiUxCompetitionImage from "../assets/2nd-place-UIUX-competition.png";
+import speakersIfgtpbImage from "../assets/speakers-ifgtpb.png";
 
 const highlightsData = [
   {
@@ -8,56 +15,49 @@ const highlightsData = [
     title: 'Winner| "Desa Energi Berdikari" Project (Team)',
     organization: "Pertamina Foundation",
     period: "2024 - 2026",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&h=1600&fit=crop",
+    image: posterDebImage,
   },
   {
     id: 2,
     title: "Teaching Assistant | Interaction Design",
     organization: "ITERA",
     period: "2025",
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&h=1600&fit=crop",
+    image: highlightsInteractionDesignImage,
   },
   {
     id: 3,
     title: "Head of Academic & Scholarship Division",
     organization: "Himpunan Mahasiswa Informatika ITERA",
     period: "2025",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=1600&fit=crop",
+    image: headOfScholarshipsDivisionsImage,
   },
   {
     id: 4,
     title: "Internship | AI Engineering (RAG System)",
     organization: "PT Pertamina Hulu Rokan",
     period: "2025",
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&h=1600&fit=crop",
+    image: internshipPhrImage,
   },
   {
     id: 5,
     title: "Sobat Bumi Scholarship Recipient",
     organization: "Pertamina Foundation",
     period: "2024 - 2025",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=1600&fit=crop",
+    image: sobatBumiRecipientsImage,
   },
   {
     id: 6,
     title: "2nd Place| UI/UX Competition (Team)",
     organization: "Himpunan Mahasiswa Informatika ITERA",
     period: "2024",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=1600&fit=crop",
+    image: secondPlaceUiUxCompetitionImage,
   },
   {
     id: 7,
     title: "Speaker | IFGTPB 2024 Scholarship Session",
     organization: "Himpunan Mahasiswa Informatika ITERA",
     period: "2024",
-    image:
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&h=1600&fit=crop",
+    image: speakersIfgtpbImage,
   },
   {
     id: 8,
@@ -78,7 +78,8 @@ const highlightsData = [
 ];
 
 const Highlights = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isListHovered, setIsListHovered] = useState(false);
   const listRef = useRef<HTMLDivElement | null>(null);
   const mediaColumnRef = useRef<HTMLDivElement | null>(null);
@@ -88,6 +89,7 @@ const Highlights = () => {
   );
   const [fixedLayout, setFixedLayout] = useState({ left: 0, width: 360 });
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+  const activePreviewIndex = hoveredIndex ?? selectedIndex;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -157,11 +159,12 @@ const Highlights = () => {
           src={item.image}
           alt={item.title}
           className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            index === activeIndex ? "scale-100 opacity-100" : "scale-105 opacity-0"
+            index === activePreviewIndex
+              ? "scale-100 opacity-100"
+              : "scale-105 opacity-0"
           }`}
         />
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-white/10" />
     </div>
   );
 
@@ -182,30 +185,40 @@ const Highlights = () => {
         <div
           ref={listRef}
           onMouseEnter={() => setIsListHovered(true)}
-          onMouseLeave={() => setIsListHovered(false)}
+          onMouseLeave={() => {
+            setIsListHovered(false);
+            setHoveredIndex(null);
+          }}
           className="divide-y divide-slate-200"
         >
           {highlightsData.map((item, index) => {
-            const isActive = index === activeIndex;
+            const isSelected = index === selectedIndex;
+            const isHovered = index === hoveredIndex;
+            const isEmphasized = isSelected || isHovered;
 
             return (
               <button
                 key={item.id}
                 type="button"
-                onMouseEnter={() => setActiveIndex(index)}
-                onFocus={() => setActiveIndex(index)}
-                onClick={() => setActiveIndex(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onFocus={() => setHoveredIndex(index)}
+                onBlur={() => setHoveredIndex(null)}
+                onClick={() => setSelectedIndex(index)}
                 className="w-full py-1 text-left"
                 aria-label={`${item.title} - ${item.organization} ${item.period}`}
               >
                 <div
                   className={`grid grid-cols-[42px_1fr] items-start gap-4 rounded-xl px-2 py-3 transition-[background-color,opacity] duration-300 sm:grid-cols-[52px_1fr] ${
-                    isActive ? "bg-slate-50" : "bg-transparent"
-                  } ${isListHovered && !isActive ? "opacity-60" : "opacity-100"}`}
+                    isSelected ? "bg-slate-50" : "bg-transparent"
+                  } ${
+                    isListHovered && !isSelected && !isHovered
+                      ? "opacity-60"
+                      : "opacity-100"
+                  }`}
                 >
                   <span
                     className={`pt-[2px] font-chathura text-[30px] leading-none tracking-[0.16em] transition-colors duration-300 sm:text-[34px] ${
-                      isActive ? "text-slate-900" : "text-slate-400"
+                      isEmphasized ? "text-slate-900" : "text-slate-400"
                     }`}
                   >
                     {String(item.id).padStart(2, "0")}
@@ -214,14 +227,14 @@ const Highlights = () => {
                   <div className="min-w-0 py-1">
                     <p
                       className={`font-poppins text-[13px] leading-[1.45] tracking-[0.06em] transition-colors duration-300 sm:text-[14px] lg:text-[15px] ${
-                        isActive ? "text-slate-900" : "text-slate-700"
+                        isEmphasized ? "text-slate-900" : "text-slate-700"
                       }`}
                     >
                       {item.title}
                     </p>
                     <p
                       className={`mt-1 font-poppins text-[11px] uppercase tracking-[0.05em] transition-colors duration-300 sm:text-[12px] ${
-                        isActive ? "text-slate-600" : "text-slate-500"
+                        isEmphasized ? "text-slate-600" : "text-slate-500"
                       }`}
                     >
                       {item.organization}

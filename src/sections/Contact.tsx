@@ -24,8 +24,8 @@ const contactLinks = [
   {
     id: "github",
     label: "GitHub",
-    value: "github.com/elsae",
-    href: "https://github.com",
+    value: "github.com/elsaelisa09",
+    href: "https://github.com/elsaelisa09",
   },
 ];
 
