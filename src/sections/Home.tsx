@@ -143,7 +143,7 @@ const Home = () => {
           style={{ transitionDelay: "400ms" }}
         >
           <p className="text-[22px] sm:text-[24px] lg:text-[26px] leading-[1.15]">
-            I'm an experienced UI/UX designer crafting memorable digital
+            I'm Elsa, an experienced UI/UX designer crafting memorable digital
             experiences through human-centered design and AI technologies such
             as Computer Vision, NLP, RAG, and multimodal machine learning
           </p>
