@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 const EASING = 0.1;
 const STOP_THRESHOLD = 0.1;
+const MOBILE_SCROLL_MEDIA_QUERY = "(max-width: 1023px)";
 
 const useSmoothScroll = () => {
   useEffect(() => {
@@ -10,10 +11,11 @@ const useSmoothScroll = () => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    const isTouchViewport = window.innerWidth < 1024 && isCoarsePointer;
+    const isMobileViewport = window.matchMedia(
+      MOBILE_SCROLL_MEDIA_QUERY
+    ).matches;
 
-    if (prefersReducedMotion || isTouchViewport) return;
+    if (prefersReducedMotion || isMobileViewport) return;
 
     const wrapper = document.getElementById("smooth-scroll-wrapper");
     const content = document.getElementById("smooth-scroll-content");

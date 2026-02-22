@@ -7,6 +7,12 @@
   html {
     scroll-behavior: smooth;
   }
+
+  @media (max-width: 1023px) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @layer utilities {

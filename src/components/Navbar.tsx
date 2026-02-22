@@ -1,6 +1,7 @@
 import { useEffect, useState, type MouseEvent } from "react";
 
 const NAV_SCROLL_OFFSET = 96;
+const MOBILE_NAV_MEDIA_QUERY = "(max-width: 767px)";
 
 const navItems = [
   { id: "home", label: "[ Home ]" },
@@ -100,7 +101,10 @@ const Navbar = () => {
 
     setActiveId(id);
     setIsMobileMenuOpen(false);
-    window.scrollTo({ top: targetTop, behavior: "smooth" });
+    const behavior = window.matchMedia(MOBILE_NAV_MEDIA_QUERY).matches
+      ? "auto"
+      : "smooth";
+    window.scrollTo({ top: targetTop, behavior });
 
     if (window.location.hash !== `#${id}`) {
       window.history.replaceState(null, "", `#${id}`);

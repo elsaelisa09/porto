@@ -44,7 +44,7 @@ const Contact = () => {
     <SectionWrapper
       id="contact"
       title={
-        <span className="flex w-full text-[42px] items-center justify-start gap-12 xl:mb-12">
+        <span className="flex w-full text-[42px] lg:text-[82px]  items-center justify-start gap-12 xl:mb-12 lg:-mb-4">
           <span className="font-light">Let&apos;s</span>
           <span className="font-light tracking-[0.3em]">Connect</span>
         </span>
@@ -56,10 +56,7 @@ const Contact = () => {
     >
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
         <div className="max-w-3xl">
-          <p className="font-poppins text-xs lg:text-sm uppercase tracking-[0.18em] text-slate-500">
-            Available for collaboration, internship, and freelance projects.
-          </p>
-          <div className="mt-10 border-t border-slate-200">
+          <div className="mt-4 border-t border-slate-200">
             {contactLinks.map((item) => (
               <a
                 key={item.id}

@@ -2,6 +2,7 @@ import { type MouseEvent } from "react";
 import { PRIMARY_EMAIL_MAILTO } from "../constants/contact";
 
 const FOOTER_SCROLL_OFFSET = 96;
+const MOBILE_FOOTER_MEDIA_QUERY = "(max-width: 767px)";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -31,7 +32,10 @@ const Footer = () => {
         FOOTER_SCROLL_OFFSET,
     );
 
-    window.scrollTo({ top: targetTop, behavior: "smooth" });
+    const behavior = window.matchMedia(MOBILE_FOOTER_MEDIA_QUERY).matches
+      ? "auto"
+      : "smooth";
+    window.scrollTo({ top: targetTop, behavior });
 
     if (window.location.hash !== `#${id}`) {
       window.history.replaceState(null, "", `#${id}`);
