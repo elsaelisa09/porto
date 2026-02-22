@@ -120,7 +120,7 @@ const Navbar = () => {
             onClick={(event) => handleMenuClick(event, "home")}
             className="text-xl font-bold uppercase tracking-[0.22em] text-slate-900 transition-colors"
           >
-            Portfolio
+            Elsa.
           </a>
 
           <div className="mobile-menu-switch">
@@ -185,7 +185,7 @@ const Navbar = () => {
             onClick={(event) => handleMenuClick(event, "home")}
             className="text-xl font-bold uppercase tracking-[0.3em] text-slate-900 transition-colors"
           >
-            Portfolio
+            Elsa.
           </a>
           <div className="flex flex-1 items-center justify-center gap-4 text-lg font-medium sm:gap-6 sm:text-xl">
             {centerItems.map((item) => {

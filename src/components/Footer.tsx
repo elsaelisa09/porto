@@ -52,7 +52,7 @@ const Footer = () => {
               onClick={(event) => handleSectionClick(event, "home")}
               className="font-marvel text-2xl font-bold uppercase tracking-[0.28em] text-slate-100"
             >
-              Portfolio
+              Elsa.
             </a>
           </div>
 

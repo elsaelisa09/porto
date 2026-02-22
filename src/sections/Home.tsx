@@ -174,14 +174,14 @@ const Home = () => {
           </div>
           <a
             href={PRIMARY_EMAIL_MAILTO}
-            className="inline-block -mt-4 tracking-[0.1em] decoration-1 origin-left font-poppins text-[14px] md:text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
+            className="inline-block -mt-6 tracking-[0.1em] decoration-1 origin-left font-poppins font-light text-[12px] md:text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
           >
             {PRIMARY_EMAIL}
           </a>
         </div>
 
         <div
-          className={`mt-16 lg:mt-15 flex flex-col items-center text-center lg:items-end lg:text-right transition-all duration-700 ${
+          className={`mt-10 lg:mt-15 flex flex-col items-center text-center lg:items-end lg:text-right transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: "600ms" }}
