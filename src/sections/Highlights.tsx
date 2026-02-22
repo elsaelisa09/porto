@@ -79,6 +79,9 @@ const highlightsData = [
 
 const Highlights = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [expandedMobileIndex, setExpandedMobileIndex] = useState<number | null>(
+    null,
+  );
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isListHovered, setIsListHovered] = useState(false);
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -107,7 +110,9 @@ const Highlights = () => {
       if (!listEl || !mediaEl) return;
 
       const nextListHeight = Math.ceil(listEl.getBoundingClientRect().height);
-      setListHeight((prev) => (prev === nextListHeight ? prev : nextListHeight));
+      setListHeight((prev) =>
+        prev === nextListHeight ? prev : nextListHeight,
+      );
 
       if (window.innerWidth < 1024) {
         setMediaMode((prev) => (prev === "inline" ? prev : "inline"));
@@ -179,7 +184,7 @@ const Highlights = () => {
       sectionClassName=""
       containerClassName="max-w-6xl"
       contentClassName="max-w-none"
-      titleClassName="font-chathura uppercase text-slate-900 text-[24px] sm:text-[28px] lg:text-[58px] leading-[0.9]"
+      titleClassName="font-chathura uppercase text-slate-900 text-[42px] sm:text-[28px] lg:text-[58px] leading-[0.9]"
     >
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8">
         <div
@@ -193,62 +198,88 @@ const Highlights = () => {
         >
           {highlightsData.map((item, index) => {
             const isSelected = index === selectedIndex;
+            const isMobileOpen = index === expandedMobileIndex;
             const isHovered = index === hoveredIndex;
-            const isEmphasized = isSelected || isHovered;
+            const isEmphasized = isSelected || isHovered || isMobileOpen;
 
             return (
-              <button
-                key={item.id}
-                type="button"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onFocus={() => setHoveredIndex(index)}
-                onBlur={() => setHoveredIndex(null)}
-                onClick={() => setSelectedIndex(index)}
-                className="w-full py-1 text-left"
-                aria-label={`${item.title} - ${item.organization} ${item.period}`}
-              >
-                <div
-                  className={`grid grid-cols-[42px_1fr] items-start gap-4 rounded-xl px-2 py-3 transition-[background-color,opacity] duration-300 sm:grid-cols-[52px_1fr] ${
-                    isSelected ? "bg-slate-50" : "bg-transparent"
-                  } ${
-                    isListHovered && !isSelected && !isHovered
-                      ? "opacity-60"
-                      : "opacity-100"
-                  }`}
+              <div key={item.id} className="py-1">
+                <button
+                  type="button"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onFocus={() => setHoveredIndex(index)}
+                  onBlur={() => setHoveredIndex(null)}
+                  onClick={() => {
+                    setSelectedIndex(index);
+                    setExpandedMobileIndex((prev) =>
+                      prev === index ? null : index,
+                    );
+                  }}
+                  className="w-full text-left"
+                  aria-label={`${item.title} - ${item.organization} ${item.period}`}
                 >
-                  <span
-                    className={`pt-[2px] font-chathura text-[30px] leading-none tracking-[0.16em] transition-colors duration-300 sm:text-[34px] ${
-                      isEmphasized ? "text-slate-900" : "text-slate-400"
+                  <div
+                    className={`grid grid-cols-[42px_1fr] items-start gap-4 rounded-xl px-2 py-3 transition-[background-color,opacity] duration-300 sm:grid-cols-[52px_1fr] ${
+                      isMobileOpen
+                        ? "bg-slate-50 lg:bg-transparent"
+                        : isSelected
+                          ? "bg-transparent lg:bg-slate-50"
+                          : "bg-transparent"
+                    } ${
+                      isListHovered && !isSelected && !isHovered
+                        ? "opacity-60"
+                        : "opacity-100"
                     }`}
                   >
-                    {String(item.id).padStart(2, "0")}
-                  </span>
+                    <span
+                      className={`pt-[2px] font-chathura text-[30px] leading-none tracking-[0.16em] transition-colors duration-300 sm:text-[34px] ${
+                        isEmphasized ? "text-slate-900" : "text-slate-400"
+                      }`}
+                    >
+                      {String(item.id).padStart(2, "0")}
+                    </span>
 
-                  <div className="min-w-0 py-1">
-                    <p
-                      className={`font-poppins text-[13px] leading-[1.45] tracking-[0.06em] transition-colors duration-300 sm:text-[14px] lg:text-[15px] ${
-                        isEmphasized ? "text-slate-900" : "text-slate-700"
-                      }`}
-                    >
-                      {item.title}
-                    </p>
-                    <p
-                      className={`mt-1 font-poppins text-[11px] uppercase tracking-[0.05em] transition-colors duration-300 sm:text-[12px] ${
-                        isEmphasized ? "text-slate-600" : "text-slate-500"
-                      }`}
-                    >
-                      {item.organization}
-                      <span className="mx-2 text-slate-400">/</span>
-                      {item.period}
-                    </p>
+                    <div className="min-w-0 py-1">
+                      <p
+                        className={`font-poppins text-[13px] leading-[1.45] tracking-[0.06em] transition-colors duration-300 sm:text-[14px] lg:text-[15px] ${
+                          isEmphasized ? "text-slate-900" : "text-slate-700"
+                        }`}
+                      >
+                        {item.title}
+                      </p>
+                      <p
+                        className={`mt-1 font-poppins text-[11px] uppercase tracking-[0.05em] transition-colors duration-300 sm:text-[12px] ${
+                          isEmphasized ? "text-slate-600" : "text-slate-500"
+                        }`}
+                      >
+                        {item.organization}
+                        <span className="mx-2 text-slate-400">/</span>
+                        {item.period}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out lg:hidden ${
+                    isMobileOpen
+                      ? "mt-2 max-h-[420px] opacity-100"
+                      : "mt-0 max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="mx-auto aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
-
-        <div className="lg:hidden">{previewPanel}</div>
 
         <div
           ref={mediaColumnRef}
@@ -259,7 +290,9 @@ const Highlights = () => {
             <div className="absolute left-0 top-0 w-full">{previewPanel}</div>
           )}
           {mediaMode === "bottom" && (
-            <div className="absolute bottom-0 left-0 w-full">{previewPanel}</div>
+            <div className="absolute bottom-0 left-0 w-full">
+              {previewPanel}
+            </div>
           )}
           <div aria-hidden className="aspect-[4/5] w-full" />
         </div>
@@ -285,7 +318,3 @@ const Highlights = () => {
 };
 
 export default Highlights;
-
-
-
-

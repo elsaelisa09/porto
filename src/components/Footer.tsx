@@ -26,7 +26,9 @@ const Footer = () => {
 
     const targetTop = Math.max(
       0,
-      target.getBoundingClientRect().top + window.scrollY - FOOTER_SCROLL_OFFSET,
+      target.getBoundingClientRect().top +
+        window.scrollY -
+        FOOTER_SCROLL_OFFSET,
     );
 
     window.scrollTo({ top: targetTop, behavior: "smooth" });
@@ -50,7 +52,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-poppins text-sm uppercase tracking-[0.12em] text-slate-400">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-poppins text-[11px] sm:text-sm uppercase tracking-[0.12em] text-slate-400">
             <a
               href="#projects"
               onClick={(event) => handleSectionClick(event, "projects")}
@@ -81,8 +83,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/15 pt-5 font-poppins text-xs uppercase tracking-[0.14em] text-slate-500 sm:flex sm:items-center sm:justify-between">
-          <p>(c) {year} Elsa Elisa Yohana</p>
+        <div className="mt-6 border-t border-white/15 pt-5 font-poppins text-xs  tracking-[0.14em] text-slate-500 sm:flex sm:items-center sm:justify-between">
+          <p>{year} Elsa Elisa Yohana Sianturi</p>
         </div>
       </div>
     </footer>

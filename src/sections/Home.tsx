@@ -6,46 +6,64 @@ import { PRIMARY_EMAIL, PRIMARY_EMAIL_MAILTO } from "../constants/contact";
 
 const skillLogos = [
   {
-    src: "https://cdn.simpleicons.org/vercel/000000",
-    alt: "Vercel",
-    title: "Vercel",
-    href: "https://vercel.com",
+    src: "https://cdn.simpleicons.org/html5/000000",
+    alt: "HTML",
+    title: "HTML",
+    href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
   },
   {
-    src: "https://cdn.simpleicons.org/github/000000",
-    alt: "GitHub",
-    title: "GitHub",
-    href: "https://github.com",
+    src: "https://cdn.simpleicons.org/css/000000",
+    alt: "CSS",
+    title: "CSS",
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
   },
   {
-    src: "https://cdn.simpleicons.org/docker/000000",
-    alt: "Docker",
-    title: "Docker",
-    href: "https://www.docker.com",
+    src: "https://cdn.simpleicons.org/cplusplus/000000",
+    alt: "C++",
+    title: "C++",
+    href: "https://isocpp.org",
   },
   {
-    src: "https://cdn.simpleicons.org/prisma/000000",
-    alt: "Prisma",
-    title: "Prisma",
-    href: "https://www.prisma.io",
+    src: "https://cdn.simpleicons.org/python/000000",
+    alt: "Python",
+    title: "Python",
+    href: "https://www.python.org",
   },
   {
-    src: "https://cdn.simpleicons.org/vite/000000",
-    alt: "Vite",
-    title: "Vite",
-    href: "https://vite.dev",
+    src: "https://cdn.simpleicons.org/pytorch/000000",
+    alt: "PyTorch",
+    title: "PyTorch",
+    href: "https://pytorch.org",
   },
   {
-    src: "https://cdn.simpleicons.org/supabase/000000",
-    alt: "Supabase",
-    title: "Supabase",
-    href: "https://supabase.com",
+    src: "https://cdn.simpleicons.org/figma/000000",
+    alt: "Figma",
+    title: "Figma",
+    href: "https://www.figma.com",
   },
   {
-    src: "https://cdn.simpleicons.org/react/000000",
-    alt: "React",
-    title: "React",
-    href: "https://react.dev",
+    src: "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg",
+    alt: "Power BI",
+    title: "Power BI",
+    href: "https://www.microsoft.com/power-platform/products/power-bi",
+  },
+  {
+    src: "https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg",
+    alt: "VS Code",
+    title: "VS Code",
+    href: "https://code.visualstudio.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/git/000000",
+    alt: "Git",
+    title: "Git",
+    href: "https://git-scm.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/weightsandbiases/000000",
+    alt: "Weights & Biases",
+    title: "Weights & Biases",
+    href: "https://wandb.ai",
   },
 ];
 
@@ -56,12 +74,12 @@ const Home = () => {
     <SectionWrapper
       id="home"
       title=" "
-      containerClassName="max-w-6xl pt-12 md:pt-0 pb-8 md:pb-12"
+      containerClassName="max-w-6xl pt-2 md:pt-0 pb-8 md:pb-12"
       contentClassName="max-w-none"
     >
       <div ref={ref} className="relative w-full">
         <h1
-          className={`font-alexandria font-bold text-[40px] sm:text-[48px] lg:text-[59px] leading-tight text-slate-900 transition-all duration-700 ${
+          className={`font-alexandria font-bold text-[40px] sm:text-[48px] lg:text-[59px] leading-tight text-center md:text-left text-slate-900 transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
@@ -70,7 +88,7 @@ const Home = () => {
 
         <div className="relative mt-0 lg:mt-0 min-h-[420px]">
           <div
-            className={`lg:absolute lg:left-[52%] lg:top-0px lg:-translate-x-1/2 transition-all duration-700 ${
+            className={`flex justify-center lg:block lg:absolute lg:left-[52%] lg:top-0px lg:-translate-x-1/2 transition-all duration-700 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
@@ -85,14 +103,14 @@ const Home = () => {
           </div>
 
           <div
-            className={`mt-6 lg:mt-0 lg:absolute lg:left-[68%] lg:top-0 font-chathura uppercase tracking-[0.35em] text-slate-700 transition-all duration-700 ${
+            className={`-mt-14 lg:mt-0 lg:absolute lg:left-[68%] lg:top-0 font-chathura uppercase tracking-[0.35em] text-slate-700 transition-all duration-700 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <div className="flex items-center gap-8 text-[22px] sm:text-[26px] lg:text-[28px]">
+            <div className="flex items-center gap-8 text-[22px] sm:text-[26px] lg:text-[28px] ">
               <span>Based</span>
               <span>in</span>
               <span>Indonesia</span>
@@ -103,7 +121,7 @@ const Home = () => {
           </div>
 
           <div
-            className={`mt-8 lg:mt-4 lg:absolute lg:left-[36%] lg:top-[247px] lg:-translate-x-1/2 font-poppins font-semibold text-[14px] sm:text-[15px] lg:text-[14px] text-black transition-all duration-700 ${
+            className={`mt-8 text-center lg:text-left lg:mt-4 lg:absolute lg:left-[36%] lg:top-[247px] lg:-translate-x-1/2 font-poppins font-semibold text-[14px] sm:text-[15px] lg:text-[14px] text-black transition-all duration-700 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
@@ -137,7 +155,7 @@ const Home = () => {
           }`}
           style={{ transitionDelay: "500ms" }}
         >
-          <div className="flex items-center gap-3 font-chathura uppercase tracking-[0.1em] text-slate-900 text-[20px] sm:text-[22px] lg:text-[40px]">
+          <div className="flex items-center gap-2 whitespace-nowrap font-chathura uppercase tracking-[0.06em] sm:tracking-[0.1em] text-slate-900 text-[32px] sm:text-[22px] lg:text-[40px]">
             <span>Available for Collaboration</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +163,7 @@ const Home = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.2"
               stroke="currentColor"
-              className="xl:w-6 xl:h-6 sm:w-5 sm:h-5 text-slate-900"
+              className="w-4 h-4 sm:w-5 sm:h-5 xl:w-6 xl:h-6 text-slate-900"
             >
               <path
                 strokeLinecap="round"
@@ -156,19 +174,19 @@ const Home = () => {
           </div>
           <a
             href={PRIMARY_EMAIL_MAILTO}
-            className="inline-block  tracking-[0.1em] decoration-1 origin-left font-poppins text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
+            className="inline-block -mt-4 tracking-[0.1em] decoration-1 origin-left font-poppins text-[14px] md:text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
           >
             {PRIMARY_EMAIL}
           </a>
         </div>
 
         <div
-          className={`mt-16 lg:mt-15 flex flex-col items-end text-right transition-all duration-700 ${
+          className={`mt-16 lg:mt-15 flex flex-col items-center text-center lg:items-end lg:text-right transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: "600ms" }}
         >
-          <div className="flex items-center gap-4 -mb-1">
+          <div className="flex items-center justify-center lg:justify-end gap-4 -mb-1">
             <div className="relative">
               <span className="font-chathura  uppercase tracking-[0.4em] text-slate-900 text-[28px] sm:text-[32px] lg:text-[40px] ">
                 Currently
@@ -180,7 +198,7 @@ const Home = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.2"
               stroke="currentColor"
-              className="xl:w-6 xl:h-6 sm:w-5 sm:h-5 text-slate-900"
+              className="w-4 h-4 sm:w-5 sm:h-5 xl:w-6 xl:h-6 text-slate-900"
             >
               <path
                 strokeLinecap="round"
@@ -190,11 +208,11 @@ const Home = () => {
             </svg>
           </div>
 
-          <h2 className="font-poppins uppercase tracking-[0.1em] text-slate-900 text-[18px] sm:text-[20px] lg:text-[16px] -mb-0.5">
+          <h2 className="font-poppins uppercase tracking-[0.1em] text-[12px] text-slate-900 text-[14px] sm:text-[20px] lg:text-[16px] -mb-0.5">
             Final Year Informatics Engineering
           </h2>
 
-          <h3 className="font-alexandria font-semibold text-slate-900 text-[64px] sm:text-[80px] lg:text-[28px] tracking-wide">
+          <h3 className="font-alexandria font-semibold text-slate-900 text-[24px] sm:text-[80px] lg:text-[28px] tracking-wide">
             ITERA
           </h3>
         </div>

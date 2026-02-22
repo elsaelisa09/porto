@@ -143,14 +143,14 @@ const Projects = () => {
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="p-4">
-        <h3 className="mb-0 text-lg font-semibold text-slate-900 font-chathura xl:text-4xl xl:tracking-[0.1em]">
+      <div className="p-4 pt-2 sm:pt-4">
+        <h3 className="mb-0 text-[36px] sm:text-lg font-semibold text-slate-900 font-chathura xl:text-4xl xl:tracking-[0.1em]">
           {project.title}
         </h3>
-        <p className="text-xs sm:text-sm font-normal text-slate-600 line-clamp-2">
+        <p className="-mt-2 sm:mt-0 text-xs sm:text-sm font-light sm:font-normal text-slate-600 line-clamp-2">
           {project.description}
         </p>
-        <div className="mt-4 flex items-center text-sm font-light text-slate-900 font-poppins xl:text-sm">
+        <div className="mt-4 flex items-center text-[14px] sm:text-sm font-light text-slate-900 font-poppins xl:text-sm">
           View Project
           <svg
             className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1 "
@@ -179,7 +179,7 @@ const Projects = () => {
           <span className="font-light tracking-[0.3em] ">Projects</span>
         </span>
       }
-      titleClassName="font-chathura font-light uppercase text-slate-900 text-[20px] sm:text-[22px] lg:text-[90px]"
+      titleClassName="font-chathura font-light uppercase text-slate-900 text-[48px] sm:text-[22px] lg:text-[90px]"
     >
       <div
         ref={ref}

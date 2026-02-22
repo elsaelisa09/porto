@@ -44,7 +44,7 @@ const Contact = () => {
     <SectionWrapper
       id="contact"
       title={
-        <span className="flex w-full items-center justify-start gap-12 xl:mb-12">
+        <span className="flex w-full text-[42px] items-center justify-start gap-12 xl:mb-12">
           <span className="font-light">Let&apos;s</span>
           <span className="font-light tracking-[0.3em]">Connect</span>
         </span>
@@ -56,7 +56,7 @@ const Contact = () => {
     >
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
         <div className="max-w-3xl">
-          <p className="font-poppins text-sm uppercase tracking-[0.18em] text-slate-500">
+          <p className="font-poppins text-xs lg:text-sm uppercase tracking-[0.18em] text-slate-500">
             Available for collaboration, internship, and freelance projects.
           </p>
           <div className="mt-10 border-t border-slate-200">
@@ -96,7 +96,7 @@ const Contact = () => {
         </div>
 
         <div className="space-y-0">
-          <aside className="rounded-3xl border border-slate-200 bg-slate-50/60 p-6 sm:p-7">
+          <aside className="hidden rounded-3xl border border-slate-200 bg-slate-50/60 p-6 sm:p-7 lg:block">
             <p className="font-poppins text-[11px] uppercase tracking-[0.2em] text-slate-500">
               Base
             </p>
@@ -108,13 +108,33 @@ const Contact = () => {
               <p className="font-poppins text-[11px] uppercase tracking-[0.2em] text-slate-500">
                 Preferred Topics
               </p>
-              <ul className="mt-3 space-y-2 font-poppins text-sm text-slate-700">
+              <ul className="mt-3 space-y-2 font-poppins  text-xs lg:text-sm text-slate-700">
                 <li>/ UI-UX Design</li>
                 <li>/ AI Engineering</li>
                 <li>/ NLP and RAG</li>
               </ul>
             </div>
           </aside>
+
+          <OrbitImages
+            images={orbitImages}
+            shape="ellipse"
+            baseWidth={1600}
+            radiusX={700}
+            radiusY={220}
+            rotation={-8}
+            duration={30}
+            itemSize={165}
+            responsive
+            responsiveAspectRatio="16 / 6"
+            radius={300}
+            direction="normal"
+            fill
+            showPath
+            paused={false}
+            pathColor="rgba(100, 116, 139, 0.28)"
+            className="w-[560px] max-w-none -mt-36 sm:hidden"
+          />
 
           <OrbitImages
             images={orbitImages}
@@ -133,7 +153,7 @@ const Contact = () => {
             showPath
             paused={false}
             pathColor="rgba(100, 116, 139, 0.28)"
-            className="w-[560px] sm:w-[700px] lg:w-[820px] max-w-none -mt-32 sm:-mt-40 lg:-mt-[22rem] lg:translate-x-[4px] xl:translate-x-[36px]"
+            className="hidden sm:block w-[700px] lg:w-[820px] max-w-none sm:-mt-40 lg:-mt-[22rem] lg:translate-x-[4px] xl:translate-x-[36px]"
           />
         </div>
       </div>

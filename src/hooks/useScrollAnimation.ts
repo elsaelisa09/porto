@@ -5,13 +5,25 @@ export const useScrollAnimation = (threshold: number = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        setIsVisible((prev) => {
+          if (isMobileViewport) {
+            // On mobile, keep elements visible after first reveal to prevent
+            // content from disappearing too quickly while scrolling.
+            return prev || entry.isIntersecting;
+          }
+
+          return entry.isIntersecting;
+        });
       },
       {
-        threshold,
-        rootMargin: "0px 0px -100px 0px",
+        threshold: isMobileViewport ? Math.min(threshold, 0.05) : threshold,
+        rootMargin: isMobileViewport
+          ? "0px 0px -20px 0px"
+          : "0px 0px -100px 0px",
       },
     );
 
