@@ -1,6 +1,6 @@
 import SectionWrapper from "../components/SectionWrapper";
 import LogoLoop from "../components/LogoLoop";
-import profil from "../assets/profil.png";
+import profil from "../assets/profil.webp";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { PRIMARY_EMAIL, PRIMARY_EMAIL_MAILTO } from "../constants/contact";
 

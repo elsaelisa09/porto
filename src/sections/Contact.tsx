@@ -1,14 +1,14 @@
 import SectionWrapper from "../components/SectionWrapper";
 import OrbitImages from "../components/OrbitImages";
 import { PRIMARY_EMAIL, PRIMARY_EMAIL_MAILTO } from "../constants/contact";
-import foto1 from "../assets/foto1.png";
-import foto2 from "../assets/foto2.png";
-import foto3 from "../assets/foto3.png";
-import foto4 from "../assets/foto4.png";
-import foto5 from "../assets/foto5.png";
-import foto6 from "../assets/foto6.png";
-import foto7 from "../assets/foto7.png";
-import foto8 from "../assets/foto8.png";
+import foto1 from "../assets/foto1.webp";
+import foto2 from "../assets/foto2.webp";
+import foto3 from "../assets/foto3.webp";
+import foto4 from "../assets/foto4.webp";
+import foto5 from "../assets/foto5.webp";
+import foto6 from "../assets/foto6.webp";
+import foto7 from "../assets/foto7.webp";
+import foto8 from "../assets/foto8.webp";
 
 const contactLinks = [
   {

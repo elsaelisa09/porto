@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import SectionWrapper from "../components/SectionWrapper";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import fitGuideMockup from "../assets/mockup-FitGuideITERA.png";
-import wisataQUMockup from "../assets/mockup-wisataQU.png";
-import kiddieSafeMockup from "../assets/mockup-kiddiesafe.png";
-import eduBotMockup from "../assets/edu_bot.png";
-import faceRecAttendanceMockup from "../assets/FaceRec-Attendance.png";
-import indonesianNerMockup from "../assets/NER.png";
-import chatbotMockup from "../assets/chatbot.png";
-import rentUrStyleMockup from "../assets/renturstyle.png";
-import indFoodsClassificationMockup from "../assets/food-classification.png";
+import fitGuideMockup from "../assets/mockup-FitGuideITERA.webp";
+import wisataQUMockup from "../assets/mockup-wisataQU.webp";
+import kiddieSafeMockup from "../assets/mockup-kiddiesafe.webp";
+import eduBotMockup from "../assets/edu_bot.webp";
+import faceRecAttendanceMockup from "../assets/FaceRec-Attendance.webp";
+import indonesianNerMockup from "../assets/NER.webp";
+import chatbotMockup from "../assets/chatbot.webp";
+import rentUrStyleMockup from "../assets/renturstyle.webp";
+import indFoodsClassificationMockup from "../assets/food-classification.webp";
 
 const projectsData = [
   {

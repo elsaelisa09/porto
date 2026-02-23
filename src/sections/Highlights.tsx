@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import SectionWrapper from "../components/SectionWrapper";
-import posterDebImage from "../assets/Poster-DEB.png";
-import highlightsInteractionDesignImage from "../assets/highlights-Interaction-design.png";
-import headOfScholarshipsDivisionsImage from "../assets/head-of-scholarships-divisions.png";
-import internshipPhrImage from "../assets/internship-PHR.png";
-import sobatBumiRecipientsImage from "../assets/sobatbumi-recipients.png";
-import secondPlaceUiUxCompetitionImage from "../assets/2nd-place-UIUX-competition.png";
-import speakersIfgtpbImage from "../assets/speakers-ifgtpb.png";
-import kmIteraImage from "../assets/km-itera.png";
-import asistenPksImage from "../assets/asisten-PKS.png";
+import posterDebImage from "../assets/Poster-DEB.webp";
+import highlightsInteractionDesignImage from "../assets/highlights-Interaction-design.webp";
+import headOfScholarshipsDivisionsImage from "../assets/head-of-scholarships-divisions.webp";
+import internshipPhrImage from "../assets/internship-PHR.webp";
+import sobatBumiRecipientsImage from "../assets/sobatbumi-recipients.webp";
+import secondPlaceUiUxCompetitionImage from "../assets/2nd-place-UIUX-competition.webp";
+import speakersIfgtpbImage from "../assets/speakers-ifgtpb.webp";
+import kmIteraImage from "../assets/km-itera.webp";
+import asistenPksImage from "../assets/asisten-PKS.webp";
 
 const highlightsData = [
   {

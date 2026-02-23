@@ -1,5 +1,5 @@
 import SectionWrapper from "../components/SectionWrapper";
-import profil2 from "../assets/profil2.jpg";
+import profil2 from "../assets/profil2.webp";
 
 const About = () => {
   return (
