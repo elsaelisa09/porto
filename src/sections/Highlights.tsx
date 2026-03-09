@@ -90,7 +90,11 @@ const Highlights = () => {
   const [mediaMode, setMediaMode] = useState<"inline" | "fixed" | "bottom">(
     "inline",
   );
-  const [fixedLayout, setFixedLayout] = useState({ left: 0, width: 360 });
+  const [fixedLayout, setFixedLayout] = useState({
+    top: 112,
+    left: 0,
+    width: 360,
+  });
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const activePreviewIndex = hoveredIndex ?? selectedIndex;
 
@@ -101,7 +105,6 @@ const Highlights = () => {
       document.getElementById("smooth-scroll-wrapper") ?? document.body,
     );
 
-    const topOffset = 112;
     let rafId = 0;
 
     const updateLayout = () => {
@@ -122,9 +125,13 @@ const Highlights = () => {
       const listRect = listEl.getBoundingClientRect();
       const mediaRect = mediaEl.getBoundingClientRect();
       const cardHeight = mediaRect.width * 1.25; // aspect-[4/5]
+      const centeredTop = Math.max(
+        24,
+        Math.round((window.innerHeight - cardHeight) / 2),
+      );
 
-      const isBeforeStart = listRect.top > topOffset;
-      const isAfterEnd = listRect.bottom <= topOffset + cardHeight;
+      const isBeforeStart = listRect.top > centeredTop;
+      const isAfterEnd = listRect.bottom <= centeredTop + cardHeight;
       const nextMode = isBeforeStart
         ? "inline"
         : isAfterEnd
@@ -133,12 +140,15 @@ const Highlights = () => {
 
       setMediaMode((prev) => (prev === nextMode ? prev : nextMode));
 
+      const nextTop = centeredTop;
       const nextLeft = Math.round(mediaRect.left);
       const nextWidth = Math.round(mediaRect.width);
       setFixedLayout((prev) =>
-        prev.left === nextLeft && prev.width === nextWidth
+        prev.top === nextTop &&
+        prev.left === nextLeft &&
+        prev.width === nextWidth
           ? prev
-          : { left: nextLeft, width: nextWidth },
+          : { top: nextTop, left: nextLeft, width: nextWidth },
       );
     };
 
@@ -304,7 +314,7 @@ const Highlights = () => {
           <div
             className="fixed z-20"
             style={{
-              top: 112,
+              top: fixedLayout.top,
               left: fixedLayout.left,
               width: fixedLayout.width,
             }}

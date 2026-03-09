@@ -56,7 +56,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-poppins text-[11px] sm:text-sm uppercase tracking-[0.12em] text-slate-400">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-poppins text-[11px] sm:text-sm lg:text-[14px] tracking-[0.12em] text-slate-400">
             <a
               href="#projects"
               onClick={(event) => handleSectionClick(event, "projects")}

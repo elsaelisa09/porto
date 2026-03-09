@@ -174,7 +174,7 @@ const Home = () => {
           </div>
           <a
             href={PRIMARY_EMAIL_MAILTO}
-            className="inline-block -mt-6 tracking-[0.1em] decoration-1 origin-left font-poppins font-light text-[12px] md:text-[18px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
+            className="inline-block -mt-6 tracking-[0.1em] decoration-1 origin-left font-poppins font-light text-[12px] md:text-[18px] lg:text-[16px] text-slate-500 hover:text-black transition-[color,transform] duration-300 hover:scale-[1.03] underline lg:ml-40 lg:-mt-7 lg:font-light"
           >
             {PRIMARY_EMAIL}
           </a>
@@ -262,7 +262,9 @@ const Home = () => {
                       alt={item.alt ?? ""}
                       loading="lazy"
                       decoding="async"
-                      className="h-[var(--logoloop-logoHeight)] w-auto object-contain transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-110"
+                      className={`h-[var(--logoloop-logoHeight)] w-auto object-contain transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-110 ${
+                        item.alt === "VS Code" ? "grayscale" : ""
+                      }`}
                     />
                   </a>
                 );

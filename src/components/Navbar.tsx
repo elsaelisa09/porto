@@ -118,7 +118,7 @@ const Navbar = () => {
           <a
             href="#home"
             onClick={(event) => handleMenuClick(event, "home")}
-            className="text-xl font-bold uppercase tracking-[0.22em] text-slate-900 transition-colors"
+            className="text-xl font-bold uppercase tracking-Close. [0.22em] text-slate-900 transition-colors"
           >
             Elsa.
           </a>
@@ -183,7 +183,7 @@ const Navbar = () => {
           <a
             href="#home"
             onClick={(event) => handleMenuClick(event, "home")}
-            className="text-xl font-bold uppercase tracking-[0.3em] text-slate-900 transition-colors"
+            className="text-2xl lg:text-3xl font-bold uppercase tracking-[0.3em] text-slate-900 transition-colors"
           >
             Elsa.
           </a>
