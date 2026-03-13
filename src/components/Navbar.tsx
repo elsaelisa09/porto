@@ -35,9 +35,8 @@ const Navbar = () => {
     const syncActiveSection = () => {
       const marker = window.scrollY + 180;
       const current =
-        sections
-          .filter((section) => marker >= section.offsetTop)
-          .at(-1)?.id ?? sections[0].id;
+        sections.filter((section) => marker >= section.offsetTop).at(-1)?.id ??
+        sections[0].id;
 
       setActiveId((prev) => (prev === current ? prev : current));
       ticking = false;
@@ -79,7 +78,10 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const handleMenuClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleMenuClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
     if (
       event.button !== 0 ||
       event.metaKey ||
@@ -118,7 +120,7 @@ const Navbar = () => {
           <a
             href="#home"
             onClick={(event) => handleMenuClick(event, "home")}
-            className="text-xl font-bold uppercase tracking-Close. [0.22em] text-slate-900 transition-colors"
+            className="text-[1.5rem] font-bold uppercase tracking-Close. [0.22em] text-slate-900 transition-colors"
           >
             Elsa.
           </a>
@@ -131,7 +133,11 @@ const Navbar = () => {
               onChange={(event) => setIsMobileMenuOpen(event.target.checked)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             />
-            <label className="toggle" htmlFor="mobile-menu-checkbox" aria-hidden>
+            <label
+              className="toggle"
+              htmlFor="mobile-menu-checkbox"
+              aria-hidden
+            >
               <div id="bar1" className="bars" />
               <div id="bar2" className="bars" />
               <div id="bar3" className="bars" />

@@ -137,7 +137,7 @@ const Home = () => {
         </div>
 
         <div
-          className={`mt-10 lg:mt-0 lg:pt-2 font-chathura uppercase tracking-[0.15em] text-slate-900 max-w-3xl mx-auto text-center transition-all duration-700 ${
+          className={`hidden md:block mt-10 lg:mt-0 lg:pt-2 font-chathura uppercase tracking-[0.15em] text-slate-900 max-w-3xl mx-auto text-center transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: "400ms" }}
@@ -150,7 +150,7 @@ const Home = () => {
         </div>
 
         <div
-          className={`mt-12 lg:mt-16 flex flex-col items-center lg:items-start gap-4 transition-all duration-700 ${
+          className={`hidden md:flex mt-12 lg:mt-16 flex-col items-center lg:items-start gap-4 transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: "500ms" }}
@@ -181,7 +181,7 @@ const Home = () => {
         </div>
 
         <div
-          className={`mt-10 lg:mt-15 flex flex-col items-center text-center lg:items-end lg:text-right transition-all duration-700 ${
+          className={`hidden md:flex mt-10 lg:mt-15 flex-col items-center text-center lg:items-end lg:text-right transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: "600ms" }}

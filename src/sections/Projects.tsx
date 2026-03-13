@@ -147,7 +147,7 @@ const Projects = () => {
         <h3 className="mb-0 text-[36px] sm:text-lg font-semibold text-slate-900 font-chathura xl:text-4xl xl:tracking-[0.1em]">
           {project.title}
         </h3>
-        <p className="-mt-2 sm:mt-0 text-xs sm:text-sm font-light sm:font-normal text-slate-600 line-clamp-2">
+        <p className="-mt-2 sm:mt-0 text-[14px] sm:text-sm text-justify font-light sm:font-normal text-slate-600 line-clamp-2">
           {project.description}
         </p>
         <div className="mt-4 flex items-center text-[14px] sm:text-sm font-light text-slate-900 font-poppins xl:text-sm">
