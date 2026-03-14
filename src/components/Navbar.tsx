@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 
 const NAV_SCROLL_OFFSET = 96;
 const MOBILE_NAV_MEDIA_QUERY = "(max-width: 767px)";
+const CALENDAR_ROUTE = "/calendar";
 
 const navItems = [
   { id: "home", label: "[ Home ]" },
@@ -20,8 +21,7 @@ const mobileNavLabels: Record<string, string> = {
 const Navbar = () => {
   const [activeId, setActiveId] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const centerItems = navItems.filter((item) => item.id !== "contact");
-  const contactItem = navItems.find((item) => item.id === "contact");
+  const centerItems = navItems;
 
   useEffect(() => {
     const sections = navItems
@@ -94,7 +94,11 @@ const Navbar = () => {
 
     event.preventDefault();
     const target = document.getElementById(id);
-    if (!target) return;
+    if (!target) {
+      setIsMobileMenuOpen(false);
+      window.location.assign(`/#${id}`);
+      return;
+    }
 
     const targetTop = Math.max(
       0,
@@ -181,6 +185,14 @@ const Navbar = () => {
                   </a>
                 );
               })}
+              <a
+                href={CALENDAR_ROUTE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-2 text-2xl text-slate-500 transition-colors hover:text-slate-900"
+              >
+                .Calendar
+              </a>
             </div>
           </div>
         </div>
@@ -220,44 +232,31 @@ const Navbar = () => {
               );
             })}
           </div>
-          {contactItem ? (
-            <div className="flex shrink-0 items-center text-lg font-bold sm:text-xl">
-              <a
-                href={`#${contactItem.id}`}
-                onClick={(event) => handleMenuClick(event, contactItem.id)}
-                aria-current={activeId === contactItem.id ? "page" : undefined}
-                className={`group inline-flex items-center gap-2 transition-colors ${
-                  activeId === contactItem.id
-                    ? "text-slate-900"
-                    : "text-slate-500 hover:text-slate-900"
-                }`}
+          <div className="flex shrink-0 items-center text-lg font-bold sm:text-xl">
+            <a
+              href={CALENDAR_ROUTE}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="My Calendar"
+              aria-label="Open calendar page"
+              className="text-slate-500 transition-colors hover:text-slate-900"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.8"
+                stroke="currentColor"
+                className="h-5 w-5"
               >
-                <span
-                  className={`border-b-2 pb-1 transition-colors ${
-                    activeId === contactItem.id
-                      ? "border-slate-900"
-                      : "border-transparent"
-                  }`}
-                >
-                  {contactItem.label}
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.6"
-                  stroke="currentColor"
-                  className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25"
-                  />
-                </svg>
-              </a>
-            </div>
-          ) : null}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.75 3v2.25m10.5-2.25v2.25M3 18.75V8.25a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 8.25v10.5A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 18.75Zm0-7.5h18"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </nav>
     </header>
