@@ -192,7 +192,7 @@ const Highlights = () => {
         </span>
       }
       sectionClassName=""
-      containerClassName="max-w-6xl"
+      containerClassName="max-w-6xl !pt-8 md:!pt-24"
       contentClassName="max-w-none"
       titleClassName="font-chathura uppercase text-slate-900 text-[42px] sm:text-[28px] lg:text-[58px] leading-[0.9]"
     >

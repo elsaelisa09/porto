@@ -226,7 +226,53 @@ const Home = () => {
           <p className="mb-0 lg:mb-4 font-chathura text-[34px] uppercase tracking-[0.22em] text-slate-500">
             Skills
           </p>
-          <div className="relative h-[96px] overflow-hidden px-2 sm:px-4">
+
+          {/* Mobile */}
+          <div className="sm:hidden relative h-[64px] overflow-hidden px-2">
+            <LogoLoop
+              logos={skillLogos}
+              speed={72}
+              direction="left"
+              logoHeight={28}
+              gap={40}
+              hoverSpeed={0}
+              fadeOut
+              scaleOnHover
+              fadeOutColor="#ffffff"
+              ariaLabel="Skills logo loop"
+              renderItem={(item, key) => {
+                if (!("src" in item)) return item.node;
+                return (
+                  <a
+                    key={key}
+                    href={item.href}
+                    aria-label={item.alt ?? item.title ?? "logo link"}
+                    title={item.title}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center rounded opacity-55 transition-opacity duration-300 hover:opacity-100 focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2"
+                  >
+                    <img
+                      src={item.src}
+                      srcSet={item.srcSet}
+                      sizes={item.sizes}
+                      width={item.width}
+                      height={item.height}
+                      alt={item.alt ?? ""}
+                      loading="lazy"
+                      decoding="async"
+                      className={`h-[var(--logoloop-logoHeight)] w-auto object-contain transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-110 ${
+                        item.alt === "VS Code" ? "grayscale" : ""
+                      }`}
+                    />
+                  </a>
+                );
+              }}
+            />
+          </div>
+
+          {/* Desktop */}
+          <div className="hidden sm:block relative h-[96px] overflow-hidden px-2 sm:px-4">
             <LogoLoop
               logos={skillLogos}
               speed={96}
@@ -239,10 +285,7 @@ const Home = () => {
               fadeOutColor="#ffffff"
               ariaLabel="Skills logo loop"
               renderItem={(item, key) => {
-                if (!("src" in item)) {
-                  return item.node;
-                }
-
+                if (!("src" in item)) return item.node;
                 return (
                   <a
                     key={key}

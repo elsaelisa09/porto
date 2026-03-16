@@ -49,7 +49,7 @@ const Contact = () => {
           <span className="font-light tracking-[0.3em]">Connect</span>
         </span>
       }
-      containerClassName="max-w-6xl !pb-0 md:!pb-2"
+      containerClassName="max-w-6xl !pt-8 md:!pt-24 !pb-0 md:!pb-2"
       contentClassName="max-w-none"
       sectionClassName="min-h-0"
       titleClassName="font-chathura font-light uppercase text-slate-900 text-[20px] sm:text-[22px] lg:text-[90px]"

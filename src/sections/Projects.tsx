@@ -179,6 +179,7 @@ const Projects = () => {
           <span className="font-light tracking-[0.3em] ">Projects</span>
         </span>
       }
+      containerClassName="!pt-8 md:!pt-24"
       titleClassName="font-chathura font-light uppercase text-slate-900 text-[48px] sm:text-[22px] lg:text-[90px]"
     >
       <div
