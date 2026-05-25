@@ -1,5 +1,5 @@
 import { type MouseEvent } from "react";
-import { PRIMARY_EMAIL_MAILTO, CV_PREVIEW_ROUTE } from "../constants/contact";
+import { CV_PREVIEW_ROUTE } from "../constants/contact";
 
 const FOOTER_SCROLL_OFFSET = 96;
 const MOBILE_FOOTER_MEDIA_QUERY = "(max-width: 767px)";
