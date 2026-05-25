@@ -1,6 +1,7 @@
 import MainLayout from "./layouts/MainLayout";
 import useSmoothScroll from "./hooks/useSmoothScroll";
 import CalendarLayout from "./layouts/CalendarLayout";
+import CVPreview from "./layouts/CVPreview";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/calendar" element={<CalendarLayout />} />
+        <Route path="/cv" element={<CVPreview />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

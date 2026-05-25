@@ -1,5 +1,5 @@
 import { type MouseEvent } from "react";
-import { PRIMARY_EMAIL_MAILTO } from "../constants/contact";
+import { PRIMARY_EMAIL_MAILTO, CV_PREVIEW_ROUTE } from "../constants/contact";
 
 const FOOTER_SCROLL_OFFSET = 96;
 const MOBILE_FOOTER_MEDIA_QUERY = "(max-width: 767px)";
@@ -83,6 +83,12 @@ const Footer = () => {
               className="underline decoration-1 underline-offset-4 transition-colors hover:text-white"
             >
               Email Me
+            </a>
+            <a
+              href={CV_PREVIEW_ROUTE}
+              className="transition-colors hover:text-white"
+            >
+              CV
             </a>
           </div>
         </div>

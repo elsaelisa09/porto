@@ -1,4 +1,5 @@
 import { useEffect, useState, type MouseEvent } from "react";
+import { CV_PREVIEW_ROUTE } from "../constants/contact";
 
 const NAV_SCROLL_OFFSET = 96;
 const MOBILE_NAV_MEDIA_QUERY = "(max-width: 767px)";
@@ -193,6 +194,12 @@ const Navbar = () => {
               >
                 .Calendar
               </a>
+              <a
+                href={CV_PREVIEW_ROUTE}
+                className="block py-2 text-2xl text-slate-500 transition-colors hover:text-slate-900"
+              >
+                .CV
+              </a>
             </div>
           </div>
         </div>
@@ -205,7 +212,7 @@ const Navbar = () => {
           >
             Elsa.
           </a>
-          <div className="flex flex-1 items-center justify-center gap-4 text-lg font-medium sm:gap-6 sm:text-xl">
+          <div className="flex flex-1 items-center justify-center gap-4 text-lg font-bold sm:gap-6 sm:text-xl">
             {centerItems.map((item) => {
               const isActive = activeId === item.id;
 
@@ -231,6 +238,14 @@ const Navbar = () => {
                 </a>
               );
             })}
+            <a
+              href={CV_PREVIEW_ROUTE}
+              className="text-slate-500 transition-colors hover:text-slate-900"
+            >
+              <span className="border-b-2 border-transparent pb-1">
+                [ CV ]
+              </span>
+            </a>
           </div>
           <div className="flex shrink-0 items-center text-lg font-bold sm:text-xl">
             <a

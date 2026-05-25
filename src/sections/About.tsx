@@ -1,5 +1,6 @@
 import SectionWrapper from "../components/SectionWrapper";
 import profil2 from "../assets/profil2.webp";
+import { CV_PREVIEW_ROUTE } from "../constants/contact";
 
 const About = () => {
   return (
@@ -54,6 +55,31 @@ const About = () => {
               Lampung, where I developed leadership, teamwork, and communication
               skills while collaborating on impactful initiatives.
             </p>
+
+            <div className="flex">
+              <a
+                href={CV_PREVIEW_ROUTE}
+                className="group flex items-center gap-3 border border-white/20 px-6 py-3 transition-all hover:bg-white hover:text-black"
+              >
+                <span className="font-poppins text-[14px] font-medium uppercase tracking-widest">
+                  View Full CV
+                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                  />
+                </svg>
+              </a>
+            </div>
 
             {/* Expertise */}
             <div className="pt-8 border-t border-gray-700">
