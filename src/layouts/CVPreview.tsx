@@ -3,6 +3,7 @@ import { CV_LINK } from "../constants/contact";
 
 const CVPreview = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [zoom, setZoom] = useState(100);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -13,10 +14,13 @@ const CVPreview = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  const handleZoomIn = () => setZoom((prev) => Math.min(prev + 25, 200));
+  const handleZoomOut = () => setZoom((prev) => Math.max(prev - 25, 50));
+
   return (
-    <div className="flex h-screen w-full flex-col bg-white">
+    <div className="flex h-screen w-full flex-col bg-slate-100">
       {/* Header */}
-      <div className="flex items-center justify-between border-b bg-white px-4 py-3 sm:px-6 sm:py-4">
+      <div className="z-10 flex items-center justify-between border-b bg-white px-4 py-3 sm:px-6 sm:py-4 shadow-sm">
         <div className="flex items-center gap-3 sm:gap-4">
           <a
             href="/"
@@ -43,11 +47,38 @@ const CVPreview = () => {
             CV
           </h1>
         </div>
+
+        {/* Zoom Controls (Desktop Only) */}
+        {!isMobile && (
+          <div className="flex items-center gap-4 rounded-lg bg-slate-50 px-3 py-1.5 border border-slate-200">
+            <button
+              onClick={handleZoomOut}
+              className="p-1 text-slate-500 hover:text-black transition-colors"
+              title="Zoom Out"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+              </svg>
+            </button>
+            <span className="font-poppins text-xs font-bold text-slate-700 w-10 text-center">
+              {zoom}%
+            </span>
+            <button
+              onClick={handleZoomIn}
+              className="p-1 text-slate-500 hover:text-black transition-colors"
+              title="Zoom In"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
+          </div>
+        )}
         
         <a
           href={CV_LINK}
           download="CV-Elsa-Elisa-Yohana-Sianturi.pdf"
-          className="flex items-center gap-2 border border-black bg-white px-3 py-1.5 sm:px-5 sm:py-2 text-black transition-all hover:bg-black hover:text-white active:scale-95"
+          className="flex items-center gap-2 border border-black bg-white px-3 py-1.5 sm:px-5 sm:py-2 text-black transition-all hover:bg-black hover:text-white active:scale-95 shadow-sm"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,10 +101,10 @@ const CVPreview = () => {
       </div>
 
       {/* Content Area */}
-      <div className="flex-1 overflow-hidden bg-white">
+      <div className="flex-1 overflow-auto bg-slate-100 flex justify-center py-8">
         {isMobile ? (
           <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-            <div className="mb-6 rounded-2xl border border-slate-100 bg-slate-50 p-8 shadow-sm">
+            <div className="mb-6 rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -112,11 +143,16 @@ const CVPreview = () => {
             </p>
           </div>
         ) : (
-          <iframe
-            src={`${CV_LINK}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`}
-            className="h-full w-full border-none"
-            title="CV Preview"
-          />
+          <div 
+            className="transition-transform duration-300 ease-out origin-top shadow-2xl h-fit max-w-5xl"
+            style={{ transform: `scale(${zoom / 100})` }}
+          >
+            <iframe
+              src={`${CV_LINK}#toolbar=0&navpanes=0&scrollbar=0`}
+              className="w-[850px] h-[1150px] border-none bg-white"
+              title="CV Preview"
+            />
+          </div>
         )}
       </div>
     </div>
