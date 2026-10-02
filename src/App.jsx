@@ -7,7 +7,7 @@ const FOCUS_AREAS = [
     id: "analytics",
     title: "Data Analytics & Insights",
     description:
-      "I transform raw and complex datasets into interactive dashboards and actionable insights to drive informed business decisions",
+      "transform raw and complex datasets into interactive dashboards and actionable insights to drive informed business decisions",
     tags: ["Business Intelligence", "Data Visualization", "KPI Analysis"],
   },
   {
@@ -391,8 +391,7 @@ function App() {
               <span>decisions.</span>
             </h1>
             <p className="hero-subtext">
-              Works with teams and organizations to turn complex data into
-              clear, actionable insights that drive growth and innovation.
+              Empowering teams and organizations to turn complex data into clear, actionable insights that drive growth and innovation.
             </p>
           </div>
 
