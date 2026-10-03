@@ -159,7 +159,7 @@ useLayoutEffect(() => {
             Contacts
           </button>
         </nav>
-        <span className="nav-panel-role">Data Scientist | Data Analyst</span>
+        <span className="nav-panel-role">Data Science | Data Analyst</span>
       </aside>
 
       {/* ===== KONTEN UTAMA ===== */}

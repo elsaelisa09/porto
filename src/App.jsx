@@ -71,7 +71,7 @@ const PROJECT_ITEMS = [
     id: "project-2",
     title: "Customer Churn Prediction Model",
     tech: "Python, Scikit-learn, Tableau",
-    role: "Data Scientist",
+    role: "Data Science",
     subtitle: "Machine Learning",
     situation: "Perusahaan telekomunikasi mengalami tingkat churn pelanggan yang tinggi namun tidak memiliki sistem prediktif untuk mengidentifikasi pelanggan berisiko sebelum mereka berhenti berlangganan, sehingga tim retensi tidak dapat bertindak secara proaktif.",
     tasks: [
@@ -642,7 +642,7 @@ function App() {
             Contacts
           </button>
         </nav>
-        <span className="nav-panel-role">Data Scientist | Data Analyst</span>
+        <span className="nav-panel-role">Data Science | Data Analyst</span>
       </aside>
 
       <div className="hero-about-stack">
@@ -655,7 +655,7 @@ function App() {
         >
           <div className="hero-role-badge">
             <span className="pipe-indicator" aria-hidden="true"></span>
-            <span>Data Scientist | Data Analyst</span>
+            <span>Data Science | Data Analyst</span>
           </div>
 
           <div className="hero-content">
@@ -692,7 +692,7 @@ function App() {
             Informatics Engineering graduate with hands-on experience in data
             pipelines, AI-driven systems, and interactive dashboards. Passionate
             about <mark className="about-highlight">Data Analytics,</mark>{" "}
-            <mark className="about-highlight">Data Scientist,</mark> and{" "}
+            <mark className="about-highlight">Data Science,</mark> and{" "}
             <mark className="about-highlight">Data Engineering</mark> with a
             focus on transforming data into intelligent solutions and actionable
             insights.
@@ -980,7 +980,7 @@ function App() {
         </nav>
         <div className="site-footer-content">
           <span className="site-footer-role">
-            Data Scientist | Data Analyst
+            Data Science | Data Analyst
           </span>
           <a
             href="mailto:elsaelisayohana05@gmail.com"
@@ -1060,7 +1060,7 @@ function App() {
                   />
                 </div>
                 <div className="contact-sign-name">Elsa!</div>
-                <div className="contact-sign-role">Data Scientist/Analyst</div>
+                <div className="contact-sign-role">Data Science/Analyst</div>
               </div>
             </div>
           </div>

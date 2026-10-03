@@ -99,7 +99,7 @@ This project is for portfolio presentation purposes.
 ## 👤 Author
 
 **Elsa Elisa Yohana Sianturi**
-- Data Scientist | Data Analyst
+- Data Science | Data Analyst
 - Email: elsaelisayohana05@gmail.com
 - LinkedIn: [linkedin.com/in/elsaelisayohanasianturi](https://www.linkedin.com/in/elsaelisayohanasianturi/)
 - GitHub: [github.com/elsaelisa09](https://github.com/elsaelisa09)
