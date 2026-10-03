@@ -15,14 +15,14 @@ const FOCUS_AREAS = [
     id: "analytics",
     title: "Data Analytics & Insights",
     description:
-      "transform raw and complex datasets into interactive dashboards and actionable insights to drive informed business decisions",
+      "turning complex data into clear insights and interactive dashboards that help teams track performance, spot trends, and drive data-driven business decisions",
     tags: ["Business Intelligence", "Data Visualization", "KPI Analysis"],
   },
   {
     id: "engineering",
     title: "Data Engineering & Pipelines",
     description:
-      "design and build reliable data pipelines and staging workflows to ensure data quality, consistency, and accessibility across organizations",
+      "building scalable data pipelines and processing workflows to clean, integrate, and validate data delivering clean, reliable datasets for advanced analytics and AI applications",
     tags: [
       "Data Architecture",
       "ETL Pipelines",
@@ -34,7 +34,7 @@ const FOCUS_AREAS = [
     id: "aiml",
     title: "AI & Machine Learning",
     description:
-      "develop predictive models and intelligent systems, leveraging techniques like Deep Learning and RAG to solve complex analytical problems",
+      "developing predictive models and end-to-end AI applications using Machine Learning, Deep Learning, and RAG to uncover hidden patterns, optimize search retrieval, and solve real-world problems",
     tags: ["Machine Learning", "Predictive Modeling", "Deep Learning"],
   },
 ];
@@ -51,75 +51,147 @@ const TOOLKIT_ITEMS = [
 const PROJECT_ITEMS = [
   {
     id: "project-1",
-    title: "Sales Dashboard & KPI Analytics",
-    tech: "Python, SQL, Power BI",
-    role: "Data Analyst",
-    subtitle: "Data Engineering",
-    situation: "Perusahaan retail menghadapi kesulitan dalam memantau performa penjualan secara real-time. Data tersebar di berbagai sumber dan laporan manual memakan waktu berhari-hari, sehingga keputusan bisnis sering terlambat dan tidak berbasis data yang akurat.",
-    tasks: [
-      { title: "Membersihkan Data Historis Penjualan", desc: "Memproses dan menstandarisasi lebih dari 99.000 baris data transaksi mentah agar bebas dari anomali. Tugas ini mencakup penanganan missing values, perbaikan error pencarian data antar tabel, dan transformasi format data awal agar valid, konsisten, serta siap untuk dianalisis lebih lanjut." },
-      { title: "Mengekstrak Matrik Kinerja Utama (KPI)", desc: "Mengidentifikasi indikator krusial yang paling relevan dengan kesehatan dan target bisnis. Tugas ini berfokus pada agregasi data yang sudah bersih untuk merumuskan metrik penting, seperti tren total pendapatan bulanan, volume transaksi, serta tingkat kontribusi penjualan dari setiap kategori produk." },
-      { title: "Membangun Dashboard Interaktif", desc: "Merancang antarmuka visualisasi yang dinamis dan ramah pengguna untuk menyajikan wawasan bisnis. Tujuan dari tugas ini adalah memungkinkan pemangku kepentingan non-teknis untuk memfilter, mengurutkan, dan membaca tren data secara mandiri melalui tata letak pelaporan yang intuitif." },
+    title: "Analisis Penjualan Retail, Promosi, dan Prediksi Penjualan",
+    tech: "PostgreSQL, SQL, Microsoft Excel, Power Query",
+    role: "Data Engineering",
+    subtitle: "Data Engineering | Data Analytics | Forecasting",
+    situation: "Data penjualan, informasi toko, dan faktor pendukung tersedia dalam tiga sumber yang terpisah. Data tersebut perlu disatukan dan diperiksa agar dapat digunakan untuk memahami performa penjualan, menganalisis periode promosi dan hari libur, serta memperkirakan penjualan mendatang",
+    tasks: [ 
+      { title: "Integrasi Data", desc: "Menggabungkan data penjualan, informasi toko, dan faktor pendukung dari tiga sumber ke dalam database PostgreSQL" },
+      { title: "Pemeriksaan Kualitas Data", desc: "Memeriksa data ganda, kelengkapan hubungan antar tabel, dan konsistensi informasi hari libur agar data siap dianalisis" },
+      { title: "Penyusunan Data Analisis", desc: "Membuat query SQL yang dapat digunakan kembali untuk mendukung analisis penjualan dan periode promosi" },
+      { title: "Pembuatan Dashboard", desc: "Mengembangkan dashboard Excel untuk menampilkan tren penjualan dan membantu pengguna membandingkan performa toko serta departemen" },
+      { title: "Pengujian Prediksi Penjualan", desc: "Menguji prediksi penjualan menggunakan data historis dan membandingkan hasilnya dengan metode pembanding berbasis pola musiman" },
     ],
     results: [
-      { bold: "Data Bersih & Valid:", text: " Berhasil menstrukturkan >99.000 baris data mentah menjadi dataset yang bebas anomali dan siap dianalisis." },
-      { bold: "Wawasan Bisnis Tepat Sasaran:", text: " Mengidentifikasi produk dengan performa terbaik untuk membantu manajemen merencanakan alokasi inventaris berbasis data." },
-      { bold: "Efisiensi Pelaporan:", text: " Mengotomatisasi visualisasi melalui dashboard interaktif, memangkas waktu pembuatan laporan manual secara drastis." },
+      { bold: "Data Terstruktur & Terintegrasi:", text: " Berhasil menyatukan tiga sumber data yang mencakup 45 toko dan 81 departemen menjadi dataset terstruktur dan siap dianalisis" },
+      { bold: "Penjualan & Promosi Lebih Mudah Dianalisis:", text: " Menghasilkan dashboard interaktif untuk meninjau tren penjualan, membandingkan performa, dan menganalisis periode promosi serta hari libur" },
+      { bold: "Kesalahan Prediksi Turun 14,32%:", text: " Pada uji coba terhadap 100 kelompok riwayat penjualan selama 13 minggu, kesalahan prediksi turun 14,32% dibandingkan metode pembanding berbasis pola musiman" },
     ],
   },
   {
     id: "project-2",
-    title: "Customer Churn Prediction Model",
-    tech: "Python, Scikit-learn, Tableau",
-    role: "Data Science",
-    subtitle: "Machine Learning",
-    situation: "Perusahaan telekomunikasi mengalami tingkat churn pelanggan yang tinggi namun tidak memiliki sistem prediktif untuk mengidentifikasi pelanggan berisiko sebelum mereka berhenti berlangganan, sehingga tim retensi tidak dapat bertindak secara proaktif.",
+    title: "Analisis Pariwisata Lampung Selatan melalui Instagram",
+    tech: "Python, Pandas, BLIP, CLIP, Microsoft Power BI, DAX",
+    role: "Data Analyst",
+    subtitle: "Data Analytics & AI",
+    situation: "Data Instagram tentang pariwisata Lampung Selatan memiliki metadata yang tidak konsisten dan gambar yang perlu diseleksi. Selain itu, satu unggahan dapat memuat beberapa gambar, sehingga jumlah likes berpotensi terhitung berulang. Data perlu dibersihkan dan dianalisis untuk memahami konten wisata yang ditampilkan serta pola interaksi pengguna",
     tasks: [
-      { title: "Eksplorasi & Preprocessing Data", desc: "Menganalisis dataset pelanggan dengan lebih dari 7.000 entri, menangani imbalanced class, encoding variabel kategorikal, dan normalisasi fitur numerik agar model dapat belajar secara optimal dari pola data historis." },
-      { title: "Membangun Model Prediksi", desc: "Melatih dan membandingkan beberapa algoritma klasifikasi termasuk Random Forest, XGBoost, dan Logistic Regression. Melakukan hyperparameter tuning menggunakan GridSearchCV untuk memaksimalkan recall pada kelas churn." },
-      { title: "Visualisasi & Interpretasi Model", desc: "Membuat dashboard Tableau yang menampilkan segmen pelanggan berisiko tinggi beserta faktor-faktor penyebab churn, memungkinkan tim bisnis mengambil tindakan retensi yang tepat sasaran." },
+      {
+        title: "Pembersihan & Validasi Data",
+        desc: "Mengolah 7.178 catatan Instagram menggunakan Python dan Pandas, memeriksa kelengkapan data, serta menyeleksi gambar yang relevan untuk analisis pariwisata"
+      },
+      {
+        title: "Analisis Konten Visual dengan AI",
+        desc: "Menggunakan BLIP untuk menghasilkan deskripsi gambar dan CLIP untuk mengelompokkan konten visual, sehingga tema wisata dapat dianalisis secara terstruktur"
+      },
+      {
+        title: "Pencegahan Penghitungan Likes Ganda",
+        desc: "Memisahkan perhitungan berdasarkan gambar dan unggahan menggunakan URL unik, agar likes dari unggahan dengan beberapa gambar tidak dijumlahkan berulang"
+      },
+      {
+        title: "Pengembangan Dashboard & Insight",
+        desc: "Membuat perhitungan DAX dan dashboard Power BI dengan tiga halaman untuk menampilkan kualitas data, kategori konten visual, tren interaksi, serta persebaran lokasi"
+      }
     ],
     results: [
-      { bold: "Akurasi Model 87%:", text: " Model XGBoost mencapai akurasi 87% dengan recall 82% pada kelas churn di data uji." },
-      { bold: "Identifikasi Segmen Risiko:", text: " Berhasil mengidentifikasi 3 segmen pelanggan berisiko tinggi berdasarkan pola penggunaan dan riwayat pembayaran." },
-      { bold: "Penghematan Biaya Retensi:", text: " Tim retensi dapat memprioritaskan outreach ke pelanggan yang tepat, meningkatkan efisiensi kampanye retensi secara signifikan." },
-    ],
+      {
+        bold: "2.689 Gambar Siap Dianalisis:",
+        text: " Dari 7.178 catatan awal, berhasil menyeleksi dan memvalidasi 2.689 gambar untuk membentuk dataset analisis pariwisata"
+      },
+      {
+        bold: "Dashboard Interaktif 3 Halaman:",
+        text: " Menghasilkan dashboard yang menyajikan kualitas data, analisis konten visual, serta interaksi dan persebaran unggahan dalam tampilan yang mudah ditelusuri"
+      },
+      {
+        bold: "Gambaran Identitas Visual Pariwisata:",
+        text: " Menemukan bahwa konten yang dianalisis didominasi unsur alam dan pesisir, seperti pantai, laut, dan matahari terbenam, sehingga memperjelas bagaimana pariwisata Lampung Selatan direpresentasikan di Instagram"
+      }
+    ]
   },
   {
     id: "project-3",
-    title: "ETL Pipeline untuk Data Warehouse",
-    tech: "Python, Apache Airflow, PostgreSQL",
-    role: "Data Engineer",
-    subtitle: "Data Engineering",
-    situation: "Startup e-commerce memiliki data transaksi yang tersebar di berbagai microservice dan database berbeda. Tidak ada pipeline terpusat yang mengintegrasikan data tersebut, sehingga analisis lintas platform menjadi sangat sulit dan memakan waktu.",
+    title: "Chatbot AI untuk Pencarian Dokumen Perjanjian Lahan",
+    tech: "Python, React, TypeScript, FastAPI, FAISS, TF-IDF, DeepSeek V3",
+    role: "AI Engineer Intern",
+    subtitle: "AI & Information Retrieval",
+    situation: "Pencarian informasi dalam dokumen perjanjian lahan yang panjang membutuhkan pembacaan manual dan menyulitkan pengguna menemukan bagian yang relevan. Dalam magang di PT Pertamina Hulu Rokan, saya mengembangkan prototipe chatbot agar pengguna dapat mencari informasi dan mengajukan pertanyaan berdasarkan isi dokumen",
     tasks: [
-      { title: "Desain Arsitektur Data Warehouse", desc: "Merancang skema star schema untuk data warehouse dengan fact table transaksi dan dimension tables untuk produk, pelanggan, dan waktu. Memastikan struktur mendukung query analitik yang cepat dan efisien." },
-      { title: "Membangun ETL Pipeline dengan Airflow", desc: "Mengembangkan DAG (Directed Acyclic Graph) di Apache Airflow untuk mengotomatisasi proses ekstraksi data dari 5 sumber berbeda, transformasi sesuai business rules, dan loading ke PostgreSQL data warehouse setiap malam." },
-      { title: "Monitoring & Data Quality Check", desc: "Mengimplementasikan automated data quality checks pada setiap tahap pipeline, termasuk validasi schema, deteksi duplikat, dan alerting via email ketika pipeline gagal atau data anomali terdeteksi." },
+      {
+        title: "Analisis Kebutuhan Pengguna",
+        desc: "Mengidentifikasi kebutuhan pengguna dan skenario pencarian informasi untuk menentukan fungsi utama chatbot"
+      },
+      {
+        title: "Pengolahan & Pengindeksan Dokumen",
+        desc: "Menyiapkan isi dokumen perjanjian lahan dan membangun indeks pencarian agar informasi dapat ditemukan sesuai pertanyaan pengguna"
+      },
+      {
+        title: "Pengembangan Pencarian & Jawaban AI",
+        desc: "Menggabungkan pencarian berbasis kata kunci menggunakan TF-IDF dan kemiripan makna menggunakan FAISS, kemudian mengintegrasikan model bahasa untuk menyusun jawaban berdasarkan informasi yang ditemukan"
+      },
+      {
+        title: "Pembuatan Aplikasi Chatbot",
+        desc: "Mengembangkan antarmuka dengan React dan TypeScript serta layanan backend dengan FastAPI, sehingga pengguna dapat mencari informasi melalui percakapan"
+      },
+      {
+        title: "Evaluasi & Presentasi Prototipe",
+        desc: "Membandingkan jawaban chatbot dengan jawaban acuan untuk mengukur ketepatannya, lalu mempresentasikan prototipe dan hasil evaluasi kepada pemangku kepentingan divisi"
+      }
     ],
     results: [
-      { bold: "Pipeline Berjalan Otomatis:", text: " ETL pipeline berjalan setiap malam tanpa intervensi manual, memproses rata-rata 50.000 record per eksekusi." },
-      { bold: "Data Terintegrasi:", text: " Data dari 5 sumber berbeda berhasil diintegrasikan ke satu data warehouse yang konsisten dan dapat diandalkan." },
-      { bold: "Waktu Query Berkurang 70%:", text: " Analis bisnis dapat menjalankan query lintas platform dalam hitungan detik dibanding sebelumnya yang memakan jam." },
-    ],
+      {
+        bold: "Ketepatan Jawaban 73,33%:",
+        text: " Prototipe mencapai ketepatan jawaban 73,33% dalam evaluasi menggunakan jawaban acuan sebagai pembanding"
+      },
+      {
+        bold: "Prototipe Pencarian & Tanya Jawab:",
+        text: " Menghasilkan aplikasi yang menghubungkan antarmuka pengguna, pengolahan dokumen, pencarian informasi, dan penyusunan jawaban AI dalam satu alur"
+      },
+      {
+        bold: "Hasil Dipresentasikan kepada Stakeholder:",
+        text: " Mempresentasikan prototipe dan hasil pengujian kepada pemangku kepentingan Application Service Division untuk menjelaskan kemampuan serta hasil evaluasi sistem"
+      }
+    ]
   },
   {
     id: "project-4",
-    title: "RAG-based Document Retrieval System",
-    tech: "Python, LangChain, ChromaDB",
-    role: "AI Engineer",
-    subtitle: "AI / Machine Learning",
-    situation: "PT Pertamina Hulu Rokan memiliki ribuan dokumen teknis dan SOP yang sulit diakses oleh karyawan. Pencarian manual memakan waktu lama dan sering menghasilkan informasi yang tidak relevan atau sudah usang.",
+    title: "Klasifikasi Meme Bertema Self-Harm dengan AI Multimodal",
+    tech: "Python, PyTorch, Transformers, Hugging Face, CLIP, ELECTRA, Weights & Biases",
+    role: "AI Researcher",
+    subtitle: "Multimodal Machine Learning",
+    situation: "Makna sebuah meme sering terbentuk dari kombinasi gambar dan teks, sehingga membaca salah satunya saja dapat menghasilkan pemahaman yang berbeda. Dalam proyek tugas akhir ini, saya mengembangkan model AI untuk mengklasifikasikan meme yang berkaitan dengan self-harm atau tindakan menyakiti diri sendiri dengan mempertimbangkan kedua jenis informasi tersebut",
     tasks: [
-      { title: "Implementasi Vector Database", desc: "Membangun sistem indexing dokumen menggunakan ChromaDB sebagai vector store. Setiap dokumen dipecah menjadi chunks optimal dan dikonversi menjadi embeddings menggunakan model bahasa untuk memungkinkan pencarian semantik yang akurat." },
-      { title: "Pengembangan RAG Pipeline", desc: "Mengintegrasikan retrieval system dengan LLM menggunakan LangChain framework. Pipeline menerima pertanyaan pengguna, mencari dokumen relevan dari vector store, dan menghasilkan jawaban yang grounded pada konteks dokumen asli." },
-      { title: "Evaluasi & Optimasi Akurasi", desc: "Merancang evaluation framework menggunakan dataset pertanyaan-jawaban yang dikurasi secara manual. Melakukan iterasi pada chunk size, overlap, dan prompt engineering untuk memaksimalkan akurasi jawaban sistem." },
+      {
+        title: "Pengumpulan & Pelabelan Dataset",
+        desc: "Mengumpulkan, menyeleksi, dan memberi label pada 2.178 meme untuk membentuk dataset yang digunakan dalam pengembangan dan evaluasi model"
+      },
+      {
+        title: "Persiapan Data Gambar & Teks",
+        desc: "Membangun alur pemrosesan gambar dan teks agar kedua jenis data dapat digunakan secara konsisten sebagai masukan model"
+      },
+      {
+        title: "Pengembangan Model Multimodal",
+        desc: "Menggabungkan fitur gambar dari CLIP dan fitur teks dari ELECTRA agar model dapat mempelajari hubungan antara informasi visual dan tulisan dalam meme"
+      },
+      {
+        title: "Pelatihan & Evaluasi Model",
+        desc: "Melatih model, menyesuaikan konfigurasi, dan membandingkan hasil eksperimen. Mengukur performa klasifikasi serta mencatat eksperimen menggunakan Weights & Biases"
+      }
     ],
     results: [
-      { bold: "Akurasi 76%:", text: " Sistem mencapai 76% akurasi dalam menjawab pertanyaan teknis berdasarkan evaluasi manual terhadap 100 pertanyaan uji." },
-      { bold: "Waktu Pencarian Berkurang:", text: " Karyawan dapat menemukan informasi relevan dalam hitungan detik dibanding pencarian manual yang memakan 15-30 menit." },
-      { bold: "Skalabel:", text: " Sistem dapat dengan mudah diperbarui dengan dokumen baru tanpa perlu re-training model dari awal." },
-    ],
+      {
+        bold: "Dataset 2.178 Meme Berlabel:",
+        text: " Menghasilkan dataset gambar dan teks yang telah dikurasi untuk mendukung pelatihan serta evaluasi model klasifikasi."
+      },
+      {
+        bold: "F1-Score 96,1%:",
+        text: " Model terbaik mencapai F1-Score 96,1% pada data validasi proyek. Metrik ini merangkum keseimbangan antara ketepatan prediksi dan kemampuan menemukan meme yang termasuk kategori target"
+      },
+      {
+        bold: "Analisis Gambar & Teks Terpadu:",
+        text: " Menghasilkan model yang menggabungkan informasi visual dan tulisan untuk mengklasifikasikan meme, disertai catatan eksperimen yang membantu peninjauan hasil"
+      }
+    ]
   },
   {
     id: "project-5",
@@ -660,13 +732,13 @@ function App() {
 
           <div className="hero-content">
             <h1 className="hero-headline">
-              <span>data-driven</span>
-              <span>insights</span>
-              <span>smarter</span>
-              <span>decisions.</span>
+              <span>turning data</span>
+              <span>into Insights</span>
+              <span>and</span>
+              <span>Intelligent Solutions.</span>
             </h1>
             <p className="hero-subtext">
-              Empowering teams and organizations to turn complex data into clear, actionable insights that drive growth and innovation.
+              I build data pipelines, analytical dashboards, and AI applications that help teams turn complex data into actionable insights and make smarter decisions.
             </p>
           </div>
 
@@ -689,13 +761,9 @@ function App() {
         >
           {/* Bio paragraph with inline orange highlights */}
           <p className="about-bio">
-            Informatics Engineering graduate with hands-on experience in data
-            pipelines, AI-driven systems, and interactive dashboards. Passionate
-            about <mark className="about-highlight">Data Analytics,</mark>{" "}
+            I'm an Informatics Engineering graduate with hands-on experience in data pipelines, AI applications, and interactive dashboards. My interests <mark className="about-highlight">Data Analytics,</mark>{" "}
             <mark className="about-highlight">Data Science,</mark> and{" "}
-            <mark className="about-highlight">Data Engineering</mark> with a
-            focus on transforming data into intelligent solutions and actionable
-            insights.
+            <mark className="about-highlight">Data Engineering</mark> with a focus on turning complex data into clear insights and practical solutions that help people make informed decisions.
           </p>
 
           {/* Focus areas */}
