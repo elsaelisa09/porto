@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./App.css";
+import ProjectDetail from "./ProjectDetail";
 
 // Focus areas data for About Me page
 const FOCUS_AREAS = [
@@ -40,12 +41,152 @@ const TOOLKIT_ITEMS = [
   { name: "Git", image: "/git-logo.png" },
 ];
 
-const PROJECT_ITEMS = Array.from({ length: 8 }, (_, index) => ({
-  id: `project-${index + 1}`,
-  title: "Ini adalah contoh Judul Project Dummy",
-  tech: "Python, SQL, Ms. Excel",
-  role: "Data Analyst",
-}));
+const PROJECT_ITEMS = [
+  {
+    id: "project-1",
+    title: "Sales Dashboard & KPI Analytics",
+    tech: "Python, SQL, Power BI",
+    role: "Data Analyst",
+    subtitle: "Data Engineering",
+    situation: "Perusahaan retail menghadapi kesulitan dalam memantau performa penjualan secara real-time. Data tersebar di berbagai sumber dan laporan manual memakan waktu berhari-hari, sehingga keputusan bisnis sering terlambat dan tidak berbasis data yang akurat.",
+    tasks: [
+      { title: "Membersihkan Data Historis Penjualan", desc: "Memproses dan menstandarisasi lebih dari 99.000 baris data transaksi mentah agar bebas dari anomali. Tugas ini mencakup penanganan missing values, perbaikan error pencarian data antar tabel, dan transformasi format data awal agar valid, konsisten, serta siap untuk dianalisis lebih lanjut." },
+      { title: "Mengekstrak Matrik Kinerja Utama (KPI)", desc: "Mengidentifikasi indikator krusial yang paling relevan dengan kesehatan dan target bisnis. Tugas ini berfokus pada agregasi data yang sudah bersih untuk merumuskan metrik penting, seperti tren total pendapatan bulanan, volume transaksi, serta tingkat kontribusi penjualan dari setiap kategori produk." },
+      { title: "Membangun Dashboard Interaktif", desc: "Merancang antarmuka visualisasi yang dinamis dan ramah pengguna untuk menyajikan wawasan bisnis. Tujuan dari tugas ini adalah memungkinkan pemangku kepentingan non-teknis untuk memfilter, mengurutkan, dan membaca tren data secara mandiri melalui tata letak pelaporan yang intuitif." },
+    ],
+    results: [
+      { bold: "Data Bersih & Valid:", text: " Berhasil menstrukturkan >99.000 baris data mentah menjadi dataset yang bebas anomali dan siap dianalisis." },
+      { bold: "Wawasan Bisnis Tepat Sasaran:", text: " Mengidentifikasi produk dengan performa terbaik untuk membantu manajemen merencanakan alokasi inventaris berbasis data." },
+      { bold: "Efisiensi Pelaporan:", text: " Mengotomatisasi visualisasi melalui dashboard interaktif, memangkas waktu pembuatan laporan manual secara drastis." },
+    ],
+  },
+  {
+    id: "project-2",
+    title: "Customer Churn Prediction Model",
+    tech: "Python, Scikit-learn, Tableau",
+    role: "Data Scientist",
+    subtitle: "Machine Learning",
+    situation: "Perusahaan telekomunikasi mengalami tingkat churn pelanggan yang tinggi namun tidak memiliki sistem prediktif untuk mengidentifikasi pelanggan berisiko sebelum mereka berhenti berlangganan, sehingga tim retensi tidak dapat bertindak secara proaktif.",
+    tasks: [
+      { title: "Eksplorasi & Preprocessing Data", desc: "Menganalisis dataset pelanggan dengan lebih dari 7.000 entri, menangani imbalanced class, encoding variabel kategorikal, dan normalisasi fitur numerik agar model dapat belajar secara optimal dari pola data historis." },
+      { title: "Membangun Model Prediksi", desc: "Melatih dan membandingkan beberapa algoritma klasifikasi termasuk Random Forest, XGBoost, dan Logistic Regression. Melakukan hyperparameter tuning menggunakan GridSearchCV untuk memaksimalkan recall pada kelas churn." },
+      { title: "Visualisasi & Interpretasi Model", desc: "Membuat dashboard Tableau yang menampilkan segmen pelanggan berisiko tinggi beserta faktor-faktor penyebab churn, memungkinkan tim bisnis mengambil tindakan retensi yang tepat sasaran." },
+    ],
+    results: [
+      { bold: "Akurasi Model 87%:", text: " Model XGBoost mencapai akurasi 87% dengan recall 82% pada kelas churn di data uji." },
+      { bold: "Identifikasi Segmen Risiko:", text: " Berhasil mengidentifikasi 3 segmen pelanggan berisiko tinggi berdasarkan pola penggunaan dan riwayat pembayaran." },
+      { bold: "Penghematan Biaya Retensi:", text: " Tim retensi dapat memprioritaskan outreach ke pelanggan yang tepat, meningkatkan efisiensi kampanye retensi secara signifikan." },
+    ],
+  },
+  {
+    id: "project-3",
+    title: "ETL Pipeline untuk Data Warehouse",
+    tech: "Python, Apache Airflow, PostgreSQL",
+    role: "Data Engineer",
+    subtitle: "Data Engineering",
+    situation: "Startup e-commerce memiliki data transaksi yang tersebar di berbagai microservice dan database berbeda. Tidak ada pipeline terpusat yang mengintegrasikan data tersebut, sehingga analisis lintas platform menjadi sangat sulit dan memakan waktu.",
+    tasks: [
+      { title: "Desain Arsitektur Data Warehouse", desc: "Merancang skema star schema untuk data warehouse dengan fact table transaksi dan dimension tables untuk produk, pelanggan, dan waktu. Memastikan struktur mendukung query analitik yang cepat dan efisien." },
+      { title: "Membangun ETL Pipeline dengan Airflow", desc: "Mengembangkan DAG (Directed Acyclic Graph) di Apache Airflow untuk mengotomatisasi proses ekstraksi data dari 5 sumber berbeda, transformasi sesuai business rules, dan loading ke PostgreSQL data warehouse setiap malam." },
+      { title: "Monitoring & Data Quality Check", desc: "Mengimplementasikan automated data quality checks pada setiap tahap pipeline, termasuk validasi schema, deteksi duplikat, dan alerting via email ketika pipeline gagal atau data anomali terdeteksi." },
+    ],
+    results: [
+      { bold: "Pipeline Berjalan Otomatis:", text: " ETL pipeline berjalan setiap malam tanpa intervensi manual, memproses rata-rata 50.000 record per eksekusi." },
+      { bold: "Data Terintegrasi:", text: " Data dari 5 sumber berbeda berhasil diintegrasikan ke satu data warehouse yang konsisten dan dapat diandalkan." },
+      { bold: "Waktu Query Berkurang 70%:", text: " Analis bisnis dapat menjalankan query lintas platform dalam hitungan detik dibanding sebelumnya yang memakan jam." },
+    ],
+  },
+  {
+    id: "project-4",
+    title: "RAG-based Document Retrieval System",
+    tech: "Python, LangChain, ChromaDB",
+    role: "AI Engineer",
+    subtitle: "AI / Machine Learning",
+    situation: "PT Pertamina Hulu Rokan memiliki ribuan dokumen teknis dan SOP yang sulit diakses oleh karyawan. Pencarian manual memakan waktu lama dan sering menghasilkan informasi yang tidak relevan atau sudah usang.",
+    tasks: [
+      { title: "Implementasi Vector Database", desc: "Membangun sistem indexing dokumen menggunakan ChromaDB sebagai vector store. Setiap dokumen dipecah menjadi chunks optimal dan dikonversi menjadi embeddings menggunakan model bahasa untuk memungkinkan pencarian semantik yang akurat." },
+      { title: "Pengembangan RAG Pipeline", desc: "Mengintegrasikan retrieval system dengan LLM menggunakan LangChain framework. Pipeline menerima pertanyaan pengguna, mencari dokumen relevan dari vector store, dan menghasilkan jawaban yang grounded pada konteks dokumen asli." },
+      { title: "Evaluasi & Optimasi Akurasi", desc: "Merancang evaluation framework menggunakan dataset pertanyaan-jawaban yang dikurasi secara manual. Melakukan iterasi pada chunk size, overlap, dan prompt engineering untuk memaksimalkan akurasi jawaban sistem." },
+    ],
+    results: [
+      { bold: "Akurasi 76%:", text: " Sistem mencapai 76% akurasi dalam menjawab pertanyaan teknis berdasarkan evaluasi manual terhadap 100 pertanyaan uji." },
+      { bold: "Waktu Pencarian Berkurang:", text: " Karyawan dapat menemukan informasi relevan dalam hitungan detik dibanding pencarian manual yang memakan 15-30 menit." },
+      { bold: "Skalabel:", text: " Sistem dapat dengan mudah diperbarui dengan dokumen baru tanpa perlu re-training model dari awal." },
+    ],
+  },
+  {
+    id: "project-5",
+    title: "Social Media Sentiment Analysis",
+    tech: "Python, NLTK, Power BI",
+    role: "Data Analyst",
+    subtitle: "Data Analytics",
+    situation: "Brand consumer goods ingin memahami persepsi publik terhadap produk mereka di media sosial namun tidak memiliki sistem otomatis untuk menganalisis ribuan komentar dan ulasan yang masuk setiap harinya.",
+    tasks: [
+      { title: "Scraping & Pengumpulan Data", desc: "Mengumpulkan lebih dari 15.000 komentar dari Twitter dan Instagram menggunakan API resmi. Data dibersihkan dari spam, duplikat, dan konten tidak relevan sebelum masuk ke tahap analisis." },
+      { title: "Pemodelan Sentimen", desc: "Melatih model klasifikasi sentimen (positif/negatif/netral) menggunakan fine-tuned IndoBERT untuk teks berbahasa Indonesia. Model dievaluasi menggunakan cross-validation untuk memastikan generalisasi yang baik." },
+      { title: "Dashboard Monitoring Real-time", desc: "Membangun dashboard Power BI yang menampilkan tren sentimen harian, word cloud topik populer, dan perbandingan sentimen antar produk kompetitor untuk mendukung keputusan tim marketing." },
+    ],
+    results: [
+      { bold: "Akurasi Sentimen 83%:", text: " Model IndoBERT mencapai F1-score 83% pada dataset uji yang beragam." },
+      { bold: "Insight Produk Teridentifikasi:", text: " Berhasil mengidentifikasi 5 pain point utama pelanggan yang sebelumnya tidak diketahui tim produk." },
+      { bold: "Monitoring Otomatis:", text: " Tim marketing dapat memantau reputasi brand secara real-time tanpa perlu membaca komentar satu per satu." },
+    ],
+  },
+  {
+    id: "project-6",
+    title: "Inventory Forecasting System",
+    tech: "Python, Prophet, Ms. Excel",
+    role: "Data Analyst",
+    subtitle: "Predictive Analytics",
+    situation: "Perusahaan distribusi mengalami masalah overstock dan stockout yang berulang karena perencanaan inventaris masih dilakukan secara manual berdasarkan intuisi, tanpa mempertimbangkan pola musiman dan tren historis penjualan.",
+    tasks: [
+      { title: "Analisis Pola Historis", desc: "Menganalisis data penjualan 3 tahun terakhir untuk mengidentifikasi pola musiman, tren jangka panjang, dan anomali. Visualisasi decomposition time series membantu stakeholder memahami komponen-komponen yang mempengaruhi permintaan." },
+      { title: "Implementasi Model Forecasting", desc: "Menggunakan Facebook Prophet untuk membangun model forecasting yang dapat menangani seasonality ganda (mingguan dan tahunan) serta holiday effects. Model divalidasi menggunakan walk-forward validation." },
+      { title: "Integrasi ke Laporan Excel", desc: "Mengembangkan template Excel otomatis yang mengintegrasikan output forecast dengan sistem pemesanan yang sudah ada, memungkinkan tim operasional menggunakan prediksi tanpa perlu keahlian teknis khusus." },
+    ],
+    results: [
+      { bold: "Error Forecast Berkurang 40%:", text: " MAPE model turun dari 35% (metode manual) menjadi 21% menggunakan Prophet." },
+      { bold: "Stockout Berkurang:", text: " Kejadian stockout pada produk fast-moving berkurang 60% dalam 3 bulan pertama implementasi." },
+      { bold: "Efisiensi Modal:", text: " Nilai inventaris rata-rata berkurang 18% karena pemesanan lebih tepat sasaran berdasarkan prediksi data." },
+    ],
+  },
+  {
+    id: "project-7",
+    title: "Student Performance Analytics",
+    tech: "Python, SQL, Tableau",
+    role: "Data Analyst",
+    subtitle: "Data Analytics",
+    situation: "Institusi pendidikan ingin mengidentifikasi mahasiswa yang berisiko gagal lebih awal agar dapat diberikan intervensi akademik tepat waktu. Selama ini tidak ada sistem yang dapat memprediksi performa mahasiswa secara proaktif.",
+    tasks: [
+      { title: "Pengumpulan & Integrasi Data Akademik", desc: "Mengintegrasikan data dari sistem akademik, absensi, dan nilai tugas dari 3 semester terakhir untuk 2.000+ mahasiswa. Data dinormalisasi dan divalidasi untuk memastikan konsistensi antar sumber." },
+      { title: "Analisis Faktor Risiko", desc: "Menggunakan analisis korelasi dan feature importance untuk mengidentifikasi faktor-faktor yang paling berpengaruh terhadap performa akademik, termasuk tingkat kehadiran, nilai mid-term, dan partisipasi tugas." },
+      { title: "Dashboard Monitoring Dosen", desc: "Membangun dashboard Tableau interaktif yang memungkinkan dosen memantau perkembangan setiap mahasiswa, melihat tren nilai, dan mendapatkan alert otomatis untuk mahasiswa yang menunjukkan tanda-tanda penurunan performa." },
+    ],
+    results: [
+      { bold: "Identifikasi Dini:", text: " Sistem berhasil mengidentifikasi 89% mahasiswa berisiko gagal sebelum UAS, memberikan waktu untuk intervensi." },
+      { bold: "Tingkat Kelulusan Meningkat:", text: " Setelah implementasi program intervensi berbasis data, tingkat kelulusan tepat waktu meningkat 12%." },
+      { bold: "Adopsi Dosen Tinggi:", text: " 85% dosen aktif menggunakan dashboard dalam pengambilan keputusan akademik setelah pelatihan singkat." },
+    ],
+  },
+  {
+    id: "project-8",
+    title: "Energy Consumption Monitoring",
+    tech: "Python, IoT Sensors, Power BI",
+    role: "Data Engineer",
+    subtitle: "Data Engineering",
+    situation: "Program Desa Energi Berdikari membutuhkan sistem monitoring konsumsi energi terbarukan di desa-desa binaan. Data dari panel surya dan turbin angin belum terintegrasi sehingga efisiensi energi sulit dipantau dan dioptimalkan.",
+    tasks: [
+      { title: "Integrasi Data Sensor IoT", desc: "Membangun pipeline untuk mengumpulkan data real-time dari sensor IoT yang terpasang pada panel surya dan turbin angin di 5 desa. Data dikirim ke cloud setiap 15 menit dan disimpan dalam time-series database." },
+      { title: "Analisis Efisiensi Energi", desc: "Menganalisis pola konsumsi energi harian dan musiman untuk mengidentifikasi waktu puncak penggunaan dan potensi pemborosan. Membandingkan output aktual vs kapasitas teoritis untuk setiap instalasi." },
+      { title: "Dashboard Komunitas", desc: "Merancang dashboard sederhana yang dapat diakses oleh pengelola desa untuk memantau status sistem energi, konsumsi harian, dan estimasi penghematan biaya dibanding penggunaan listrik konvensional." },
+    ],
+    results: [
+      { bold: "Monitoring Real-time Aktif:", text: " 5 desa berhasil terhubung ke sistem monitoring terpusat dengan uptime 94%." },
+      { bold: "Efisiensi Meningkat 15%:", text: " Identifikasi dan perbaikan kebocoran energi meningkatkan efisiensi sistem secara keseluruhan." },
+      { bold: "Laporan Otomatis:", text: " Laporan bulanan untuk program Pertamina dihasilkan otomatis, menghemat 8 jam kerja manual per bulan." },
+    ],
+  },
+];
 
 const EXPERIENCE_ITEMS = [
   {
@@ -147,6 +288,8 @@ function MosaicBar({ label, onClick, id, dark, footer }) {
 }
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("home");
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [isReachOutOpen, setIsReachOutOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -288,6 +431,44 @@ function App() {
 
   const isDark = activeSection !== "hero" && activeSection !== "footer";
   const isFooter = activeSection === "footer";
+
+  const [pendingScrollTarget, setPendingScrollTarget] = useState(null);
+
+  useEffect(() => {
+    if (currentPage === "home" && pendingScrollTarget) {
+      const el = document.getElementById(pendingScrollTarget);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      setPendingScrollTarget(null);
+    }
+  }, [currentPage, pendingScrollTarget]);
+
+  const handleBackToProjects = useCallback(() => {
+    setPendingScrollTarget("projects");
+    setCurrentPage("home");
+  }, []);
+
+  const handleNavFromDetail = useCallback((hash) => {
+    setPendingScrollTarget(hash.replace("#", ""));
+    setCurrentPage("home");
+  }, []);
+
+  if (currentPage === "project-detail") {
+    return (
+      <ProjectDetail
+        project={PROJECT_ITEMS[selectedProjectIndex]}
+        projectIndex={selectedProjectIndex}
+        totalProjects={PROJECT_ITEMS.length}
+        onBack={handleBackToProjects}
+        onNext={() => setSelectedProjectIndex((i) => (i + 1) % PROJECT_ITEMS.length)}
+        onPrev={() => setSelectedProjectIndex((i) => (i - 1 + PROJECT_ITEMS.length) % PROJECT_ITEMS.length)}
+        onNavClick={handleNavFromDetail}
+        onReachOut={() => {
+          setCurrentPage("home");
+          requestAnimationFrame(() => setTimeout(() => setIsReachOutOpen(true), 80));
+        }}
+      />
+    );
+  }
 
   return (
     <div className={`portfolio-container${isScrolling ? " is-scrolling" : ""}`}>
@@ -494,8 +675,17 @@ function App() {
           {PROJECT_ITEMS.slice(
             0,
             showAllProjects ? PROJECT_ITEMS.length : 6,
-          ).map((project) => (
-            <article className="project-card" key={project.id}>
+          ).map((project, index) => (
+            <article
+              className="project-card"
+              key={project.id}
+              onClick={() => {
+                setSelectedProjectIndex(index);
+                setCurrentPage("project-detail");
+                window.scrollTo(0, 0);
+              }}
+              style={{ cursor: "pointer" }}
+            >
               <img
                 src="/contohthumnailproject.webp"
                 alt=""
@@ -508,13 +698,9 @@ function App() {
               </div>
               <div className="project-card-footer">
                 <span className="project-role">{project.role}</span>
-                <a
-                  href=""
-                  className="project-arrow"
-                  aria-label={`Open ${project.title}`}
-                >
+                <span className="project-arrow">
                   <img src="/tanda-panah.png" alt="" aria-hidden="true" />
-                </a>
+                </span>
               </div>
             </article>
           ))}
