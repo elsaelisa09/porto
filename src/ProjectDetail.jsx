@@ -1,4 +1,9 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 
 function MosaicBar({ label, onClick, id }) {
   const COLS = 3;
@@ -65,10 +70,20 @@ export default function ProjectDetail({
     };
   }, [isNavOpen]);
 
-  // Scroll ke atas setiap ganti project (next/prev)
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [projectIndex]);
+
+// Buka detail dari atas, termasuk saat Next/Prev.
+useLayoutEffect(() => {
+  const scrollOptions = {
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  };
+
+  // Reset posisi scroll body dan halaman.
+  document.body.scrollTo(scrollOptions);
+  window.scrollTo(scrollOptions);
+}, [projectIndex]);
+
 
   const handleNav = useCallback((hash) => {
     setIsNavOpen(false);
@@ -148,7 +163,7 @@ export default function ProjectDetail({
       </aside>
 
       {/* ===== KONTEN UTAMA ===== */}
-      <main className="pd-main">
+      <main key={project.id} className="pd-main pd-enter">
         {/* Tombol Back → kembali ke section #projects */}
         <button type="button" className="pd-back-btn" onClick={onBack}>
           <img src="/panahadd.png" alt="" aria-hidden="true" className="pd-back-icon" />

@@ -330,29 +330,6 @@
   transform: translateX(8px);
 }
 
-/* Small delayed movement while the page is being scrolled. */
-.portfolio-container.is-scrolling .hero-wrapper.animate-stack .hero-role-badge,
-.portfolio-container.is-scrolling .hero-wrapper.animate-stack .hero-content,
-.portfolio-container.is-scrolling
-  .hero-wrapper.animate-stack
-  .hero-character-container,
-.portfolio-container.is-scrolling .about-wrapper.animate-stack .about-bio,
-.portfolio-container.is-scrolling .about-wrapper.animate-stack .about-focus-row,
-.portfolio-container.is-scrolling
-  .toolkit-projects-wrapper.animate-stack
-  .toolkit-section,
-.portfolio-container.is-scrolling
-  .toolkit-projects-wrapper.animate-stack
-  .projects-intro,
-.portfolio-container.is-scrolling
-  .toolkit-projects-wrapper.animate-stack
-  .projects-grid,
-.portfolio-container.is-scrolling
-  .toolkit-projects-wrapper.animate-stack
-  .projects-see-all-bottom {
-  transform: translateY(6px);
-  transition: transform 0.05s ease-out;
-}
 
 /* 3. Hero Content Area */
 .hero-about-stack {
@@ -2489,5 +2466,29 @@
 
   .pd-bottom-nav {
     gap: 1.5rem;
+  }
+}
+
+
+/* Transisi masuk konten detail project */
+.pd-main.pd-enter {
+  animation: pd-content-enter 0.45s ease-out both;
+}
+
+@keyframes pd-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-main.pd-enter {
+    animation: none;
   }
 }

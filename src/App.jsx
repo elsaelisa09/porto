@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from "react";
+import Lenis from "lenis";
 import "./App.css";
 import ProjectDetail from "./ProjectDetail";
 
@@ -324,9 +331,66 @@ function App() {
   const awardsRef = useRef(null);
   const footerRef = useRef(null);
 
+
+  // Smooth scrolling untuk halaman utama dan detail project.
+  useLayoutEffect(() => {
+    let lenis = null;
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    const syncSmoothScroll = () => {
+      const isScrollLocked =
+        isNavOpen ||
+        isReachOutOpen ||
+        document.body.style.overflow === "hidden";
+
+      if (isScrollLocked || motionPreference.matches) {
+        lenis?.destroy();
+        lenis = null;
+        return;
+      }
+
+      if (lenis) return;
+
+      lenis = new Lenis({
+        autoRaf: true,
+        smoothWheel: true,
+        lerp: 0.1,
+        anchors: {
+          offset: -24,
+        },
+      });
+    };
+
+    // Ikuti penguncian scroll saat menu detail dibuka.
+    const overflowObserver = new MutationObserver(syncSmoothScroll);
+
+    overflowObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
+
+    motionPreference.addEventListener("change", syncSmoothScroll);
+    syncSmoothScroll();
+
+    return () => {
+      overflowObserver.disconnect();
+      motionPreference.removeEventListener("change", syncSmoothScroll);
+      lenis?.destroy();
+    };
+  }, [
+    currentPage,
+    selectedProjectIndex,
+    isNavOpen,
+    isReachOutOpen,
+  ]);
   // Intersection observer: detect which section is in view
   useEffect(() => {
-    const options = { root: null, threshold: 0.1 };
+    if (currentPage !== "home") return undefined;
+    
+    const options = { root: null, threshold: 0.1};
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -362,7 +426,7 @@ function App() {
     if (footerRef.current) observer.observe(footerRef.current);
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     if (!isNavOpen) return undefined;
@@ -435,15 +499,45 @@ function App() {
   const [pendingScrollTarget, setPendingScrollTarget] = useState(null);
 
   useEffect(() => {
-    if (currentPage === "home" && pendingScrollTarget) {
-      const el = document.getElementById(pendingScrollTarget);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-      setPendingScrollTarget(null);
+    if (currentPage !== "home" || !pendingScrollTarget) return;
+
+    const el = document.getElementById(pendingScrollTarget);
+    if (!el) return;
+
+    // Arahkan halaman ke section tujuan.
+    el.scrollIntoView({
+      behavior: "instant",
+      block: "start",
+    });
+
+    // Animasi saat kembali dari detail ke daftar project.
+    const section = el.closest(".toolkit-projects-wrapper");
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      pendingScrollTarget === "project-list" &&
+      section &&
+      !reduceMotion
+    ) {
+      section.animate(
+        [
+          { opacity: 0, transform: "translateY(20px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        {
+          duration: 450,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        }
+      );
     }
+
+    setPendingScrollTarget(null);
   }, [currentPage, pendingScrollTarget]);
 
   const handleBackToProjects = useCallback(() => {
-    setPendingScrollTarget("projects");
+    setPendingScrollTarget("project-list");
     setCurrentPage("home");
   }, []);
 
@@ -667,7 +761,7 @@ function App() {
           </div>
         </div>
 
-        <div className="projects-intro">
+        <div className="projects-intro" id="project-list">
           <h2>My Projects.</h2>
         </div>
 
@@ -682,7 +776,6 @@ function App() {
               onClick={() => {
                 setSelectedProjectIndex(index);
                 setCurrentPage("project-detail");
-                window.scrollTo(0, 0);
               }}
               style={{ cursor: "pointer" }}
             >
