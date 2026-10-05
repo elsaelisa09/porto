@@ -744,7 +744,7 @@ function App() {
 
           <div className="hero-character-container">
             <img
-              src="/hero-character.png"
+              src="/hero-character.webp"
               alt="Elsa Elisa Yohana Sianturi coding on laptop illustration"
               className="hero-character-img"
               id="hero-avatar"
@@ -1059,7 +1059,7 @@ function App() {
           </a>
         </div>
         <div className="site-footer-character">
-          <img src="/profil2.png" alt="Elsa coding on a laptop" />
+          <img src="/profil2.webp" alt="Elsa coding on a laptop" />
         </div>
       </footer>
 
@@ -1137,7 +1137,7 @@ function App() {
 
           <div className="contact-character-container">
             <img
-              src="/profil2.png"
+              src="/profil2.webp"
               alt="Elsa illustration back view"
               className="contact-character-img"
             />
