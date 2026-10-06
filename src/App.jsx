@@ -203,75 +203,159 @@ const PROJECT_ITEMS = [
   },
   {
     id: "project-5",
-    title: "Social Media Sentiment Analysis",
-    tech: "Python, NLTK, Power BI",
-    role: "Data Analyst",
-    subtitle: "Data Analytics",
-    situation: "Brand consumer goods ingin memahami persepsi publik terhadap produk mereka di media sosial namun tidak memiliki sistem otomatis untuk menganalisis ribuan komentar dan ulasan yang masuk setiap harinya.",
+    title: "Sistem Pengenalan Wajah Berbasis Deep Learning",
+    image: "/project-5.webp",
+    youtubeId: "Ru6vSVTV8LY?si=_U_nxFxETTriGPoc",
+    tech: "Python, PyTorch, OpenCV",
+    role: "AI & Machine Learning",
+    subtitle: "Computer Vision",
+    situation: "Dalam proyek perkuliahan Deep Learning, saya bersama tim mengembangkan sistem untuk mengenali identitas seseorang melalui gambar wajah. Tantangannya adalah mengolah dataset dari banyak individu dan membangun model yang mampu membedakan karakteristik wajah mereka",
     tasks: [
-      { title: "Scraping & Pengumpulan Data", desc: "Mengumpulkan lebih dari 15.000 komentar dari Twitter dan Instagram menggunakan API resmi. Data dibersihkan dari spam, duplikat, dan konten tidak relevan sebelum masuk ke tahap analisis." },
-      { title: "Pemodelan Sentimen", desc: "Melatih model klasifikasi sentimen (positif/negatif/netral) menggunakan fine-tuned IndoBERT untuk teks berbahasa Indonesia. Model dievaluasi menggunakan cross-validation untuk memastikan generalisasi yang baik." },
-      { title: "Dashboard Monitoring Real-time", desc: "Membangun dashboard Power BI yang menampilkan tren sentimen harian, word cloud topik populer, dan perbandingan sentimen antar produk kompetitor untuk mendukung keputusan tim marketing." },
+      {
+        title: "Menyiapkan Data Wajah",
+        desc: "Mengolah dataset berisi 1.946 gambar wajah dari lebih dari 70 individu. Melakukan preprocessing agar data siap digunakan dalam pengembangan dan evaluasi model"
+      },
+      {
+        title: "Mengembangkan Model Pengenalan Wajah",
+        desc: "Membangun proses pengenalan wajah menggunakan PyTorch dan OpenCV, mulai dari pengolahan gambar, ekstraksi karakteristik wajah, hingga pelatihan model untuk mengenali identitas"
+      },
+      {
+        title: "Mengevaluasi dan Memperbaiki Model",
+        desc: "Mengevaluasi hasil prediksi untuk memahami kemampuan model dalam mengenali wajah. Melakukan optimasi secara bertahap berdasarkan hasil evaluasi"
+      },
+      {
+        title: "Mengoordinasikan Pengembangan Tim",
+        desc: "Memimpin tim beranggotakan tiga orang dengan menyusun rencana kerja, membagi tugas, memantau progres, dan terlibat dalam implementasi teknis"
+      }
     ],
     results: [
-      { bold: "Akurasi Sentimen 83%:", text: " Model IndoBERT mencapai F1-score 83% pada dataset uji yang beragam." },
-      { bold: "Insight Produk Teridentifikasi:", text: " Berhasil mengidentifikasi 5 pain point utama pelanggan yang sebelumnya tidak diketahui tim produk." },
-      { bold: "Monitoring Otomatis:", text: " Tim marketing dapat memantau reputasi brand secara real-time tanpa perlu membaca komentar satu per satu." },
-    ],
+      {
+        bold: "Proses Pengembangan Lengkap:",
+        text: " Mengembangkan sistem pengenalan wajah yang mencakup preprocessing, ekstraksi fitur, pelatihan, dan evaluasi menggunakan 1.946 gambar."
+      },
+      {
+        bold: "Performa Model Kompetitif:",
+        text: " Menghasilkan salah satu model dengan performa terbaik dalam proyek perkuliahan Deep Learning melalui optimasi dan evaluasi bertahap"
+      },
+      {
+        bold: "Kolaborasi Tim Terarah:",
+        text: " Mengoordinasikan tim tiga orang sepanjang proses pengembangan, dari perencanaan hingga evaluasi model"
+      }
+    ]
   },
   {
     id: "project-6",
-    title: "Inventory Forecasting System",
-    tech: "Python, Prophet, Ms. Excel",
-    role: "Data Analyst",
-    subtitle: "Predictive Analytics",
-    situation: "Perusahaan distribusi mengalami masalah overstock dan stockout yang berulang karena perencanaan inventaris masih dilakukan secara manual berdasarkan intuisi, tanpa mempertimbangkan pola musiman dan tren historis penjualan.",
+    title: "EduBot: Asisten Pembelajaran Interaktif Berbasis AI",
+    image: "/project-6.webp",
+    youtubeId: "",
+    tech: "Python, ESP32, Speech Recognition, OLED, Telegram",
+    role: "AI Engineering & IoT",
+    subtitle: "Embedded Systems & Voice Interaction",
+    situation: "Dalam proyek perkuliahan Embedded Systems, saya bersama tim mengembangkan robot pembelajaran yang dapat menerima pertanyaan melalui suara dan memberikan respons berbasis AI. Tantangannya adalah menghubungkan pemrosesan suara, AI, sensor, dan perangkat keluaran menjadi satu sistem interaktif.",
     tasks: [
-      { title: "Analisis Pola Historis", desc: "Menganalisis data penjualan 3 tahun terakhir untuk mengidentifikasi pola musiman, tren jangka panjang, dan anomali. Visualisasi decomposition time series membantu stakeholder memahami komponen-komponen yang mempengaruhi permintaan." },
-      { title: "Implementasi Model Forecasting", desc: "Menggunakan Facebook Prophet untuk membangun model forecasting yang dapat menangani seasonality ganda (mingguan dan tahunan) serta holiday effects. Model divalidasi menggunakan walk-forward validation." },
-      { title: "Integrasi ke Laporan Excel", desc: "Mengembangkan template Excel otomatis yang mengintegrasikan output forecast dengan sistem pemesanan yang sudah ada, memungkinkan tim operasional menggunakan prediksi tanpa perlu keahlian teknis khusus." },
+      {
+        title: "Mengintegrasikan Perangkat Keras",
+        desc: "Mengintegrasikan tiga sensor dan tiga aktuator dalam sistem berbasis ESP32 untuk mendukung interaksi robot dengan lingkungan dan pengguna."
+      },
+      {
+        title: "Membangun Alur Tanya Jawab Berbasis Suara",
+        desc: "Mengembangkan alur yang mengubah pertanyaan pengguna dari suara menjadi teks, kemudian memprosesnya menggunakan AI untuk menghasilkan jawaban."
+      },
+      {
+        title: "Menghubungkan Tampilan dan Notifikasi",
+        desc: "Menghubungkan respons AI dengan layar OLED agar jawaban dapat dibaca pengguna, serta mengintegrasikan pengiriman notifikasi Telegram secara otomatis."
+      },
+      {
+        title: "Mengoordinasikan Tim dan Menguji Sistem",
+        desc: "Memimpin tim beranggotakan empat orang dalam pengembangan dan integrasi sistem. Melakukan pengujian fungsional, termasuk lima percobaan deteksi objek menggunakan sensor ultrasonik HC-SR04."
+      }
     ],
     results: [
-      { bold: "Error Forecast Berkurang 40%:", text: " MAPE model turun dari 35% (metode manual) menjadi 21% menggunakan Prophet." },
-      { bold: "Stockout Berkurang:", text: " Kejadian stockout pada produk fast-moving berkurang 60% dalam 3 bulan pertama implementasi." },
-      { bold: "Efisiensi Modal:", text: " Nilai inventaris rata-rata berkurang 18% karena pemesanan lebih tepat sasaran berdasarkan prediksi data." },
-    ],
+      {
+        bold: "Interaksi Berbasis Suara:",
+        text: " Mengembangkan alur tanya jawab yang menghubungkan masukan suara, pemrosesan AI, dan tampilan respons pada layar OLED."
+      },
+      {
+        bold: "Integrasi Hardware dan Software:",
+        text: " Menggabungkan tiga sensor, tiga aktuator, dan notifikasi Telegram dalam satu sistem robot pembelajaran."
+      },
+      {
+        bold: "Hasil Pengujian Deteksi Objek:",
+        text: " Mencapai akurasi deteksi objek sebesar 80% menggunakan sensor HC-SR04 dalam lima percobaan pengujian."
+      }
+    ]
   },
-  {
+{
     id: "project-7",
-    title: "Student Performance Analytics",
-    tech: "Python, SQL, Tableau",
-    role: "Data Analyst",
-    subtitle: "Data Analytics",
-    situation: "Institusi pendidikan ingin mengidentifikasi mahasiswa yang berisiko gagal lebih awal agar dapat diberikan intervensi akademik tepat waktu. Selama ini tidak ada sistem yang dapat memprediksi performa mahasiswa secara proaktif.",
+    title: "FitGuide ITERA: Riset Pengguna & Uji Usability",
+    tech: "Figma",
+    role: "UX Research & UI/UX Design",
+    subtitle: "User-Centered Design",
+    situation: "Dalam proyek akhir mata kuliah Interaksi Manusia dan Komputer, saya mengembangkan prototipe aplikasi mobile FitGuide ITERA. Rancangan perlu didasarkan pada kebutuhan pengguna dan diuji untuk mengetahui apakah alur serta tampilannya mudah digunakan.",
     tasks: [
-      { title: "Pengumpulan & Integrasi Data Akademik", desc: "Mengintegrasikan data dari sistem akademik, absensi, dan nilai tugas dari 3 semester terakhir untuk 2.000+ mahasiswa. Data dinormalisasi dan divalidasi untuk memastikan konsistensi antar sumber." },
-      { title: "Analisis Faktor Risiko", desc: "Menggunakan analisis korelasi dan feature importance untuk mengidentifikasi faktor-faktor yang paling berpengaruh terhadap performa akademik, termasuk tingkat kehadiran, nilai mid-term, dan partisipasi tugas." },
-      { title: "Dashboard Monitoring Dosen", desc: "Membangun dashboard Tableau interaktif yang memungkinkan dosen memantau perkembangan setiap mahasiswa, melihat tren nilai, dan mendapatkan alert otomatis untuk mahasiswa yang menunjukkan tanda-tanda penurunan performa." },
+      {
+        title: "Mengidentifikasi Kebutuhan Pengguna",
+        desc: "Melakukan riset untuk memahami kebutuhan dan kendala pengguna, kemudian menerjemahkan temuan tersebut menjadi dasar perancangan alur dan antarmuka aplikasi."
+      },
+      {
+        title: "Merancang Alur dan Prototipe Interaktif",
+        desc: "Menyusun alur penggunaan dan merancang antarmuka mobile menggunakan Figma. Mengembangkan prototipe high-fidelity yang dapat digunakan untuk mencoba interaksi antarhalaman."
+      },
+      {
+        title: "Menguji Kemudahan Penggunaan",
+        desc: "Menguji prototipe dengan 11 partisipan dan mengevaluasi kemudahan penggunaannya melalui System Usability Scale (SUS), sehingga kualitas rancangan dapat dinilai berdasarkan hasil pengujian."
+      }
     ],
     results: [
-      { bold: "Identifikasi Dini:", text: " Sistem berhasil mengidentifikasi 89% mahasiswa berisiko gagal sebelum UAS, memberikan waktu untuk intervensi." },
-      { bold: "Tingkat Kelulusan Meningkat:", text: " Setelah implementasi program intervensi berbasis data, tingkat kelulusan tepat waktu meningkat 12%." },
-      { bold: "Adopsi Dosen Tinggi:", text: " 85% dosen aktif menggunakan dashboard dalam pengambilan keputusan akademik setelah pelatihan singkat." },
-    ],
+      {
+        bold: "Rancangan Berbasis Kebutuhan Pengguna:",
+        text: " Menghasilkan alur dan antarmuka aplikasi yang dikembangkan berdasarkan temuan riset pengguna."
+      },
+      {
+        bold: "Evaluasi dengan 11 Partisipan:",
+        text: " Menguji prototipe secara langsung untuk menilai kemudahan penggunaan dan pengalaman interaksi."
+      },
+      {
+        bold: "Skor SUS 88,4:",
+        text: " Prototipe memperoleh skor System Usability Scale sebesar 88,4 dengan kategori Excellent dalam pengujian yang dilakukan."
+      }
+    ]
   },
   {
     id: "project-8",
-    title: "Energy Consumption Monitoring",
-    tech: "Python, IoT Sensors, Power BI",
-    role: "Data Engineer",
-    subtitle: "Data Engineering",
-    situation: "Program Desa Energi Berdikari membutuhkan sistem monitoring konsumsi energi terbarukan di desa-desa binaan. Data dari panel surya dan turbin angin belum terintegrasi sehingga efisiensi energi sulit dipantau dan dioptimalkan.",
+    title: "KiddieSafe: Desain Pengalaman Digital untuk Anak dan Orang Tua",
+    tech: "Figma, Maze",
+    role: "UX Research & UI/UX Design",
+    subtitle: "Prototyping & Usability Testing",
+    situation: "Dalam kompetisi UI/UX HMIF Point Project, saya mengembangkan konsep KiddieSafe untuk menghadirkan pengalaman digital yang lebih aman dan mudah digunakan oleh anak serta orang tua. Tantangannya adalah memahami kebutuhan kedua kelompok pengguna dan menerjemahkannya menjadi rancangan yang ramah anak.",
     tasks: [
-      { title: "Integrasi Data Sensor IoT", desc: "Membangun pipeline untuk mengumpulkan data real-time dari sensor IoT yang terpasang pada panel surya dan turbin angin di 5 desa. Data dikirim ke cloud setiap 15 menit dan disimpan dalam time-series database." },
-      { title: "Analisis Efisiensi Energi", desc: "Menganalisis pola konsumsi energi harian dan musiman untuk mengidentifikasi waktu puncak penggunaan dan potensi pemborosan. Membandingkan output aktual vs kapasitas teoritis untuk setiap instalasi." },
-      { title: "Dashboard Komunitas", desc: "Merancang dashboard sederhana yang dapat diakses oleh pengelola desa untuk memantau status sistem energi, konsumsi harian, dan estimasi penghematan biaya dibanding penggunaan listrik konvensional." },
+      {
+        title: "Memahami Kebutuhan Anak dan Orang Tua",
+        desc: "Melakukan riset pengguna untuk mengidentifikasi kebutuhan dan kendala yang menjadi dasar perancangan pengalaman digital KiddieSafe."
+      },
+      {
+        title: "Merancang Antarmuka dan Prototipe",
+        desc: "Menyusun alur penggunaan dan antarmuka yang ramah anak berdasarkan hasil riset. Mengembangkan prototipe interaktif menggunakan Figma untuk memperlihatkan cara pengguna berinteraksi dengan rancangan."
+      },
+      {
+        title: "Menguji Pengalaman Pengguna",
+        desc: "Melakukan pengujian prototipe menggunakan Maze untuk mengevaluasi pengalaman pengguna dan interaksi antarmuka, serta memperoleh penilaian terhadap rancangan yang dibuat."
+      }
     ],
     results: [
-      { bold: "Monitoring Real-time Aktif:", text: " 5 desa berhasil terhubung ke sistem monitoring terpusat dengan uptime 94%." },
-      { bold: "Efisiensi Meningkat 15%:", text: " Identifikasi dan perbaikan kebocoran energi meningkatkan efisiensi sistem secara keseluruhan." },
-      { bold: "Laporan Otomatis:", text: " Laporan bulanan untuk program Pertamina dihasilkan otomatis, menghemat 8 jam kerja manual per bulan." },
-    ],
+      {
+        bold: "Prototipe Berbasis Riset:",
+        text: " Menghasilkan prototipe interaktif yang dirancang berdasarkan kebutuhan anak dan orang tua."
+      },
+      {
+        bold: "Penilaian Rata-Rata 9,2/10:",
+        text: " Memperoleh penilaian rata-rata sebesar 9,2 dari 10 untuk pengalaman pengguna dan interaksi antarmuka dalam pengujian menggunakan Maze."
+      },
+      {
+        bold: "Juara 2 Kompetisi UI/UX:",
+        text: " Meraih posisi kedua dalam kompetisi HMIF Point Project UI/UX pada tahun 2024."
+      }
+    ]
   },
 ];
 
@@ -322,7 +406,7 @@ const AWARD_ITEMS = [
     label: "2nd Place Winner, UI/UX Competition – 2024",
     quote:
       "Won 2nd Place in the Point Project 2.0 UI/UX competition, showcasing strong capabilities in user-centered interface design and problem-solving",
-    image: "/add2.png",
+    image: "/add2.webp",
     alt: "Mobile app interface design on a smartphone",
   },
 ];
