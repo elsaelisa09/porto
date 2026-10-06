@@ -52,7 +52,9 @@ const PROJECT_ITEMS = [
   {
     id: "project-1",
     title: "Analisis Penjualan Retail, Promosi, dan Prediksi Penjualan",
-    tech: "PostgreSQL, SQL, Microsoft Excel, Power Query",
+    image: "/project-1.webp",
+    youtubeId: "nX0H4toDBa4",
+    tech: "Microsoft Excel, Power Query",
     role: "Data Engineering",
     subtitle: "Data Engineering | Data Analytics | Forecasting",
     situation: "Data penjualan, informasi toko, dan faktor pendukung tersedia dalam tiga sumber yang terpisah. Data tersebut perlu disatukan dan diperiksa agar dapat digunakan untuk memahami performa penjualan, menganalisis periode promosi dan hari libur, serta memperkirakan penjualan mendatang",
@@ -72,6 +74,8 @@ const PROJECT_ITEMS = [
   {
     id: "project-2",
     title: "Analisis Pariwisata Lampung Selatan melalui Instagram",
+    image: "/project-2.webp",
+    youtubeId: "cfQLtshYjCw",
     tech: "Python, Pandas, BLIP, CLIP, Microsoft Power BI, DAX",
     role: "Data Analyst",
     subtitle: "Data Analytics & AI",
@@ -112,6 +116,8 @@ const PROJECT_ITEMS = [
   {
     id: "project-3",
     title: "Chatbot AI untuk Pencarian Dokumen Perjanjian Lahan",
+    image: "/project-3.webp",
+    youtubeId: "4MwD1t6euTU",
     tech: "Python, React, TypeScript, FastAPI, FAISS, TF-IDF, DeepSeek V3",
     role: "AI Engineer Intern",
     subtitle: "AI & Information Retrieval",
@@ -156,6 +162,8 @@ const PROJECT_ITEMS = [
   {
     id: "project-4",
     title: "Klasifikasi Meme Bertema Self-Harm dengan AI Multimodal",
+    image: "/project-4.webp",
+    youtubeId: "57mYhvgp08E",
     tech: "Python, PyTorch, Transformers, Hugging Face, CLIP, ELECTRA, Weights & Biases",
     role: "AI Researcher",
     subtitle: "Multimodal Machine Learning",
@@ -848,7 +856,7 @@ function App() {
               style={{ cursor: "pointer" }}
             >
               <img
-                src="/contohthumnailproject.webp"
+                src={project.image || "/contohthumnailproject.webp"}
                 alt=""
                 className="project-thumbnail"
               />
@@ -1137,7 +1145,7 @@ function App() {
 
           <div className="contact-character-container">
             <img
-              src="/profil2.webp"
+              src="/profil2.png"
               alt="Elsa illustration back view"
               className="contact-character-img"
             />

@@ -2467,6 +2467,12 @@
   .pd-bottom-nav {
     gap: 1.5rem;
   }
+
+  .pd-video-placeholder,
+  .pd-media-placeholder {
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 

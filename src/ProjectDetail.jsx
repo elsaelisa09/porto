@@ -56,6 +56,10 @@ export default function ProjectDetail({
   onReachOut,
 }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  useEffect(() => {
+    setShowVideo(false);
+  }, [project.id]);
 
   // Tutup nav dengan Escape, lock scroll saat nav terbuka
   useEffect(() => {
@@ -172,9 +176,67 @@ useLayoutEffect(() => {
 
         <h1 className="pd-title">{project.title}</h1>
         <p className="pd-subtitle">{project.subtitle}</p>
-
-        <div className="pd-media-placeholder" aria-label="Project media" />
-
+        
+        {project.youtubeId ? (
+          <div 
+            className="pd-video-placeholder" 
+            style={{ 
+              position: 'relative', 
+              width: '75%', /* Diperkecil 25% dari ukuran penuh (100%) */
+              margin: '0 auto 2rem auto', /* Agar posisinya tetap di tengah */
+              aspectRatio: '16 / 9', /* Menjaga rasio video tetap proporsional */
+              overflow: 'hidden', 
+              borderRadius: '16px',
+              backgroundColor: '#000'
+            }}
+          >
+            {!showVideo ? (
+              <div 
+                style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, cursor: 'pointer' }}
+                onClick={() => setShowVideo(true)}
+              >
+                <img 
+                  src={project.image || "/contohthumnailproject.webp"} 
+                  alt={project.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} 
+                />
+                <div style={{
+                  position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                  width: '68px', height: '48px', backgroundColor: 'rgba(255,0,0,0.9)', borderRadius: '12px',
+                  display: 'flex', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                }}>
+                  <div style={{
+                    width: 0, height: 0, borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '18px solid white', marginLeft: '6px'
+                  }}></div>
+                </div>
+              </div>
+            ) : (
+              <iframe 
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1`} 
+                title={project.title}
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            )}
+          </div>
+        ) : (
+          /* Saya juga menyesuaikan ukuran gambar (jika tidak ada video) agar konsisten besarnya dengan video */
+          <img 
+            src={project.image || "/contohthumnailproject.webp"} 
+            alt={project.title} 
+            className="pd-media-placeholder" 
+            style={{ 
+              width: '75%', 
+              margin: '0 auto 2rem auto', 
+              display: 'block', 
+              aspectRatio: '16 / 9', 
+              objectFit: 'cover', 
+              borderRadius: '16px' 
+            }} 
+          />
+        )}
         <p className="pd-tech">
           Tech: <span className="pd-tech-highlight">{project.tech}</span>
         </p>
