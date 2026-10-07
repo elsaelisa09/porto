@@ -288,6 +288,8 @@ const PROJECT_ITEMS = [
 {
     id: "project-7",
     title: "FitGuide ITERA: Riset Pengguna & Uji Usability",
+    image: "/project-7.webp",
+    youtubeId: "",
     tech: "Figma",
     role: "UX Research & UI/UX Design",
     subtitle: "User-Centered Design",
@@ -324,6 +326,8 @@ const PROJECT_ITEMS = [
   {
     id: "project-8",
     title: "KiddieSafe: Desain Pengalaman Digital untuk Anak dan Orang Tua",
+    image: "/project-8.webp",
+    youtubeId: "",
     tech: "Figma, Maze",
     role: "UX Research & UI/UX Design",
     subtitle: "Prototyping & Usability Testing",
@@ -793,7 +797,12 @@ function App() {
           <a href="#projects" onClick={() => setIsNavOpen(false)}>
             Projects
           </a>
-          <a href="#experience" onClick={() => setIsNavOpen(false)}>
+          <a 
+            href="/resume.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            onClick={() => setIsNavOpen(false)}
+          >
             Resume
           </a>
           <button
@@ -983,10 +992,9 @@ function App() {
       >
         <div className="experience-intro">
           <h2>
-            I’m an aspiring data specialist
+            Let’s turn data into meaningful impact
             <span>
-              focused on turning complex datasets into actionable insights and
-              AI-driven solutions
+              I turn data into actionable insights and intelligent solutions
             </span>
           </h2>
         </div>
@@ -1029,8 +1037,8 @@ function App() {
         </div>
 
         <div className="experience-links">
-          <a href="">Connect on LinkedIn.</a>
-          <a href="">Download CV</a>
+          <a href="https://www.linkedin.com/in/elsaelisayohanasianturi/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn.</a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Preview CV</a>
         </div>
       </section>
 
@@ -1128,14 +1136,16 @@ function App() {
           <div>
             <a href="#hero">Home</a>
             <a href="#about">About Me</a>
-            <a href="#experience">Resume</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Preview CV</a>
             <a href="#projects">Projects</a>
           </div>
           <div>
-            <a href="https://www.linkedin.com/in/elsaelisayohanasianturi/">
+            <a href="https://www.linkedin.com/in/elsaelisayohanasianturi/" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href="https://github.com/elsaelisa09">Github</a>
+            <a href="https://github.com/elsaelisa09" target="_blank" rel="noopener noreferrer">
+              Github
+            </a>
           </div>
         </nav>
         <div className="site-footer-content">
