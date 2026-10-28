@@ -15,17 +15,17 @@ const FOCUS_AREAS = [
     id: "analytics",
     title: "Data Analytics & Insights",
     description:
-      "turning complex data into clear insights and interactive dashboards that help teams track performance, spot trends, and drive data-driven business decisions",
+      "mengolah data menjadi insight dan dashboard interaktif untuk memahami tren, memantau KPI, dan mendukung pengambilan keputusan bisnis",
     tags: ["Business Intelligence", "Data Visualization", "KPI Analysis"],
   },
   {
     id: "engineering",
     title: "Data Engineering & Pipelines",
     description:
-      "building scalable data pipelines and processing workflows to clean, integrate, and validate data delivering clean, reliable datasets for advanced analytics and AI applications",
+      "membersihkan, menggabungkan, dan memvalidasi data dari berbagai sumber agar konsisten dan siap digunakan untuk analisis maupun pengembangan model AI",
     tags: [
       "Data Architecture",
-      "ETL Pipelines",
+      "Data Preparation",
       "Data Quality",
       "Database Management",
     ],
@@ -34,7 +34,7 @@ const FOCUS_AREAS = [
     id: "aiml",
     title: "AI & Machine Learning",
     description:
-      "developing predictive models and end-to-end AI applications using Machine Learning, Deep Learning, and RAG to uncover hidden patterns, optimize search retrieval, and solve real-world problems",
+      "mengembangkan dan mengevaluasi model AI serta prototipe aplikasi untuk klasifikasi gambar dan teks, pengenalan wajah, dan pencarian informasi berbasis dokumen.",
     tags: ["Machine Learning", "Predictive Modeling", "Deep Learning"],
   },
 ];
@@ -46,6 +46,9 @@ const TOOLKIT_ITEMS = [
   { name: "Microsoft Excel", image: "/excel-logo.png" },
   { name: "SQL", image: "/sql-logo.png" },
   { name: "Git", image: "/git-logo.png" },
+  { name: "VsCode", image: "/vscode-logo.png" },
+  { name: "W&B", image: "/wblogo.png" },
+  { name: "Figma", image: "/figma-logo.png" },
 ];
 
 const PROJECT_ITEMS = [
@@ -57,18 +60,43 @@ const PROJECT_ITEMS = [
     tech: "Microsoft Excel, Power Query",
     role: "Data Engineering",
     subtitle: "Data Engineering | Data Analytics | Forecasting",
-    situation: "Data penjualan, informasi toko, dan faktor pendukung tersedia dalam tiga sumber yang terpisah. Data tersebut perlu disatukan dan diperiksa agar dapat digunakan untuk memahami performa penjualan, menganalisis periode promosi dan hari libur, serta memperkirakan penjualan mendatang",
-    tasks: [ 
-      { title: "Integrasi Data", desc: "Menggabungkan data penjualan, informasi toko, dan faktor pendukung dari tiga sumber ke dalam database PostgreSQL" },
-      { title: "Pemeriksaan Kualitas Data", desc: "Memeriksa data ganda, kelengkapan hubungan antar tabel, dan konsistensi informasi hari libur agar data siap dianalisis" },
-      { title: "Penyusunan Data Analisis", desc: "Membuat query SQL yang dapat digunakan kembali untuk mendukung analisis penjualan dan periode promosi" },
-      { title: "Pembuatan Dashboard", desc: "Mengembangkan dashboard Excel untuk menampilkan tren penjualan dan membantu pengguna membandingkan performa toko serta departemen" },
-      { title: "Pengujian Prediksi Penjualan", desc: "Menguji prediksi penjualan menggunakan data historis dan membandingkan hasilnya dengan metode pembanding berbasis pola musiman" },
+    situation:
+      "Data penjualan, informasi toko, dan faktor pendukung tersedia dalam tiga sumber yang terpisah. Data tersebut perlu disatukan dan diperiksa agar dapat digunakan untuk memahami performa penjualan, menganalisis periode promosi dan hari libur, serta memperkirakan penjualan mendatang",
+    tasks: [
+      {
+        title: "Integrasi Data",
+        desc: "Menggabungkan data penjualan, informasi toko, dan faktor pendukung dari tiga sumber ke dalam database PostgreSQL",
+      },
+      {
+        title: "Pemeriksaan Kualitas Data",
+        desc: "Memeriksa data ganda, kelengkapan hubungan antar tabel, dan konsistensi informasi hari libur agar data siap dianalisis",
+      },
+      {
+        title: "Penyusunan Data Analisis",
+        desc: "Membuat query SQL yang dapat digunakan kembali untuk mendukung analisis penjualan dan periode promosi",
+      },
+      {
+        title: "Pembuatan Dashboard",
+        desc: "Mengembangkan dashboard Excel untuk menampilkan tren penjualan dan membantu pengguna membandingkan performa toko serta departemen",
+      },
+      {
+        title: "Pengujian Prediksi Penjualan",
+        desc: "Menguji prediksi penjualan menggunakan data historis dan membandingkan hasilnya dengan metode pembanding berbasis pola musiman",
+      },
     ],
     results: [
-      { bold: "Data Terstruktur & Terintegrasi:", text: " Berhasil menyatukan tiga sumber data yang mencakup 45 toko dan 81 departemen menjadi dataset terstruktur dan siap dianalisis" },
-      { bold: "Penjualan & Promosi Lebih Mudah Dianalisis:", text: " Menghasilkan dashboard interaktif untuk meninjau tren penjualan, membandingkan performa, dan menganalisis periode promosi serta hari libur" },
-      { bold: "Kesalahan Prediksi Turun 14,32%:", text: " Pada uji coba terhadap 100 kelompok riwayat penjualan selama 13 minggu, kesalahan prediksi turun 14,32% dibandingkan metode pembanding berbasis pola musiman" },
+      {
+        bold: "Data Terstruktur & Terintegrasi:",
+        text: " Berhasil menyatukan tiga sumber data yang mencakup 45 toko dan 81 departemen menjadi dataset terstruktur dan siap dianalisis",
+      },
+      {
+        bold: "Penjualan & Promosi Lebih Mudah Dianalisis:",
+        text: " Menghasilkan dashboard interaktif untuk meninjau tren penjualan, membandingkan performa, dan menganalisis periode promosi serta hari libur",
+      },
+      {
+        bold: "Kesalahan Prediksi Turun 14,32%:",
+        text: " Pada uji coba terhadap 100 kelompok riwayat penjualan selama 13 minggu, kesalahan prediksi turun 14,32% dibandingkan metode pembanding berbasis pola musiman",
+      },
     ],
   },
   {
@@ -79,39 +107,40 @@ const PROJECT_ITEMS = [
     tech: "Python, Pandas, BLIP, CLIP, Microsoft Power BI, DAX",
     role: "Data Analyst",
     subtitle: "Data Analytics & AI",
-    situation: "Data Instagram tentang pariwisata Lampung Selatan memiliki metadata yang tidak konsisten dan gambar yang perlu diseleksi. Selain itu, satu unggahan dapat memuat beberapa gambar, sehingga jumlah likes berpotensi terhitung berulang. Data perlu dibersihkan dan dianalisis untuk memahami konten wisata yang ditampilkan serta pola interaksi pengguna",
+    situation:
+      "Data Instagram tentang pariwisata Lampung Selatan memiliki metadata yang tidak konsisten dan gambar yang perlu diseleksi. Selain itu, satu unggahan dapat memuat beberapa gambar, sehingga jumlah likes berpotensi terhitung berulang. Data perlu dibersihkan dan dianalisis untuk memahami konten wisata yang ditampilkan serta pola interaksi pengguna",
     tasks: [
       {
         title: "Pembersihan & Validasi Data",
-        desc: "Mengolah 7.178 catatan Instagram menggunakan Python dan Pandas, memeriksa kelengkapan data, serta menyeleksi gambar yang relevan untuk analisis pariwisata"
+        desc: "Mengolah 7.178 catatan Instagram menggunakan Python dan Pandas, memeriksa kelengkapan data, serta menyeleksi gambar yang relevan untuk analisis pariwisata",
       },
       {
         title: "Analisis Konten Visual dengan AI",
-        desc: "Menggunakan BLIP untuk menghasilkan deskripsi gambar dan CLIP untuk mengelompokkan konten visual, sehingga tema wisata dapat dianalisis secara terstruktur"
+        desc: "Menggunakan BLIP untuk menghasilkan deskripsi gambar dan CLIP untuk mengelompokkan konten visual, sehingga tema wisata dapat dianalisis secara terstruktur",
       },
       {
         title: "Pencegahan Penghitungan Likes Ganda",
-        desc: "Memisahkan perhitungan berdasarkan gambar dan unggahan menggunakan URL unik, agar likes dari unggahan dengan beberapa gambar tidak dijumlahkan berulang"
+        desc: "Memisahkan perhitungan berdasarkan gambar dan unggahan menggunakan URL unik, agar likes dari unggahan dengan beberapa gambar tidak dijumlahkan berulang",
       },
       {
         title: "Pengembangan Dashboard & Insight",
-        desc: "Membuat perhitungan DAX dan dashboard Power BI dengan tiga halaman untuk menampilkan kualitas data, kategori konten visual, tren interaksi, serta persebaran lokasi"
-      }
+        desc: "Membuat perhitungan DAX dan dashboard Power BI dengan tiga halaman untuk menampilkan kualitas data, kategori konten visual, tren interaksi, serta persebaran lokasi",
+      },
     ],
     results: [
       {
         bold: "2.689 Gambar Siap Dianalisis:",
-        text: " Dari 7.178 catatan awal, berhasil menyeleksi dan memvalidasi 2.689 gambar untuk membentuk dataset analisis pariwisata"
+        text: " Dari 7.178 catatan awal, berhasil menyeleksi dan memvalidasi 2.689 gambar untuk membentuk dataset analisis pariwisata",
       },
       {
         bold: "Dashboard Interaktif 3 Halaman:",
-        text: " Menghasilkan dashboard yang menyajikan kualitas data, analisis konten visual, serta interaksi dan persebaran unggahan dalam tampilan yang mudah ditelusuri"
+        text: " Menghasilkan dashboard yang menyajikan kualitas data, analisis konten visual, serta interaksi dan persebaran unggahan dalam tampilan yang mudah ditelusuri",
       },
       {
         bold: "Gambaran Identitas Visual Pariwisata:",
-        text: " Menemukan bahwa konten yang dianalisis didominasi unsur alam dan pesisir, seperti pantai, laut, dan matahari terbenam, sehingga memperjelas bagaimana pariwisata Lampung Selatan direpresentasikan di Instagram"
-      }
-    ]
+        text: " Menemukan bahwa konten yang dianalisis didominasi unsur alam dan pesisir, seperti pantai, laut, dan matahari terbenam, sehingga memperjelas bagaimana pariwisata Lampung Selatan direpresentasikan di Instagram",
+      },
+    ],
   },
   {
     id: "project-3",
@@ -121,43 +150,44 @@ const PROJECT_ITEMS = [
     tech: "Python, React, TypeScript, FastAPI, FAISS, TF-IDF, DeepSeek V3",
     role: "AI Engineer Intern",
     subtitle: "AI & Information Retrieval",
-    situation: "Pencarian informasi dalam dokumen perjanjian lahan yang panjang membutuhkan pembacaan manual dan menyulitkan pengguna menemukan bagian yang relevan. Dalam magang di PT Pertamina Hulu Rokan, saya mengembangkan prototipe chatbot agar pengguna dapat mencari informasi dan mengajukan pertanyaan berdasarkan isi dokumen",
+    situation:
+      "Pencarian informasi dalam dokumen perjanjian lahan yang panjang membutuhkan pembacaan manual dan menyulitkan pengguna menemukan bagian yang relevan. Dalam magang di PT Pertamina Hulu Rokan, saya mengembangkan prototipe chatbot agar pengguna dapat mencari informasi dan mengajukan pertanyaan berdasarkan isi dokumen",
     tasks: [
       {
         title: "Analisis Kebutuhan Pengguna",
-        desc: "Mengidentifikasi kebutuhan pengguna dan skenario pencarian informasi untuk menentukan fungsi utama chatbot"
+        desc: "Mengidentifikasi kebutuhan pengguna dan skenario pencarian informasi untuk menentukan fungsi utama chatbot",
       },
       {
         title: "Pengolahan & Pengindeksan Dokumen",
-        desc: "Menyiapkan isi dokumen perjanjian lahan dan membangun indeks pencarian agar informasi dapat ditemukan sesuai pertanyaan pengguna"
+        desc: "Menyiapkan isi dokumen perjanjian lahan dan membangun indeks pencarian agar informasi dapat ditemukan sesuai pertanyaan pengguna",
       },
       {
         title: "Pengembangan Pencarian & Jawaban AI",
-        desc: "Menggabungkan pencarian berbasis kata kunci menggunakan TF-IDF dan kemiripan makna menggunakan FAISS, kemudian mengintegrasikan model bahasa untuk menyusun jawaban berdasarkan informasi yang ditemukan"
+        desc: "Menggabungkan pencarian berbasis kata kunci menggunakan TF-IDF dan kemiripan makna menggunakan FAISS, kemudian mengintegrasikan model bahasa untuk menyusun jawaban berdasarkan informasi yang ditemukan",
       },
       {
         title: "Pembuatan Aplikasi Chatbot",
-        desc: "Mengembangkan antarmuka dengan React dan TypeScript serta layanan backend dengan FastAPI, sehingga pengguna dapat mencari informasi melalui percakapan"
+        desc: "Mengembangkan antarmuka dengan React dan TypeScript serta layanan backend dengan FastAPI, sehingga pengguna dapat mencari informasi melalui percakapan",
       },
       {
         title: "Evaluasi & Presentasi Prototipe",
-        desc: "Membandingkan jawaban chatbot dengan jawaban acuan untuk mengukur ketepatannya, lalu mempresentasikan prototipe dan hasil evaluasi kepada pemangku kepentingan divisi"
-      }
+        desc: "Membandingkan jawaban chatbot dengan jawaban acuan untuk mengukur ketepatannya, lalu mempresentasikan prototipe dan hasil evaluasi kepada pemangku kepentingan divisi",
+      },
     ],
     results: [
       {
         bold: "Ketepatan Jawaban 73,33%:",
-        text: " Prototipe mencapai ketepatan jawaban 73,33% dalam evaluasi menggunakan jawaban acuan sebagai pembanding"
+        text: " Prototipe mencapai ketepatan jawaban 73,33% dalam evaluasi menggunakan jawaban acuan sebagai pembanding",
       },
       {
         bold: "Prototipe Pencarian & Tanya Jawab:",
-        text: " Menghasilkan aplikasi yang menghubungkan antarmuka pengguna, pengolahan dokumen, pencarian informasi, dan penyusunan jawaban AI dalam satu alur"
+        text: " Menghasilkan aplikasi yang menghubungkan antarmuka pengguna, pengolahan dokumen, pencarian informasi, dan penyusunan jawaban AI dalam satu alur",
       },
       {
         bold: "Hasil Dipresentasikan kepada Stakeholder:",
-        text: " Mempresentasikan prototipe dan hasil pengujian kepada pemangku kepentingan Application Service Division untuk menjelaskan kemampuan serta hasil evaluasi sistem"
-      }
-    ]
+        text: " Mempresentasikan prototipe dan hasil pengujian kepada pemangku kepentingan Application Service Division untuk menjelaskan kemampuan serta hasil evaluasi sistem",
+      },
+    ],
   },
   {
     id: "project-4",
@@ -167,39 +197,40 @@ const PROJECT_ITEMS = [
     tech: "Python, PyTorch, Transformers, Hugging Face, CLIP, ELECTRA, Weights & Biases",
     role: "AI Researcher",
     subtitle: "Multimodal Machine Learning",
-    situation: "Makna sebuah meme sering terbentuk dari kombinasi gambar dan teks, sehingga membaca salah satunya saja dapat menghasilkan pemahaman yang berbeda. Dalam proyek tugas akhir ini, saya mengembangkan model AI untuk mengklasifikasikan meme yang berkaitan dengan self-harm atau tindakan menyakiti diri sendiri dengan mempertimbangkan kedua jenis informasi tersebut",
+    situation:
+      "Makna sebuah meme sering terbentuk dari kombinasi gambar dan teks, sehingga membaca salah satunya saja dapat menghasilkan pemahaman yang berbeda. Dalam proyek tugas akhir ini, saya mengembangkan model AI untuk mengklasifikasikan meme yang berkaitan dengan self-harm atau tindakan menyakiti diri sendiri dengan mempertimbangkan kedua jenis informasi tersebut",
     tasks: [
       {
         title: "Pengumpulan & Pelabelan Dataset",
-        desc: "Mengumpulkan, menyeleksi, dan memberi label pada 2.178 meme untuk membentuk dataset yang digunakan dalam pengembangan dan evaluasi model"
+        desc: "Mengumpulkan, menyeleksi, dan memberi label pada 2.178 meme untuk membentuk dataset yang digunakan dalam pengembangan dan evaluasi model",
       },
       {
         title: "Persiapan Data Gambar & Teks",
-        desc: "Membangun alur pemrosesan gambar dan teks agar kedua jenis data dapat digunakan secara konsisten sebagai masukan model"
+        desc: "Membangun alur pemrosesan gambar dan teks agar kedua jenis data dapat digunakan secara konsisten sebagai masukan model",
       },
       {
         title: "Pengembangan Model Multimodal",
-        desc: "Menggabungkan fitur gambar dari CLIP dan fitur teks dari ELECTRA agar model dapat mempelajari hubungan antara informasi visual dan tulisan dalam meme"
+        desc: "Menggabungkan fitur gambar dari CLIP dan fitur teks dari ELECTRA agar model dapat mempelajari hubungan antara informasi visual dan tulisan dalam meme",
       },
       {
         title: "Pelatihan & Evaluasi Model",
-        desc: "Melatih model, menyesuaikan konfigurasi, dan membandingkan hasil eksperimen. Mengukur performa klasifikasi serta mencatat eksperimen menggunakan Weights & Biases"
-      }
+        desc: "Melatih model, menyesuaikan konfigurasi, dan membandingkan hasil eksperimen. Mengukur performa klasifikasi serta mencatat eksperimen menggunakan Weights & Biases",
+      },
     ],
     results: [
       {
         bold: "Dataset 2.178 Meme Berlabel:",
-        text: " Menghasilkan dataset gambar dan teks yang telah dikurasi untuk mendukung pelatihan serta evaluasi model klasifikasi."
+        text: " Menghasilkan dataset gambar dan teks yang telah dikurasi untuk mendukung pelatihan serta evaluasi model klasifikasi.",
       },
       {
         bold: "F1-Score 96,1%:",
-        text: " Model terbaik mencapai F1-Score 96,1% pada data validasi proyek. Metrik ini merangkum keseimbangan antara ketepatan prediksi dan kemampuan menemukan meme yang termasuk kategori target"
+        text: " Model terbaik mencapai F1-Score 96,1% pada data validasi proyek. Metrik ini merangkum keseimbangan antara ketepatan prediksi dan kemampuan menemukan meme yang termasuk kategori target",
       },
       {
         bold: "Analisis Gambar & Teks Terpadu:",
-        text: " Menghasilkan model yang menggabungkan informasi visual dan tulisan untuk mengklasifikasikan meme, disertai catatan eksperimen yang membantu peninjauan hasil"
-      }
-    ]
+        text: " Menghasilkan model yang menggabungkan informasi visual dan tulisan untuk mengklasifikasikan meme, disertai catatan eksperimen yang membantu peninjauan hasil",
+      },
+    ],
   },
   {
     id: "project-5",
@@ -209,39 +240,40 @@ const PROJECT_ITEMS = [
     tech: "Python, PyTorch, OpenCV",
     role: "AI & Machine Learning",
     subtitle: "Computer Vision",
-    situation: "Dalam proyek perkuliahan Deep Learning, saya bersama tim mengembangkan sistem untuk mengenali identitas seseorang melalui gambar wajah. Tantangannya adalah mengolah dataset dari banyak individu dan membangun model yang mampu membedakan karakteristik wajah mereka",
+    situation:
+      "Dalam proyek perkuliahan Deep Learning, saya bersama tim mengembangkan sistem untuk mengenali identitas seseorang melalui gambar wajah. Tantangannya adalah mengolah dataset dari banyak individu dan membangun model yang mampu membedakan karakteristik wajah mereka",
     tasks: [
       {
         title: "Menyiapkan Data Wajah",
-        desc: "Mengolah dataset berisi 1.946 gambar wajah dari lebih dari 70 individu. Melakukan preprocessing agar data siap digunakan dalam pengembangan dan evaluasi model"
+        desc: "Mengolah dataset berisi 1.946 gambar wajah dari lebih dari 70 individu. Melakukan preprocessing agar data siap digunakan dalam pengembangan dan evaluasi model",
       },
       {
         title: "Mengembangkan Model Pengenalan Wajah",
-        desc: "Membangun proses pengenalan wajah menggunakan PyTorch dan OpenCV, mulai dari pengolahan gambar, ekstraksi karakteristik wajah, hingga pelatihan model untuk mengenali identitas"
+        desc: "Membangun proses pengenalan wajah menggunakan PyTorch dan OpenCV, mulai dari pengolahan gambar, ekstraksi karakteristik wajah, hingga pelatihan model untuk mengenali identitas",
       },
       {
         title: "Mengevaluasi dan Memperbaiki Model",
-        desc: "Mengevaluasi hasil prediksi untuk memahami kemampuan model dalam mengenali wajah. Melakukan optimasi secara bertahap berdasarkan hasil evaluasi"
+        desc: "Mengevaluasi hasil prediksi untuk memahami kemampuan model dalam mengenali wajah. Melakukan optimasi secara bertahap berdasarkan hasil evaluasi",
       },
       {
         title: "Mengoordinasikan Pengembangan Tim",
-        desc: "Memimpin tim beranggotakan tiga orang dengan menyusun rencana kerja, membagi tugas, memantau progres, dan terlibat dalam implementasi teknis"
-      }
+        desc: "Memimpin tim beranggotakan tiga orang dengan menyusun rencana kerja, membagi tugas, memantau progres, dan terlibat dalam implementasi teknis",
+      },
     ],
     results: [
       {
         bold: "Proses Pengembangan Lengkap:",
-        text: " Mengembangkan sistem pengenalan wajah yang mencakup preprocessing, ekstraksi fitur, pelatihan, dan evaluasi menggunakan 1.946 gambar."
+        text: " Mengembangkan sistem pengenalan wajah yang mencakup preprocessing, ekstraksi fitur, pelatihan, dan evaluasi menggunakan 1.946 gambar.",
       },
       {
         bold: "Performa Model Kompetitif:",
-        text: " Menghasilkan salah satu model dengan performa terbaik dalam proyek perkuliahan Deep Learning melalui optimasi dan evaluasi bertahap"
+        text: " Menghasilkan salah satu model dengan performa terbaik dalam proyek perkuliahan Deep Learning melalui optimasi dan evaluasi bertahap",
       },
       {
         bold: "Kolaborasi Tim Terarah:",
-        text: " Mengoordinasikan tim tiga orang sepanjang proses pengembangan, dari perencanaan hingga evaluasi model"
-      }
-    ]
+        text: " Mengoordinasikan tim tiga orang sepanjang proses pengembangan, dari perencanaan hingga evaluasi model",
+      },
+    ],
   },
   {
     id: "project-6",
@@ -249,43 +281,44 @@ const PROJECT_ITEMS = [
     image: "/project-6.webp",
     youtubeId: "",
     tech: "Python, ESP32, Speech Recognition, OLED, Telegram",
-    role: "AI Engineering & IoT",
+    role: "AI Engineer & IoT",
     subtitle: "Embedded Systems & Voice Interaction",
-    situation: "Dalam proyek perkuliahan Embedded Systems, saya bersama tim mengembangkan robot pembelajaran yang dapat menerima pertanyaan melalui suara dan memberikan respons berbasis AI. Tantangannya adalah menghubungkan pemrosesan suara, AI, sensor, dan perangkat keluaran menjadi satu sistem interaktif.",
+    situation:
+      "Dalam proyek perkuliahan Embedded Systems, saya bersama tim mengembangkan robot pembelajaran yang dapat menerima pertanyaan melalui suara dan memberikan respons berbasis AI. Tantangannya adalah menghubungkan pemrosesan suara, AI, sensor, dan perangkat keluaran menjadi satu sistem interaktif.",
     tasks: [
       {
         title: "Mengintegrasikan Perangkat Keras",
-        desc: "Mengintegrasikan tiga sensor dan tiga aktuator dalam sistem berbasis ESP32 untuk mendukung interaksi robot dengan lingkungan dan pengguna."
+        desc: "Mengintegrasikan tiga sensor dan tiga aktuator dalam sistem berbasis ESP32 untuk mendukung interaksi robot dengan lingkungan dan pengguna.",
       },
       {
         title: "Membangun Alur Tanya Jawab Berbasis Suara",
-        desc: "Mengembangkan alur yang mengubah pertanyaan pengguna dari suara menjadi teks, kemudian memprosesnya menggunakan AI untuk menghasilkan jawaban."
+        desc: "Mengembangkan alur yang mengubah pertanyaan pengguna dari suara menjadi teks, kemudian memprosesnya menggunakan AI untuk menghasilkan jawaban.",
       },
       {
         title: "Menghubungkan Tampilan dan Notifikasi",
-        desc: "Menghubungkan respons AI dengan layar OLED agar jawaban dapat dibaca pengguna, serta mengintegrasikan pengiriman notifikasi Telegram secara otomatis."
+        desc: "Menghubungkan respons AI dengan layar OLED agar jawaban dapat dibaca pengguna, serta mengintegrasikan pengiriman notifikasi Telegram secara otomatis.",
       },
       {
         title: "Mengoordinasikan Tim dan Menguji Sistem",
-        desc: "Memimpin tim beranggotakan empat orang dalam pengembangan dan integrasi sistem. Melakukan pengujian fungsional, termasuk lima percobaan deteksi objek menggunakan sensor ultrasonik HC-SR04."
-      }
+        desc: "Memimpin tim beranggotakan empat orang dalam pengembangan dan integrasi sistem. Melakukan pengujian fungsional, termasuk lima percobaan deteksi objek menggunakan sensor ultrasonik HC-SR04.",
+      },
     ],
     results: [
       {
         bold: "Interaksi Berbasis Suara:",
-        text: " Mengembangkan alur tanya jawab yang menghubungkan masukan suara, pemrosesan AI, dan tampilan respons pada layar OLED."
+        text: " Mengembangkan alur tanya jawab yang menghubungkan masukan suara, pemrosesan AI, dan tampilan respons pada layar OLED.",
       },
       {
         bold: "Integrasi Hardware dan Software:",
-        text: " Menggabungkan tiga sensor, tiga aktuator, dan notifikasi Telegram dalam satu sistem robot pembelajaran."
+        text: " Menggabungkan tiga sensor, tiga aktuator, dan notifikasi Telegram dalam satu sistem robot pembelajaran.",
       },
       {
         bold: "Hasil Pengujian Deteksi Objek:",
-        text: " Mencapai akurasi deteksi objek sebesar 80% menggunakan sensor HC-SR04 dalam lima percobaan pengujian."
-      }
-    ]
+        text: " Mencapai akurasi deteksi objek sebesar 80% menggunakan sensor HC-SR04 dalam lima percobaan pengujian.",
+      },
+    ],
   },
-{
+  {
     id: "project-7",
     title: "FitGuide ITERA: Riset Pengguna & Uji Usability",
     image: "/project-7.webp",
@@ -293,35 +326,36 @@ const PROJECT_ITEMS = [
     tech: "Figma",
     role: "UX Research & UI/UX Design",
     subtitle: "User-Centered Design",
-    situation: "Dalam proyek akhir mata kuliah Interaksi Manusia dan Komputer, saya mengembangkan prototipe aplikasi mobile FitGuide ITERA. Rancangan perlu didasarkan pada kebutuhan pengguna dan diuji untuk mengetahui apakah alur serta tampilannya mudah digunakan.",
+    situation:
+      "Dalam proyek akhir mata kuliah Interaksi Manusia dan Komputer, saya mengembangkan prototipe aplikasi mobile FitGuide ITERA. Rancangan perlu didasarkan pada kebutuhan pengguna dan diuji untuk mengetahui apakah alur serta tampilannya mudah digunakan.",
     tasks: [
       {
         title: "Mengidentifikasi Kebutuhan Pengguna",
-        desc: "Melakukan riset untuk memahami kebutuhan dan kendala pengguna, kemudian menerjemahkan temuan tersebut menjadi dasar perancangan alur dan antarmuka aplikasi."
+        desc: "Melakukan riset untuk memahami kebutuhan dan kendala pengguna, kemudian menerjemahkan temuan tersebut menjadi dasar perancangan alur dan antarmuka aplikasi.",
       },
       {
         title: "Merancang Alur dan Prototipe Interaktif",
-        desc: "Menyusun alur penggunaan dan merancang antarmuka mobile menggunakan Figma. Mengembangkan prototipe high-fidelity yang dapat digunakan untuk mencoba interaksi antarhalaman."
+        desc: "Menyusun alur penggunaan dan merancang antarmuka mobile menggunakan Figma. Mengembangkan prototipe high-fidelity yang dapat digunakan untuk mencoba interaksi antarhalaman.",
       },
       {
         title: "Menguji Kemudahan Penggunaan",
-        desc: "Menguji prototipe dengan 11 partisipan dan mengevaluasi kemudahan penggunaannya melalui System Usability Scale (SUS), sehingga kualitas rancangan dapat dinilai berdasarkan hasil pengujian."
-      }
+        desc: "Menguji prototipe dengan 11 partisipan dan mengevaluasi kemudahan penggunaannya melalui System Usability Scale (SUS), sehingga kualitas rancangan dapat dinilai berdasarkan hasil pengujian.",
+      },
     ],
     results: [
       {
         bold: "Rancangan Berbasis Kebutuhan Pengguna:",
-        text: " Menghasilkan alur dan antarmuka aplikasi yang dikembangkan berdasarkan temuan riset pengguna."
+        text: " Menghasilkan alur dan antarmuka aplikasi yang dikembangkan berdasarkan temuan riset pengguna.",
       },
       {
         bold: "Evaluasi dengan 11 Partisipan:",
-        text: " Menguji prototipe secara langsung untuk menilai kemudahan penggunaan dan pengalaman interaksi."
+        text: " Menguji prototipe secara langsung untuk menilai kemudahan penggunaan dan pengalaman interaksi.",
       },
       {
         bold: "Skor SUS 88,4:",
-        text: " Prototipe memperoleh skor System Usability Scale sebesar 88,4 dengan kategori Excellent dalam pengujian yang dilakukan."
-      }
-    ]
+        text: " Prototipe memperoleh skor System Usability Scale sebesar 88,4 dengan kategori Excellent dalam pengujian yang dilakukan.",
+      },
+    ],
   },
   {
     id: "project-8",
@@ -331,70 +365,71 @@ const PROJECT_ITEMS = [
     tech: "Figma, Maze",
     role: "UX Research & UI/UX Design",
     subtitle: "Prototyping & Usability Testing",
-    situation: "Dalam kompetisi UI/UX HMIF Point Project, saya mengembangkan konsep KiddieSafe untuk menghadirkan pengalaman digital yang lebih aman dan mudah digunakan oleh anak serta orang tua. Tantangannya adalah memahami kebutuhan kedua kelompok pengguna dan menerjemahkannya menjadi rancangan yang ramah anak.",
+    situation:
+      "Dalam kompetisi UI/UX HMIF Point Project, saya mengembangkan konsep KiddieSafe untuk menghadirkan pengalaman digital yang lebih aman dan mudah digunakan oleh anak serta orang tua. Tantangannya adalah memahami kebutuhan kedua kelompok pengguna dan menerjemahkannya menjadi rancangan yang ramah anak.",
     tasks: [
       {
         title: "Memahami Kebutuhan Anak dan Orang Tua",
-        desc: "Melakukan riset pengguna untuk mengidentifikasi kebutuhan dan kendala yang menjadi dasar perancangan pengalaman digital KiddieSafe."
+        desc: "Melakukan riset pengguna untuk mengidentifikasi kebutuhan dan kendala yang menjadi dasar perancangan pengalaman digital KiddieSafe.",
       },
       {
         title: "Merancang Antarmuka dan Prototipe",
-        desc: "Menyusun alur penggunaan dan antarmuka yang ramah anak berdasarkan hasil riset. Mengembangkan prototipe interaktif menggunakan Figma untuk memperlihatkan cara pengguna berinteraksi dengan rancangan."
+        desc: "Menyusun alur penggunaan dan antarmuka yang ramah anak berdasarkan hasil riset. Mengembangkan prototipe interaktif menggunakan Figma untuk memperlihatkan cara pengguna berinteraksi dengan rancangan.",
       },
       {
         title: "Menguji Pengalaman Pengguna",
-        desc: "Melakukan pengujian prototipe menggunakan Maze untuk mengevaluasi pengalaman pengguna dan interaksi antarmuka, serta memperoleh penilaian terhadap rancangan yang dibuat."
-      }
+        desc: "Melakukan pengujian prototipe menggunakan Maze untuk mengevaluasi pengalaman pengguna dan interaksi antarmuka, serta memperoleh penilaian terhadap rancangan yang dibuat.",
+      },
     ],
     results: [
       {
         bold: "Prototipe Berbasis Riset:",
-        text: " Menghasilkan prototipe interaktif yang dirancang berdasarkan kebutuhan anak dan orang tua."
+        text: " Menghasilkan prototipe interaktif yang dirancang berdasarkan kebutuhan anak dan orang tua.",
       },
       {
         bold: "Penilaian Rata-Rata 9,2/10:",
-        text: " Memperoleh penilaian rata-rata sebesar 9,2 dari 10 untuk pengalaman pengguna dan interaksi antarmuka dalam pengujian menggunakan Maze."
+        text: " Memperoleh penilaian rata-rata sebesar 9,2 dari 10 untuk pengalaman pengguna dan interaksi antarmuka dalam pengujian menggunakan Maze.",
       },
       {
         bold: "Juara 2 Kompetisi UI/UX:",
-        text: " Meraih posisi kedua dalam kompetisi HMIF Point Project UI/UX pada tahun 2024."
-      }
-    ]
+        text: " Meraih posisi kedua dalam kompetisi HMIF Point Project UI/UX pada tahun 2024.",
+      },
+    ],
   },
 ];
 
 const EXPERIENCE_ITEMS = [
   {
     id: "ai-engineering-intern",
-    title: "AI Engineering Intern",
+    title: "Magang AI Engineer",
     organization: "PT Pertamina Hulu Rokan",
     period: "Jun 2025 – Jul 2025",
     description:
-      "Developed a document retrieval system using Retrieval-Augmented Generation (RAG) and evaluated AI-generated answers, achieving 76% accuracy",
+      "Mengembangkan prototipe pencarian informasi dokumen berbasis RAG menggunakan Python, BM25, FAISS, dan LLM, mencakup ekstraksi serta pembersihan teks. Pengujian pada enam skenario menggunakan dokumen simulasi menghasilkan skor evaluasi berbobot 73,33% dengan waktu respons 5–18 detik",
   },
   {
     id: "teaching-assistant",
-    title: "Teaching Assistant",
-    organization: "UPA TIK ITERA",
+    title: "Asisten Praktikum & Perkuliahan",
+    organization: "Institut Teknologi Sumatera | penugasan per semester",
     period: "Aug 2023 – Jun 2026",
     description:
-      "Supported students through practical sessions, technical guidance, and structured learning materials for applied computing coursework.",
+      "Mendampingi 50 mahasiswa dalam praktikum Excel, Power Query, dan DAX serta 78 mahasiswa dalam praktikum Ubuntu Linux dan Bash scripting. Kontribusi mencakup penyusunan modul, troubleshooting, serta pendampingan 12 kelompok proyek melalui konsultasi dan pelaporan progres kepada dosen",
   },
   {
     id: "academic-scholarships",
-    title: "Head of Academic & Scholarships",
-    organization: "HMIF ITERA",
+    title: "Kepala Divisi Akademik dan Beasiswa",
+    organization: "Himpunan Mahasiswa Informatika ITERA",
     period: "Jan 2025 – Dec 2025",
     description:
-      "Coordinated academic programs and scholarship information while helping students access relevant development opportunities.",
+      "Memimpin 10 anggota dalam empat program kerja melalui pembagian tugas dan evaluasi progres mingguan. Berhasil mengoordinasikan 10 tutorial dengan lebih dari 30 peserta per kegiatan, serta pendampingan beasiswa bagi delapan mahasiswa yang menghasilkan dua penerima beasiswa",
   },
   {
     id: "desa-energi-berdikari",
-    title: "Secretary of Desa Energi Berdikari",
+    title: "Sekretaris Program Desa Energi Berdikari",
     organization: "Sobat Bumi Lampung",
     period: "Nov 2024 – May 2026",
     description:
-      "Managed administrative records, schedules, and team communications for community energy and sustainability initiatives.",
+      "Mengelola jadwal, dokumentasi, dan pelaporan program pembangunan PLTS 2,2 kWp dengan pendanaan Rp100 juta. Menghimpun data dari setiap divisi, memantau progres, serta berkoordinasi dengan tim dan mitra untuk menyusun laporan pelaksanaan dan pertanggungjawaban kepada Pertamina",
   },
 ];
 
@@ -402,14 +437,14 @@ const AWARD_ITEMS = [
   {
     label: "Pertamina Sobat Bumi Scholarship – 2024",
     quote:
-      "Selected as one of 14 scholarship recipients at the Sumatera Institute of Technology, outperforming over 500 applicants based on academic excellence and environmental contributions",
+      "Terpilih sebagai salah satu dari 14 penerima beasiswa di Institut Teknologi Sumatera dari lebih dari 500 pendaftar, melalui beberapa seleksi yang telah diikuti",
     image: "/add1.jpg",
     alt: "Graduation cap and academic documents",
   },
   {
-    label: "2nd Place Winner, UI/UX Competition – 2024",
+    label: "Juara II, Kompetisi UI/UX Point Project – 2024",
     quote:
-      "Won 2nd Place in the Point Project 2.0 UI/UX competition, showcasing strong capabilities in user-centered interface design and problem-solving",
+      "Meraih Juara II dalam kompetisi UI/UX Point Project 2.0 melalui penerapan desain UI/UX menggunakan metode design thinking",
     image: "/add2.webp",
     alt: "Mobile app interface design on a smartphone",
   },
@@ -499,13 +534,12 @@ function App() {
   const awardsRef = useRef(null);
   const footerRef = useRef(null);
 
-
   // Smooth scrolling untuk halaman utama dan detail project.
   useLayoutEffect(() => {
     let lenis = null;
 
     const motionPreference = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     );
 
     const syncSmoothScroll = () => {
@@ -548,17 +582,12 @@ function App() {
       motionPreference.removeEventListener("change", syncSmoothScroll);
       lenis?.destroy();
     };
-  }, [
-    currentPage,
-    selectedProjectIndex,
-    isNavOpen,
-    isReachOutOpen,
-  ]);
+  }, [currentPage, selectedProjectIndex, isNavOpen, isReachOutOpen]);
   // Intersection observer: detect which section is in view
   useEffect(() => {
     if (currentPage !== "home") return undefined;
-    
-    const options = { root: null, threshold: 0.1};
+
+    const options = { root: null, threshold: 0.1 };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -681,14 +710,10 @@ function App() {
     // Animasi saat kembali dari detail ke daftar project.
     const section = el.closest(".toolkit-projects-wrapper");
     const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (
-      pendingScrollTarget === "project-list" &&
-      section &&
-      !reduceMotion
-    ) {
+    if (pendingScrollTarget === "project-list" && section && !reduceMotion) {
       section.animate(
         [
           { opacity: 0, transform: "translateY(20px)" },
@@ -697,7 +722,7 @@ function App() {
         {
           duration: 450,
           easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-        }
+        },
       );
     }
 
@@ -721,12 +746,20 @@ function App() {
         projectIndex={selectedProjectIndex}
         totalProjects={PROJECT_ITEMS.length}
         onBack={handleBackToProjects}
-        onNext={() => setSelectedProjectIndex((i) => (i + 1) % PROJECT_ITEMS.length)}
-        onPrev={() => setSelectedProjectIndex((i) => (i - 1 + PROJECT_ITEMS.length) % PROJECT_ITEMS.length)}
+        onNext={() =>
+          setSelectedProjectIndex((i) => (i + 1) % PROJECT_ITEMS.length)
+        }
+        onPrev={() =>
+          setSelectedProjectIndex(
+            (i) => (i - 1 + PROJECT_ITEMS.length) % PROJECT_ITEMS.length,
+          )
+        }
         onNavClick={handleNavFromDetail}
         onReachOut={() => {
           setCurrentPage("home");
-          requestAnimationFrame(() => setTimeout(() => setIsReachOutOpen(true), 80));
+          requestAnimationFrame(() =>
+            setTimeout(() => setIsReachOutOpen(true), 80),
+          );
         }}
       />
     );
@@ -797,10 +830,10 @@ function App() {
           <a href="#projects" onClick={() => setIsNavOpen(false)}>
             Projects
           </a>
-          <a 
-            href="/resume.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsNavOpen(false)}
           >
             Resume
@@ -815,7 +848,9 @@ function App() {
             Contacts
           </button>
         </nav>
-        <span className="nav-panel-role">Data Science | Data Analyst</span>
+        <span className="nav-panel-role">
+          Data Analytics · Data Science · AI
+        </span>
       </aside>
 
       <div className="hero-about-stack">
@@ -828,7 +863,7 @@ function App() {
         >
           <div className="hero-role-badge">
             <span className="pipe-indicator" aria-hidden="true"></span>
-            <span>Data Science | Data Analyst</span>
+            <span>Data Analytics · Data Science · AI</span>
           </div>
 
           <div className="hero-content">
@@ -836,10 +871,12 @@ function App() {
               <span>turning data</span>
               <span>into Insights</span>
               <span>and</span>
-              <span>Intelligent Solutions.</span>
+              <span>AI Solutions.</span>
             </h1>
             <p className="hero-subtext">
-              I build data pipelines, analytical dashboards, and AI applications that help teams turn complex data into actionable insights and make smarter decisions.
+              Mengolah data, analisis data, membangun dashboard interaktif,
+              serta mengembangkan model dan aplikasi AI untuk menemukan{" "}
+              <em>insight</em> dan membantu untuk pengambilan keputusan bisnis
             </p>
           </div>
 
@@ -862,9 +899,15 @@ function App() {
         >
           {/* Bio paragraph with inline orange highlights */}
           <p className="about-bio">
-            I'm an Informatics Engineering graduate with hands-on experience in data pipelines, AI applications, and interactive dashboards. My interests <mark className="about-highlight">Data Analytics,</mark>{" "}
-            <mark className="about-highlight">Data Science,</mark> and{" "}
-            <mark className="about-highlight">Data Engineering</mark> with a focus on turning complex data into clear insights and practical solutions that help people make informed decisions.
+            Memiliki pengalaman mengolah dan menganalisis data, membangun
+            dashboard interaktif, serta mengembangkan dan mengevaluasi model AI.
+            Tertarik mengembangkan karier sebagai{" "}
+            <mark className="about-highlight">Data Analytics,</mark>{" "}
+            <mark className="about-highlight">Data Scientist,</mark> dan{" "}
+            <mark className="about-highlight">AI Researcher</mark> Berfokus pada
+            pemanfaatan data dan AI untuk menemukan <em>insight</em>, menjawab
+            kebutuhan pengguna, dan membangun solusi yang mendukung pengambilan
+            keputusan
           </p>
 
           {/* Focus areas */}
@@ -992,10 +1035,8 @@ function App() {
       >
         <div className="experience-intro">
           <h2>
-            Let’s turn data into meaningful impact
-            <span>
-              I turn data into actionable insights and intelligent solutions
-            </span>
+            The Work Behind
+            <span>the Skills</span>
           </h2>
         </div>
 
@@ -1037,8 +1078,16 @@ function App() {
         </div>
 
         <div className="experience-links">
-          <a href="https://www.linkedin.com/in/elsaelisayohanasianturi/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn.</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Preview CV</a>
+          <a
+            href="https://www.linkedin.com/in/elsaelisayohanasianturi/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn.
+          </a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            Lihat CV
+          </a>
         </div>
       </section>
 
@@ -1136,21 +1185,31 @@ function App() {
           <div>
             <a href="#hero">Home</a>
             <a href="#about">About Me</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Preview CV</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              Preview CV
+            </a>
             <a href="#projects">Projects</a>
           </div>
           <div>
-            <a href="https://www.linkedin.com/in/elsaelisayohanasianturi/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/elsaelisayohanasianturi/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </a>
-            <a href="https://github.com/elsaelisa09" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/elsaelisa09"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Github
             </a>
           </div>
         </nav>
         <div className="site-footer-content">
           <span className="site-footer-role">
-            Data Science | Data Analyst
+            Data Analytics · Data Science · AI
           </span>
           <a
             href="mailto:elsaelisayohana05@gmail.com"
@@ -1215,10 +1274,7 @@ function App() {
               </a>
 
               <p className="contact-bio-text">
-                I'm interested in working with teams that treat data as the core
-                foundation of decision-making. I enjoy engineering reliable
-                pipelines, developing AI models, and turning complex datasets
-                into clear, actionable insights
+                Tertarik bergabung dengan tim yang memanfaatkan data dan AI untuk memecahkan masalah dan mendukung keputusan bisnis dalam perusahaan
               </p>
 
               <div className="contact-signature-block">
@@ -1230,7 +1286,7 @@ function App() {
                   />
                 </div>
                 <div className="contact-sign-name">Elsa!</div>
-                <div className="contact-sign-role">Data Science/Analyst</div>
+                <div className="contact-sign-role"></div>
               </div>
             </div>
           </div>
